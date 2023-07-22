@@ -1,0 +1,17 @@
+@document.meta
+title: README
+description: Genghis:: The framework Machine
+authors: strange_cofunctor
+categories: 
+created: 2023-10-25T14:44:18-0500
+updated: 2023-10-25T14:47:14-0500
+version: 1.1.1
+@end
+
+* Genghis:: Framework 13 (AMD)
+** Disco::
+*** Design::
+    I'm Testing this so far, it's quite odd, but it's alright.
+    This will Be both `BTRFS` + `TMPFS` with `LVM` + `LUKS`
+*** URLS::
+**** {https://github.com/nix-community/disko/tree/master/docs}[DOCS]
