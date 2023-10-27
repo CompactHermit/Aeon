@@ -8,9 +8,7 @@
         ./services
         ./desktop
           # {
-        #   _module.args.self = self;
-        #   _module.args.inputs = inputs;
-        #   _module.args.lib = lib; ## To creeate custom lib.
+           #_module.args.lib = lib; ## To creeate custom lib.
         # }
       ];
 
@@ -45,7 +43,7 @@
         self.nixosModules.common
         inputs.ragenix.nixosModules.default
         inputs.nur.nixosModules.nur
-        inputs.impermanence.nixosModules.impermanence
+        # inputs.impermanence.nixosModules.impermanence
         # ./audio.nix
         # ./services.nix
         # ./ssh-authorize.nix

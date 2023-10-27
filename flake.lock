@@ -191,11 +191,11 @@
         "nixpkgs-stable": "nixpkgs-stable"
       },
       "locked": {
-        "lastModified": 1698313543,
-        "narHash": "sha256-wCDVzbvUxXX08lFXjcGvKlC0Cm+oawVkm6K8he9mrvI=",
+        "lastModified": 1698375999,
+        "narHash": "sha256-vfVNCx7XW72zhytqNEFGqsvwVD4kpIt2c5XfNWhHE1M=",
         "owner": "nix-community",
         "repo": "emacs-overlay",
-        "rev": "bd7432a6da29d334f634e22b368621e269a8e6b5",
+        "rev": "ad98977084414cf12564f5cc45b8f9aef217aafa",
         "type": "github"
       },
       "original": {
@@ -473,6 +473,22 @@
       "original": {
         "owner": "hercules-ci",
         "repo": "flake-parts",
+        "type": "github"
+      }
+    },
+    "flake-registry": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1692779116,
+        "narHash": "sha256-erTXdDToRA8whxURoEgBGWj550vcUirO6adEFIjQ0M0=",
+        "owner": "NixOS",
+        "repo": "flake-registry",
+        "rev": "3f641cbae15d3c74370aa9b97fd0ac478a114305",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "flake-registry",
         "type": "github"
       }
     },
@@ -800,6 +816,21 @@
         "type": "github"
       }
     },
+    "mission-control": {
+      "locked": {
+        "lastModified": 1690573269,
+        "narHash": "sha256-9NSmHRQvzBzfuKD3zHE2fM5xPa+hHSy7xcWQqZaCjFw=",
+        "owner": "Platonic-Systems",
+        "repo": "mission-control",
+        "rev": "9d25d9f8d610916fc144f6afc1f064392fbeec1c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Platonic-Systems",
+        "repo": "mission-control",
+        "type": "github"
+      }
+    },
     "nix-doom-emacs": {
       "inputs": {
         "doom-emacs": "doom-emacs",
@@ -1050,11 +1081,11 @@
     },
     "nixpkgs-stable": {
       "locked": {
-        "lastModified": 1698160471,
-        "narHash": "sha256-lH7ZEItqQOWi21St9JyE6t3yyFNYGoQqSEcS90WMnBY=",
+        "lastModified": 1698288402,
+        "narHash": "sha256-jIIjApPdm+4yt8PglX8pUOexAdEiAax/DXW3S/Mb21E=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "04f431fe64a5ba8ff129cbbbfec489cfe903982c",
+        "rev": "60b9db998f71ea49e1a9c41824d09aa274be1344",
         "type": "github"
       },
       "original": {
@@ -1273,11 +1304,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1698339118,
-        "narHash": "sha256-x/SDQxnads2gINAxpg/fe4P484LPyge5GsO1FQu/KjU=",
+        "lastModified": 1698379659,
+        "narHash": "sha256-YYSqOCqptQoCgE05p0XcPhW6onWFj3O4KaLfpvdO3UY=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "75b5a480b2e5ac42559a56e6322d04185dc1f073",
+        "rev": "41f41a1462b8a778a140a0be42f3fa0ac59eacd7",
         "type": "github"
       },
       "original": {
@@ -1465,9 +1496,11 @@
       "inputs": {
         "disko": "disko",
         "emacs-overlay": "emacs-overlay",
+        "flake-registry": "flake-registry",
         "home-manager": "home-manager",
         "home-manager-wsl": "home-manager-wsl",
         "impermanence": "impermanence",
+        "mission-control": "mission-control",
         "nix-doom-emacs": "nix-doom-emacs",
         "nix-index-database": "nix-index-database",
         "nixci": "nixci",

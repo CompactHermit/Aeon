@@ -1,0 +1,131 @@
+format = "[$directory](fg:#ee5396) ($git_branch)($git_status )($nix_shell) ($package)($haskell)($docker_context)($c)($rust)($fennel)($lua)($nodejs) \n ($character)"
+right_format = "($cmd_duration)"
+
+[cmd_duration]
+min_time = 5
+format = "[ ](fg:#3ddbd9 bg:none)[ ](fg:#282c34 bg:#3ddbd9)[](fg:#3ddbd9 bg:#3ddbd9)[$duration]($style)[](fg:#3ddbd9 bg:none)"
+disabled = false
+style = "fg:#282c34 bg:#3ddbd9"
+
+[character]
+error_symbol = "[](#ff7eb6)"
+success_symbol = "[](#42be65)"
+vicmd_symbol = "[](#33b1ff)"
+
+
+[c]
+symbol = " "
+
+[dart]
+symbol = " "
+
+[directory]
+format = "[  $path]($style)"
+style = "bg:#ee5396 fg:#ffffff bold"
+truncation_length = 2
+truncation_symbol = "…/"
+
+
+[docker_context]
+symbol = " "
+
+[elixir]
+symbol = " "
+
+[elm]
+symbol = " "
+
+[fennel]
+format = "$symbol"
+symbol = "[ ](#ffff0f)"
+disabled = false
+
+[fossil_branch]
+symbol = " "
+
+[git_branch]
+symbol = " "
+
+[golang]
+symbol = " "
+
+[guix_shell]
+symbol = " "
+
+[haskell]
+symbol = " "
+
+[haxe]
+symbol = "⌘ "
+
+[hg_branch]
+symbol = " "
+
+[hostname]
+ssh_symbol = " "
+
+[java]
+symbol = " "
+
+[julia]
+symbol = " "
+
+[lua]
+symbol = " "
+style = "bold blue"
+
+[nodejs]
+symbol = " "
+
+[os.symbols]
+Arch = " "
+Gentoo = " "
+Linux = " "
+Mint = " "
+NetBSD = " "
+NixOS = " "
+OpenBSD = "󰈺 "
+openSUSE = " "
+OracleLinux = "󰌷 "
+Pop = " "
+Raspbian = " "
+Redhat = " "
+RedHatEnterprise = " "
+Redox = "󰀘 "
+Solus = "󰠳 "
+SUSE = " "
+
+[package]
+format = "for:: [$symbol $version]($style)"
+style = "fg:#ffffff bold"
+symbol = " "
+disabled = false
+
+[python]
+format = "on [$symbol]($style)"
+style = "fg:#ffffff bold"
+disabled = false
+symbol = " "
+
+[rlang]
+symbol = "󰟔 "
+
+[ruby]
+disabled = true
+symbol = " "
+
+[rust]
+disabled = false
+symbol = " "
+
+[scala]
+symbol = " "
+
+[nix_shell]
+disabled = false
+impure_msg = "[impure](#ee5396)"
+pure_msg = "[pure](#82cfff)"
+format = "[$symbol$state( \\($name\\))]($style) "
+style = "#ccffff"
+symbol = "[ ](#33b1ff)"
+heuristic = true

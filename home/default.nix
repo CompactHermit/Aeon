@@ -5,11 +5,9 @@
       common = {
         home.stateVersion = "22.11";
         imports = [
-          ./tmux.nix
-          ./starship.nix
-          ./terminal.nix
+          # ./tmux.nix
+          ./shell.nix
           ./git.nix
-          ./direnv.nix
           ./zellij.nix
           ./nushell
           ./kitty.nix

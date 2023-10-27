@@ -1,6 +1,6 @@
-{ lib, ... }:
+{ ... }:
 {
-  disk = {
+  disko.devices.disk = {
     main = {
       type = "disk";
       device = "/dev/nvme0n1";
@@ -38,7 +38,7 @@
                   };
                   # Mountpoints inferred from subvolume name
                   "/home" = {
-                    mountOptions = [];
+                    mountOptions = ["compress=zstd"];
                     mountpoint = "/home";
                   };
                   "/nix" = {
