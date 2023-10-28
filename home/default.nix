@@ -1,18 +1,30 @@
-{ self,inputs, ... }:
+{ self,inputs,flake, ... }:
 {
   flake = {
     homeModules = {
       common = {
         home.stateVersion = "22.11";
+        # TODO:: (Hermit) Add custom mkModule Lib for path recursion
         imports = [
           # ./tmux.nix
+          # inputs.impermanence.nixosModules.home-manager.impermanence
+          inputs.nur.hmModules.nur
+          inputs.nix-index-database.hmModules.nix-index
+          ./zellij
+          # ./neovim
+          ./yazi
+          ./dunst.nix
+          ./picom.nix
           ./shell.nix
           ./git.nix
-          ./zellij.nix
-          ./nushell
           ./kitty.nix
-          ./emacs.nix
-
+          ./gtk.nix
+          ./attic.nix
+          # ./theme
+          # ./persist.nix
+          # ./yuzu.nix
+          ./gui.nix
+          # ./emacs
           ./firefox
         ];
       };
@@ -20,9 +32,12 @@
       default = {pkgs,...}:{
         imports = [
           self.homeModules.common
-          inputs.shizofox.homeManagerModuleS
+          inputs.schizofox.homeManagerModules.schizofox
         ];
-
+        programs = {
+          nix-index-database.comma.enable = true;
+          home-manager.enable = true;
+        };
       };
 
       darwin = {
@@ -30,6 +45,7 @@
           self.homeModules.common
         ];
       };
+
       wsl = {
         imports = [
           self.homeModules.common

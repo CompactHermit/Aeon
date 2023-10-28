@@ -6,16 +6,16 @@
       monospace = [ "VictorMono Nerd Font" ];
       sansSerif = [ "VictorMono Nerd Font" ];
     };
+    # TODO:: Use ICOMOON to add custom Fonts for Kitty's fallback feature
     packages = with pkgs; [
-      # NOTE: Some fonts may break colour emojis in Chrome
-      # cf. https://github.com/NixOS/nixpkgs/issues/69073#issuecomment-621982371
-      # If this happens , keep noto-fonts-emoji and try disabling others (nerdfonts, etc.)
       noto-fonts-emoji
+      material-icons
       victor-mono
       fira-code
+      ubuntu_font_family
       cascadia-code
       nerdfonts
-      powerline-fonts
+      # powerline-fonts
       b612
     ];
   };

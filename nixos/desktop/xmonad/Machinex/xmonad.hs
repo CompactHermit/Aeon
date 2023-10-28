@@ -134,7 +134,7 @@ import Control.Arrow hiding ((|||), (<+>))
 import Control.Monad
 import XMonad.Hooks.StatusBar
 import XMonad.Hooks.WindowSwallowing (swallowEventHook)
-import XMonad.Hooks.ShowWName
+import XMonad.Layout.ShowWName
 import XMonad.Hooks.InsertPosition
 import XMonad.Layout.NoFrillsDecoration
 import XMonad.Layout.Simplest
@@ -331,7 +331,7 @@ menuPopKeyColor = "yellow"
 menuPopCmdColor = "cyan"
 -- double double quoted so it can make it all the way to dzen.
 menuPopLineHeight = "24"
-menuPopDzenFont = "\"-*-ubuntu mono-*-*-*-*-*-96-*-*-*-*-*-*\""
+menuPopDzenFont = "xft:VictorMono Nerd Font:size=60"
 
 
 -------------------------------------------------------------------------
@@ -430,8 +430,8 @@ myWorkspaces    = ["\63083", "\63288", "\63306", "\61723", "\63107", "\63601", "
 --
 myTopics :: [TopicItem]
 myTopics = [ TI "\63083" "" (spawnInTopicDir "kitty nu") --1
-            , TI "\63288" "" (spawnInTopicDir "librewolf") --2
-            , TI "\63306" "" (spawnInTopicDir "librewolf") --3
+            , TI "\63288" "" (spawnInTopicDir "firefox-nightly") --2
+            , TI "\63306" "" (return ()) --3
             , TI "\61723" "" (spawnInTopicDir "zotero") --4
             , TI "\63107" "" (spawnInTopicDir "zeal" >> spawnInTopicDir "anki") --5
             , TI "\63601" "" (spawnInTopicDir "discord") --6
@@ -1265,7 +1265,7 @@ focusedScreenSize =
 keyMapDoc :: String -> X Handle
 keyMapDoc name = do
        ss <- focusedScreenSize
-       handle <- spawnPipe $ unwords ["~/.xmonad/showHintForKeymap.sh",
+       handle <- spawnPipe $ unwords ["~/Bin/showHintForKeymap.sh",
                                        name,
                                        show (rect_x ss),
                                        show (rect_y ss),
@@ -1656,21 +1656,19 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList
   ]
 
 
--- Startup hook
--- Perform an arbitrary action each time xmonad starts or is restarted
--- with mod-q.  Used by, e.g., XMonad.Layout.PerWorkspace to initialize
--- per-workspace layout choices.
---
+-- ###################################
+-- ########  Startup hook   ##########
+-- ###################################
 -- By default, do nothing.
 myStartupHook = do
   spawn "xsetroot -cursor_name left_ptr"
-  spawn "exec ~/bin/lock.sh"
-  spawnOnce "kmonad ~/.config/kmonad/config.kbd"
+  -- spawn "exec ~/bin/lock.sh"
+  -- spawnOnce "kmonad ~/.config/kmonad/config.kbd"
   spawnOnce "feh --bg-scale ~/wallpapers/nord_shards.png"
-  spawnOnce "picom"
-  spawnOnce "greenclip daemon"
-  spawnOnce "dunst"
-  spawnOnce "exec ~/.config/polybar/launch.sh --cuts"
+  -- spawnOnce "picom"
+  -- spawnOnce "greenclip daemon"
+  -- spawnOnce "dunst"
+  -- spawnOnce "exec ~/.config/polybar/launch.sh --cuts"
 
 ------------------------------------------------------------------------
 -- Run xmonad with all the defaults we set up.

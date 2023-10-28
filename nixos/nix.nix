@@ -7,8 +7,10 @@
       allowUnfree = true;
     };
     overlays = [
+      flake.inputs.firefox-nightly.overlays.firefox
       flake.inputs.nuenv.overlays.nuenv
-      # (self: super: { devour-flake = self.callPackage flake.inputs.devour-flake { }; })
+      flake.inputs.attic.overlays.default
+      (import ../packages/overlay.nix { inherit flake; inherit (pkgs) system; })
     ];
   };
 

@@ -1,17 +1,19 @@
-{ self, config, inputs,lib, ... }:
+{ self, config, inputs, ... }:
 {
   # Configuration common to all Linux systems
   flake = {
     nixosModules = {
       common.imports = [
         ./nix.nix
-        ./services
-        ./desktop
-          # {
-           #_module.args.lib = lib; ## To creeate custom lib.
-        # }
       ];
 
+      system.imports = [
+        inputs.lanzaboote.nixosModules.lanzaboote
+        ./desktop
+        # ./secure-boot.nix
+        ./services # Hydra/Attic Services
+        # ./persist.nix
+      ];
       server.imports = [];
 
       my-home = {
@@ -29,25 +31,25 @@
             "plugdev"
             "seat"
           ];
+          # hashedPasswordFile = "/persist/passwords/${config.people.myself}";
         };
         home-manager.users.${config.people.myself} = {
           imports = [
             self.homeModules.default
           ];
         };
+        programs.dconf.enable = true;
       };
 
       default.imports = [
         self.nixosModules.home-manager
-        # self.nixosModules.my-home
+        self.nixosModules.my-home
         self.nixosModules.common
         inputs.ragenix.nixosModules.default
         inputs.nur.nixosModules.nur
-        # inputs.impermanence.nixosModules.impermanence
-        # ./audio.nix
-        # ./services.nix
+        ./audio.nix
         # ./ssh-authorize.nix
-        # ./location.nix
+        ./location.nix
       ];
     };
   };

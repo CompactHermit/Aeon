@@ -1,53 +1,53 @@
 {pkgs,...}:{
   # TODO:: (CH) <10/25> Somehow incorporate an option system
   imports = [
+    #./polybar
     ./xmonad
     ./hidpi.nix
     ./terminal.nix
     ./fonts.nix
-    # ./touchpad-trackpoint.nix
     ./gnome-keyring.nix ## Probably remove this
   ];
 
   environment.systemPackages = with pkgs; [
     acpi
     imv
-    #xorg.xmessage
+
+    kitty
+    alacritty
+
+    xorg.xmessage
     tor-browser-bundle-bin
-    nyxt
-
-
     gimp
     inkscape
     mupdf
 
-    # IM
+    # Messaging
     vencord
     element-desktop
     signal-desktop
     tdesktop
     iamb
 
+    # Basic Utilities
 
     # Torrent / P2P
     qbittorrent
     transmission-gtk
     librsvg
 
-
     # video pkgs
     vlc
+    dmenu
     untrunc
     obs-studio
     ffmpeg-full
-
   ];
 
   hardware = {
     opengl.enable = true;
     opengl.driSupport = true;
   };
-  hardware.pulseaudio.enable = false;
 
   #XDG_Configs Here::
   xdg = {

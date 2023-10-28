@@ -5,15 +5,15 @@
   ...
 }:
 let
-  inherit (lib) mapAttrs' nameValuePair mkForce;
+  inherit (lib) mkForce;
 in {
   environment.systemPackages = with pkgs; [
     neovim
     vim
+    git
     curl
     wget
     httpie
-    networkmanager
     diskrsync
     partclone
     ntfsprogs
@@ -24,6 +24,9 @@ in {
   environment.variables.EDITOR = "nvim";
 
   networking = {
+    networkmanager.enable = true;
+    useDHCP = lib.mkForce false; #(Hermit) I, what, why, for what reason????
+    wireless.enable = false;
     firewall.enable = false;
     nameservers = [
       "1.1.1.1"
@@ -34,7 +37,7 @@ in {
     usePredictableInterfaceNames = false;
   };
 
-  services.resolved.enable = false;
+  services.resolved.enable = true;
 
   systemd = {
     network.enable = true;
@@ -42,8 +45,13 @@ in {
     services.sshd.wantedBy = mkForce ["multi-user.target"];
   };
 
+
+  # Heard you weren't building bloated docs into yout ISO, here, an extra 3 GB for your ventoy kiddo
+      ## -- Some Boomer maintainer in Nixpkgs, probably
   documentation = {
     enable = false;
+    man.enable = lib.mkOverride 500 false;
+    doc.enable = lib.mkOverride 500 false;
     nixos.options.warningsAreErrors = false;
     info.enable = false;
   };
@@ -72,7 +80,6 @@ in {
       "nixpkgs=${pkgs.path}"
     ];
   };
-
 
   system.stateVersion = "23.05";
 }

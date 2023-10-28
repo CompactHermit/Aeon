@@ -1,6 +1,6 @@
 {...}:{
   imports = [
     ./users.nix
-    # ./system # NOT YET
+    ./themes.nix
   ];
 }

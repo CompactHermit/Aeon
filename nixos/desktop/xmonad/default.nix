@@ -14,6 +14,7 @@ in
 
     services.xserver = {
       enable = true;
+      layout = "us";
       windowManager.xmonad = {
         enable = true;
         haskellPackages = pkgs.haskellPackages.extend (import "${myXmonadProject}/overlay.nix" { inherit pkgs; });

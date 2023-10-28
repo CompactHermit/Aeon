@@ -1,0 +1,15 @@
+themes {
+    oxocarbon {
+        fg "#dde1e6"
+        bg "#161616"
+        black "#282c34"
+        orange "#7569b9"
+        green "#ee5396" //NOTE:: (Hermit)<10/17> This is an ooga hack, wait till upstream PR
+        blue "#33b1ff"
+        yellow "#EBCB8B"
+        magenta "#ff7eb6"
+        cyan "#3ddbd9"
+        white "#f2f4f8"
+        red "#7569b9"
+    }
+}

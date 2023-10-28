@@ -39,6 +39,6 @@ in
     };
   };
   config = {
-    people = (import ./config.nix).info;
+    people = import ./config.nix;
   };
 }

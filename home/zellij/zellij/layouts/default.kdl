@@ -1,0 +1,45 @@
+layout {
+    //{ "Σ", "Φ", "Ψ", "λ", "Ω" }
+    default_tab_template {
+        pane size=1 borderless=true {
+            plugin location="zellij:tab-bar"
+        }
+        children //The Default Pane
+        pane size=2 borderless=true {
+            plugin location="zellij:status-bar"
+        }
+    }
+    tab name="" focus=true borderless=true split_direction="Vertical" {
+        pane split_direction="Vertical" {
+            pane name="norg" borderless=true command="nu" cwd="~/neorg" {
+            }
+        }
+    }
+    tab name="Ψ" cwd="~/.config/nvim" {
+        pane stacked=true {
+            pane name="NVIM CONFIG" command="nu"
+            pane name="Nvim Sources" command="nu"
+        }
+    }
+    tab name="Σ" cwd="~/Programming/Book_Excercises/classes/"{
+        pane name="Latex Dev"
+    }
+    tab name="λ" {
+        pane name="Monitor" {
+            command "btop"
+        }
+    }
+    tab name="Ω" { 
+        pane name=" :: Cmus " {
+            command "cmus"
+        }
+    }
+    tab name=""{
+        pane name=" ::Mail" cwd="~/.config/neomutt/" {
+        }
+    }
+}
+
+
+session_name "Dev::  "
+attach_to_session true

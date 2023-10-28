@@ -1,21 +1,16 @@
 {
   description = "Aeon:: The timeless Flake";
-  # TODO:: (CH) Add my cachix, once we get hydra running.
-  # The More, the merrier. We're not Gentoo, amiright?
   nixConfig = {
     extra-substituters = [
-      "https://cache.nixos.org"
-      "https://fortuneteller2k.cachix.org"
+      # "https://cache.nixos.org"
       "https://nix-community.cachix.org"
-      "https://nixpkgs-unfree.cachix.org"
     ];
     extra-trusted-public-keys = [
-      "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-      "fortuneteller2k.cachix.org-1:kXXNkMV5yheEQwT0I4XYh1MaCSz+qg72k8XAi2PthJI="
+      # "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-      "nixpkgs-unfree.cachix.org-1:hqvoInulhbV4nJ9yJOEr+4wxhDV4xq2d1DK7S6Nj6rs="
     ];
   };
+
   inputs = {
     # All the basic inputs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -35,10 +30,27 @@
       inputs.home-manager.follows = "home-manager";
     };
     impermanence.url = "github:nix-community/impermanence";
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v0.3.0";
+    };
     flake-registry = {
       url = "github:NixOS/flake-registry";
       flake = false;
     };
+
+    # Flake-Parts Modules
+    parts.url = "github:hercules-ci/flake-parts";
+    nixos-flake.url = "github:srid/nixos-flake";
+    pch = {
+      url = "github:cachix/pre-commit-hooks.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    treefmt = {
+      url = "github:numtide/treefmt-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    mission-control.url = "github:Platonic-Systems/mission-control";
+    flake-root.url = "github:srid/flake-root";
 
     #TOOLING
     disko = {
@@ -55,36 +67,37 @@
       url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # hydra.url = "github:NixOS/hydra";
     nixci.url = "github:srid/nixci";
+    attic.url = "github:zhaofengli/attic";
+    yazi.url = "github:sxyazi/yazi";
 
     #Media::
     schizofox.url = "github:schizofox/schizofox";
 
-    # Flake-Parts Modules
-    parts.url = "github:hercules-ci/flake-parts";
-    nixos-flake.url = "github:srid/nixos-flake";
-    pch = {
-      url = "github:cachix/pre-commit-hooks.nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    treefmt = {
-      url = "github:numtide/treefmt-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    mission-control.url = "github:Platonic-Systems/mission-control";
+    #Overlays::
+    firefox-nightly.url = "github:mozilla/nixpkgs-mozilla";
 
+    #Stupid Ricing Shits::
+    eww = {
+      url = "github:elkowar/eww";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    oxocarbon16 = {
+      url = "github:nyoom-engineering/base16-oxocarbon";
+      flake = false;
+    };
     # Emacs
     emacs-overlay.url = "github:nix-community/emacs-overlay";
     nix-doom-emacs.url = "github:nix-community/nix-doom-emacs";
 
-    # NOTE:: (Hermit) Overlay Borked itself
-    #Neovim
+    # Neovim
+    # NOTE:: (Hermit) Config Borked itself, just wait lmfao
     # nyoom = {
     #   url = "github:CompactHermit/nyoom.nvim/nightly";
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
   };
+
   outputs = inputs@{ self,parts, ... }:
   parts.lib.mkFlake { inherit inputs; } {
     debug = true;
@@ -95,18 +108,20 @@
     ];
 
     imports = with inputs; [
+      parts.flakeModules.easyOverlay
       nixos-flake.flakeModule
       treefmt.flakeModule
       pch.flakeModule
       mission-control.flakeModule
-      ] ++ [
-        ./machines/Ragnarok #ISO
-        ./checks #PCH/TREEFMT
-        ./users # OPTIONS DECLARATION
-        ./home  #hm-modules
-        ./nixos #nixosModules
-        ./scripts # MC / ISO flashing
-      ];
+      flake-root.flakeModule
+    ] ++ [
+      ./machines/Ragnarok #ISO
+      ./checks #PCH/TREEFMT
+      ./users # OPTIONS DECLARATION
+      ./home  #hm-modules
+      ./nixos #nixosModules
+      ./scripts # MC / ISO flashing
+    ];
 
     flake = {
       nixosConfigurations = {
@@ -115,25 +130,51 @@
             nixpkgs.hostPlatform = "x86_64-linux";
             imports = [
               self.nixosModules.default
+              self.nixosModules.system
               ./machines/Genghis
             ];
           };
+
+          # Home-Server
+          Copernicus = self.nixos-flake.lib.mkLinuxSystem {
+            nixpkgs.hostPlatform = "x86_64-linux";
+            imports = [
+              ./machines/Caesar
+            ];
+          };
+
         };
 
-      # darwinConfigurations = {
-      #   Alexander = self.nixos-flake.lib.mkMacosSystem {
-      #     nixpkgs.hostPlatform = "aarch64-darwin";
-      #     imports = [
-      #       self.darwinModules.default # Defined in nix-darwin/default.nix
-      #       ./machines/Alexander
-      #     ];
-      #   };
-      # };
+      darwinConfigurations = {
+        Alexander = self.nixos-flake.lib.mkMacosSystem {
+          nixpkgs.hostPlatform = "aarch64-darwin";
+          imports = [
+            self.darwinModules.default # Defined in nix-darwin/default.nix
+            ./machines/Alexander
+          ];
+        };
+      };
     };
+
+
     perSystem = { self', system, pkgs, lib, config, inputs',...}:{
+
       packages = {
         default = self'.packages.activate;
       };
+
+      devShells = {
+        default = pkgs.mkShell {
+          name = "flash-ISO";
+          inputsFrom = [
+            config.treefmt.build.devShell
+            config.mission-control.devShell
+          ];
+          shellHook = ''
+          zsh
+          '';
+        };
+      };
     };
-    };
-  }
+  };
+}
