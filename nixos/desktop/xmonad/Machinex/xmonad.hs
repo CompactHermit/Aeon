@@ -398,43 +398,14 @@ coloredGSConfig colorizer = (buildDefaultGSConfig colorizer)
 ----------------- TopicWorkspaces and workspaces config------------------
 -------------------------------------------------------------------------
 
---- Workspaces:: TEMPORARY
-myWorkspaces    = ["\63083", "\63288", "\63306", "\61723", "\63107", "\63601", "\63391", "\61713", "\61884"]
 
-
--- Workspaces using TopicSpace.
--- When a workspace is selected, if there are no windows present, open
--- whatever should be there, in the directory it should be focused on.
--- To reset a workspace, just make it empty, then change out and back
--- data TopicItem = TI { topicName :: Topic
---                    , topicDir  :: String
---                    , topicAct  :: X ()
---                    }
-
---TODO:: Fix This to actual workspaces, making it easier for spawns
--- myTopics = [ TI "main" "" (return ())
---            -- ,  TI "mail" "" (spawnInTopicDir "emacsn -e")
---            , TI "Org" "org" (spawnInTopicDir "emacsn -m ORG")
---            , TI "\63601" "" (spawnInTopicDir "discord")
---            -- , TI "Web" "" (spawnInTopicDir "emacsn -cws common -b duckduckgo.com" >>
---            --               spawnInTopicDir "discord")
--- --           , TI "Yeti" "play/Yeti/yeti-stack" (spawnInTopicDir "emacsn -m Yeti")
---            , TI "Code" "play" (spawnInTopicDir "emacsn -m Code")
---            , TI "French" "Language/Française" (spawnInTopicDir "urxvt -t Française" >>
---                                                spawnInTopicDir "dolphin --select ~/Language/Française" >>
---                                                spawn "anki")
---            , TI "3D" "Projects/3d" (spawnInTopicDir "repetierHost" >>
---                            spawnInTopicDir "openscad" >>
---                            spawnInTopicDir "emacsn -m 3D")
---            ]
---
 myTopics :: [TopicItem]
 myTopics = [ TI "\63083" "" (spawnInTopicDir "kitty nu") --1
             , TI "\63288" "" (spawnInTopicDir "firefox-nightly") --2
             , TI "\63306" "" (return ()) --3
             , TI "\61723" "" (spawnInTopicDir "zotero") --4
             , TI "\63107" "" (spawnInTopicDir "zeal" >> spawnInTopicDir "anki") --5
-            , TI "\63601" "" (spawnInTopicDir "discord") --6
+            , TI "\63601" "" (spawnInTopicDir "webcord") --6
             , TI "\63391" "" (return ()) --7
             , TI "\61713" "" (spawnInTopicDir "scid") --8
             , TI "\61884" "" (spawnInTopicDir "emacs") --9
@@ -1664,7 +1635,7 @@ myStartupHook = do
   spawn "xsetroot -cursor_name left_ptr"
   -- spawn "exec ~/bin/lock.sh"
   -- spawnOnce "kmonad ~/.config/kmonad/config.kbd"
-  spawnOnce "feh --bg-scale ~/wallpapers/nord_shards.png"
+  spawnOnce "feh --bg-scale ~/wallpapers/gojo2.png"
   -- spawnOnce "picom"
   -- spawnOnce "greenclip daemon"
   -- spawnOnce "dunst"

@@ -11,6 +11,10 @@
   boot.initrd.kernelModules = [ "dm-snapshot" ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
+  boot.kernelParams = [
+    "video=eDP-1:2256x1504@60"
+    "video=DP-2:2560x1440@144"
+  ];
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/d6fb1715-72d6-493e-8f33-d40d45f6f8cb";
@@ -45,6 +49,13 @@
   fileSystems."/boot" =
     { device = "/dev/disk/by-uuid/C240-10B3";
       fsType = "vfat";
+    };
+
+
+   # TODO:: Custom Library
+  fileSystems."/home/CompactHermit/Library" =
+    { device = "/dev/disk/by-uuid/6474-DBFC";
+      fsType = "exfat";
     };
 
   swapDevices =

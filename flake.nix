@@ -70,6 +70,7 @@
     nixci.url = "github:srid/nixci";
     attic.url = "github:zhaofengli/attic";
     yazi.url = "github:sxyazi/yazi";
+    zellij.url = "github:a-kenji/zellij-nix";
 
     #Media::
     schizofox.url = "github:schizofox/schizofox";
@@ -86,16 +87,17 @@
       url = "github:nyoom-engineering/base16-oxocarbon";
       flake = false;
     };
+    oxocarbon-gtk.url = "github:CompactHermit/oxocarbon-gtk/master";
     # Emacs
     emacs-overlay.url = "github:nix-community/emacs-overlay";
     nix-doom-emacs.url = "github:nix-community/nix-doom-emacs";
 
     # Neovim
     # NOTE:: (Hermit) Config Borked itself, just wait lmfao
-    # nyoom = {
-    #   url = "github:CompactHermit/nyoom.nvim/nightly";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    nyoom = {
+      url = "github:CompactHermit/nyoom.nvim/nightly";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs@{ self,parts, ... }:
@@ -115,6 +117,7 @@
       mission-control.flakeModule
       flake-root.flakeModule
     ] ++ [
+      #./packages
       ./machines/Ragnarok #ISO
       ./checks #PCH/TREEFMT
       ./users # OPTIONS DECLARATION

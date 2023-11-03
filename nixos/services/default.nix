@@ -3,7 +3,7 @@
   ...
 }:{
   imports = [
-    ./hydra.nix
+    #./hydra.nix
   ];
   services = {
     dbus.enable = true;

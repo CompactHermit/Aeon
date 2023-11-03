@@ -13,8 +13,9 @@
     #wireplumber.enable = true;
     #media-session.enable = true;
   };
-  environment.systemPackages = [
-    pkgs.pavucontrol
-    pkgs.pulsemixer
+  environment.systemPackages = with pkgs;[
+    pavucontrol
+    pulsemixer
+    alsa-utils
   ];
 }

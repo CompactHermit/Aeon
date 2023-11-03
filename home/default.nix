@@ -7,7 +7,6 @@
         # TODO:: (Hermit) Add custom mkModule Lib for path recursion
         imports = [
           # ./tmux.nix
-          # inputs.impermanence.nixosModules.home-manager.impermanence
           inputs.nur.hmModules.nur
           inputs.nix-index-database.hmModules.nix-index
           ./zellij
@@ -21,7 +20,7 @@
           ./gtk.nix
           ./attic.nix
           # ./theme
-          # ./persist.nix
+          #./persist.nix
           # ./yuzu.nix
           ./gui.nix
           # ./emacs

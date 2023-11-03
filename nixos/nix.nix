@@ -5,6 +5,9 @@
       allowBroken = false;
       allowUnsupportedSystem = true;
       allowUnfree = true;
+      permittedInsecurePackages = [
+        "zotero-6.0.27"
+      ];
     };
     overlays = [
       flake.inputs.firefox-nightly.overlays.firefox

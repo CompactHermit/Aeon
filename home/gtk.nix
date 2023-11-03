@@ -1,6 +1,6 @@
 { pkgs
 , lib
-, inputs
+, flake
 , config
 , ...
 }: {
@@ -9,7 +9,7 @@
     font.name = "VictorMono Nerd Font";
     theme = {
       name = "oxocarbon-gtk";
-      package = pkgs.oxocarbon-gtk;
+      package = flake.inputs.oxocarbon-gtk.packages."x86_64-linux".default;
     };
   };
 

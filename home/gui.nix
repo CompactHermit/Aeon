@@ -1,17 +1,21 @@
-{lib,pkgs,...}:
+{flake,pkgs,...}:
 {
   home.packages = with pkgs; [
     zeal
     # zotero # CVE 5217, apparently it uses firefox v60?? lmao
     zathura
-    vencord
     discord
+    webcord-vencord
     rofi
     dconf
+    zotero
+    betterlockscreen
   ];
   programs.rofi = {
     enable = true;
     cycle = true;
-    theme = "./.";
+  };
+  services.betterlockscreen = {
+    enable = true;
   };
 }
