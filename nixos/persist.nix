@@ -1,4 +1,4 @@
-{flake,lib,pkgs,...}:
+{flake,lib,pkgs,config,...}:
 let
     # Root diff for btrfs
     root-diff = pkgs.writeShellScriptBin "root-diff" ''
@@ -58,7 +58,7 @@ in {
     unitConfig.DefaultDependencies = "no";
     serviceConfig.Type = "oneshot";
     script = ''
-    mkdir -p /mnt
+      mkdir -p /mnt
 
       # Pick up any LVM from newly mapped enc
       vgscan
@@ -105,21 +105,21 @@ in {
       umount /mnt
       '';
     };
-    boot.initrd.systemd.services.persisted-files = {
-      description = "Hard-link persisted files from /persist";
-      wantedBy = [
-        "initrd.target"
-      ];
-      after = [
-        "sysroot.mount"
-      ];
-      unitConfig.DefaultDependencies = "no";
-      serviceConfig.Type = "oneshot";
-      script = ''
-      mkdir -p /sysroot/etc/
-      ln -snfT /persist/etc/machine-id /sysroot/etc/machine-id
-      '';
-    };
+  boot.initrd.systemd.services.persisted-files = {
+    description = "Hard-link persisted files from /persist";
+    wantedBy = [
+      "initrd.target"
+    ];
+    after = [
+      "sysroot.mount"
+    ];
+    unitConfig.DefaultDependencies = "no";
+    serviceConfig.Type = "oneshot";
+    script = ''
+    mkdir -p /sysroot/etc/
+    ln -snfT /persist/etc/machine-id /sysroot/etc/machine-id
+    '';
+  };
 
  # Impermenance
  environment.persistence."/persist" = {
@@ -145,6 +145,7 @@ in {
      "/var/lib/NetworkManager/timestamps"
      "/var/lib/power-profiles-daemon/state.ini"
    ];
+   users."${config.people.myself}" = [];
  };
 
  environment.systemPackages = lib.mkBefore [ root-diff ];

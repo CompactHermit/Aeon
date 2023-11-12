@@ -54,9 +54,9 @@
               fi
 
               echo "Installing system..."
-              nixos-install --flake .#nixosConfigurations.Kepler
+              nixos-install --impure --flake .#Kepler
 
-              echo "Done!"
+              echo "Done!, now reboot and pray!"
             '';
           in {
             imports = [

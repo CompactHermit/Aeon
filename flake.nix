@@ -11,6 +11,84 @@
     ];
   };
 
+
+  outputs = inputs@{ self,parts, ... }:
+  parts.lib.mkFlake { inherit inputs; } {
+    debug = true;
+
+    systems = [
+      "x86_64-linux"
+      "aarch64-linux"
+    ];
+
+    imports = with inputs; [
+      parts.flakeModules.easyOverlay
+      nixos-flake.flakeModule
+      treefmt.flakeModule
+      pch.flakeModule
+      mission-control.flakeModule
+      flake-root.flakeModule
+    ] ++ [
+      ./machines/Ragnarok #ISO
+      ./checks #PCH/TREEFMT
+      ./users # OPTIONS DECLARATION
+      ./home  #hm-modules
+      ./nixos #nixosModules
+      ./scripts # MC / ISO flashing
+    ];
+
+    flake = {
+      nixosConfigurations = {
+          # Work Machine
+          Kepler = self.nixos-flake.lib.mkLinuxSystem {
+            nixpkgs.hostPlatform = "x86_64-linux";
+            imports = [
+              self.nixosModules.default
+              self.nixosModules.system
+              ./machines/Genghis
+            ];
+          };
+
+          # Home-Server
+          Copernicus = self.nixos-flake.lib.mkLinuxSystem {
+            nixpkgs.hostPlatform = "x86_64-linux";
+            imports = [
+              ./machines/Caesar
+            ];
+          };
+
+        };
+
+      darwinConfigurations = {
+        Alexander = self.nixos-flake.lib.mkMacosSystem {
+          nixpkgs.hostPlatform = "aarch64-darwin";
+          imports = [
+            self.darwinModules.default # Defined in nix-darwin/default.nix
+            ./machines/Alexander
+          ];
+        };
+      };
+    };
+
+
+    perSystem = { self', system, pkgs, lib, config, inputs',...}:{
+
+      packages = {
+        default = self'.packages.activate;
+      };
+
+      devShells = {
+        default = pkgs.mkShell {
+          name = "flash-ISO";
+          inputsFrom = [
+            config.treefmt.build.devShell
+            config.mission-control.devShell
+          ];
+        };
+      };
+    };
+  };
+
   inputs = {
     # All the basic inputs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -97,87 +175,6 @@
     nyoom = {
       url = "github:CompactHermit/nyoom.nvim/nightly";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-  };
-
-  outputs = inputs@{ self,parts, ... }:
-  parts.lib.mkFlake { inherit inputs; } {
-    debug = true;
-
-    systems = [
-      "x86_64-linux"
-      "aarch64-linux"
-    ];
-
-    imports = with inputs; [
-      parts.flakeModules.easyOverlay
-      nixos-flake.flakeModule
-      treefmt.flakeModule
-      pch.flakeModule
-      mission-control.flakeModule
-      flake-root.flakeModule
-    ] ++ [
-      #./packages
-      ./machines/Ragnarok #ISO
-      ./checks #PCH/TREEFMT
-      ./users # OPTIONS DECLARATION
-      ./home  #hm-modules
-      ./nixos #nixosModules
-      ./scripts # MC / ISO flashing
-    ];
-
-    flake = {
-      nixosConfigurations = {
-          # Work Machine
-          Kepler = self.nixos-flake.lib.mkLinuxSystem {
-            nixpkgs.hostPlatform = "x86_64-linux";
-            imports = [
-              self.nixosModules.default
-              self.nixosModules.system
-              ./machines/Genghis
-            ];
-          };
-
-          # Home-Server
-          Copernicus = self.nixos-flake.lib.mkLinuxSystem {
-            nixpkgs.hostPlatform = "x86_64-linux";
-            imports = [
-              ./machines/Caesar
-            ];
-          };
-
-        };
-
-      darwinConfigurations = {
-        Alexander = self.nixos-flake.lib.mkMacosSystem {
-          nixpkgs.hostPlatform = "aarch64-darwin";
-          imports = [
-            self.darwinModules.default # Defined in nix-darwin/default.nix
-            ./machines/Alexander
-          ];
-        };
-      };
-    };
-
-
-    perSystem = { self', system, pkgs, lib, config, inputs',...}:{
-
-      packages = {
-        default = self'.packages.activate;
-      };
-
-      devShells = {
-        default = pkgs.mkShell {
-          name = "flash-ISO";
-          inputsFrom = [
-            config.treefmt.build.devShell
-            config.mission-control.devShell
-          ];
-          shellHook = ''
-          zsh
-          '';
-        };
-      };
     };
   };
 }

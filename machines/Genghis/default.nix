@@ -1,9 +1,9 @@
 { flake, modulesPath, lib, pkgs,config, ... }: {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
-    ./hardware-configuration.nix
-    #flake.inputs.disko.nixosModules.disko ## Currenly testing this. When I can just copy over the config, then I'll try
-    #./disko/one-nvme-luks.nix
+    #./hardware-configuration.nix
+    flake.inputs.disko.nixosModules.disko ## Currenly testing this. When I can just copy over the config, then I'll try
+    ./disks.nix
   ] ++
   (with flake.inputs.nixos-hardware.nixosModules; [
     # Framework Specific Stuff. Wait for PR upstream (#765) to just import the 7040 module
@@ -16,9 +16,10 @@
 
 
   environment.variables.EDITOR = "nvim";
-  system.stateVersion = "23.11";
+  system.stateVersion = "23.05";
 
   services = {
+    fwupd.enable = true;
     fprintd.enable = true;
     openssh.enable = true;
     power-profiles-daemon.enable = true;
@@ -27,35 +28,32 @@
   boot = {
     loader.grub = {
       enable = true;
-      device = "nodev";
+      #device = "nodev";
       efiSupport = true;
     };
     loader.efi.canTouchEfiVariables = true;
+    kernelParams = [
+      "video=eDP-1:2256x1504@60"
+      "video=DP-2:1920x1080@60"
+    ];
     kernelPackages = pkgs.linuxPackages_latest;
-    kernelModules = [ "dm-snapshot" "tpm_crb" ];
+    kernelModules = [ "dm-snapshot" "tpm_crb"  "kvm-amd" ];
     initrd = {
       availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod" ];
       #NOTE:: Does disko even handle this? Will check the interface upstream
       kernelModules = ["amdgpu"];
-      luks.devices = {
-        luksroot = {
-          device = "/dev/disk/by-uuid/7abaafc1-d276-437d-8963-fc4da67458d8";
-          preLVM = true;
-          allowDiscards = true;
-        };
-      };
     };
   };
 
   nixpkgs = {
     config.allowUnfree = true;
+    hostPlatform = lib.mkDefault "x86_64-linux";
   };
 
-  services.fwupd.enable = true;
   # hardware.cpu.intel.updateMicrocode = true;
   hardware = {
     enableRedistributableFirmware = true;
-    cpu.amd.updateMicrocode = lib.mkDefault config.enableRedistributableFirmware;
+    cpu.amd.updateMicrocode = true;
 
   };
 

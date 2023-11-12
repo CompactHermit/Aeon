@@ -9,8 +9,8 @@ in {
   programs.firefox = {
     enable = true;
     package = pkgs.latest.firefox-nightly-bin;
-      profiles =
-        let
+    profiles =
+      let
           # userChrome = import ./userChrome.nix ;
           settings = {
             "browser.ctrlTab.recentlyUsedOrder" = false;
@@ -28,11 +28,11 @@ in {
             "gfx.webrender.all" = true;
             "general.smoothScroll" = true;
           };
-        in
-        {
-          Shyama = {
-            id = 0;
-            inherit settings;
+      in
+      {
+        Maxwell = {
+          id = 0;
+          inherit settings;
             # inherit userChrome;
             extensions = with config.nur.repos.rycee.firefox-addons; [
               sidebery
@@ -47,9 +47,9 @@ in {
 
       };
 
-  home.file.".mozilla/firefox/Shyama/chrome" = {
-    source = ./chrome;
-    recursive = true;
-  };
+      home.file.".mozilla/firefox/Maxwell/chrome" = {
+        source = ./chrome;
+        recursive = true;
+      };
 
     }
