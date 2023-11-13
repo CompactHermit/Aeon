@@ -6,6 +6,9 @@
 let
   l = lib // builtins;
 in {
+  # imports = [
+  #     #inputs.schizofox.homeManagerModules.schizofox
+  # ];
   programs.firefox = {
     enable = true;
     package = pkgs.latest.firefox-nightly-bin;

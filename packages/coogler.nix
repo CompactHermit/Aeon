@@ -1,9 +1,10 @@
 {inputs,...}:{
 
   perSystem =  {config,pkgs,...}:{
-    packages.coogler =  {
+    packages.coogler =  pkgs.buildRustPackages {
       pname = "coogler";
       src = inputs.coogler;
+      buildInputs = [];
     };
   };
 }

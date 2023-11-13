@@ -1,12 +1,11 @@
 {pkgs,...}:{
   # TODO:: (CH) <10/25> Somehow incorporate an option system
   imports = [
-    #./polybar
     ./xmonad
     ./hidpi.nix
     ./terminal.nix
     ./fonts.nix
-    ./gnome-keyring.nix ## Probably remove this
+    ./gnome-keyring.nix
   ];
 
   environment.systemPackages = with pkgs; [

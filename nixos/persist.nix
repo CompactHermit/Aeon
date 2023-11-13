@@ -145,7 +145,9 @@ in {
      "/var/lib/NetworkManager/timestamps"
      "/var/lib/power-profiles-daemon/state.ini"
    ];
-   users."${config.people.myself}" = [];
+   users."${config.people.myself}" = [
+     ".config"
+   ];
  };
 
  environment.systemPackages = lib.mkBefore [ root-diff ];

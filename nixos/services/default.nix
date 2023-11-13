@@ -3,7 +3,11 @@
   ...
 }:{
   imports = [
-    #./hydra.nix
+    ./hydra.nix
+    ./kmonad.nix
+    ./monitors.nix
+    ./syncthing.nix
+    ./attic.nix
   ];
   services = {
     dbus.enable = true;
@@ -18,5 +22,5 @@
   programs.firejail.enable = true;
   programs.mtr.enable = true;
   programs.extra-container.enable = true;
-  programs.sysdig.enable = true;
+  #programs.sysdig.enable = true;
 }

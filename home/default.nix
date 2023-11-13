@@ -18,7 +18,6 @@
           ./git.nix
           ./kitty.nix
           ./gtk.nix
-          ./attic.nix
           # ./theme
           #./persist.nix
           # ./yuzu.nix
@@ -31,7 +30,6 @@
       default = {pkgs,...}:{
         imports = [
           self.homeModules.common
-          inputs.schizofox.homeManagerModules.schizofox
         ];
         programs = {
           nix-index-database.comma.enable = true;

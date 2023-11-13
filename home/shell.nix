@@ -1,4 +1,4 @@
-{pkgs,inputs,system,flake,...}:{
+{pkgs,...}:{
   home.packages = with pkgs; [
     zsh
     btop
@@ -9,6 +9,7 @@
     playerctl
     lutgen
     atuin
+    git-crypt
     zoxide
     nushell
     tree-sitter

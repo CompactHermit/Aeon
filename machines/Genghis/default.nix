@@ -1,4 +1,4 @@
-{ flake, modulesPath, lib, pkgs,config, ... }: {
+{ flake, modulesPath, lib, pkgs, config, ... }: {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
     #./hardware-configuration.nix
@@ -28,7 +28,6 @@
   boot = {
     loader.grub = {
       enable = true;
-      #device = "nodev";
       efiSupport = true;
     };
     loader.efi.canTouchEfiVariables = true;
@@ -40,7 +39,6 @@
     kernelModules = [ "dm-snapshot" "tpm_crb"  "kvm-amd" ];
     initrd = {
       availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod" ];
-      #NOTE:: Does disko even handle this? Will check the interface upstream
       kernelModules = ["amdgpu"];
     };
   };
@@ -82,8 +80,7 @@
   };
 
   services.resolved.enable = true;
-
-
+  security.sudo.wheelNeedsPassword = false;
   users.users.root.hashedPasswordFile = "/persist/passwords/root";
   networking.hostName = "CompactHermit";
 }

@@ -90,7 +90,7 @@
   };
 
   inputs = {
-    # All the basic inputs
+    # @ System
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
     nur.url = "github:nix-community/NUR";
@@ -116,7 +116,7 @@
       flake = false;
     };
 
-    # Flake-Parts Modules
+    # @ FP-modules
     parts.url = "github:hercules-ci/flake-parts";
     nixos-flake.url = "github:srid/nixos-flake";
     pch = {
@@ -130,7 +130,7 @@
     mission-control.url = "github:Platonic-Systems/mission-control";
     flake-root.url = "github:srid/flake-root";
 
-    #TOOLING
+    # @Tooling
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -149,29 +149,26 @@
     attic.url = "github:zhaofengli/attic";
     yazi.url = "github:sxyazi/yazi";
     zellij.url = "github:a-kenji/zellij-nix";
+    kmonad.url = "github:kmonad/kmonad/master?dir=nix";
 
-    #Media::
+    # @Media::
     schizofox.url = "github:schizofox/schizofox";
 
-    #Overlays::
+    # @Overlays::
     firefox-nightly.url = "github:mozilla/nixpkgs-mozilla";
 
-    #Stupid Ricing Shits::
+    # @Ricing
     eww = {
       url = "github:elkowar/eww";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    oxocarbon16 = {
-      url = "github:nyoom-engineering/base16-oxocarbon";
-      flake = false;
-    };
-    oxocarbon-gtk.url = "github:CompactHermit/oxocarbon-gtk/master";
-    # Emacs
+    oxocarbon-gtk.url = "git+file:/home/CompactHermit/Dotfiles/oxocarbon-gtk";
+
+    # @Emcas:: My Beloved
     emacs-overlay.url = "github:nix-community/emacs-overlay";
     nix-doom-emacs.url = "github:nix-community/nix-doom-emacs";
 
-    # Neovim
-    # NOTE:: (Hermit) Config Borked itself, just wait lmfao
+    # @Neovim::
     nyoom = {
       url = "github:CompactHermit/nyoom.nvim/nightly";
       inputs.nixpkgs.follows = "nixpkgs";

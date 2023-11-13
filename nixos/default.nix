@@ -23,6 +23,7 @@
             "adbusers"
             "wheel"
             "input"
+            "uinput"
             "networkmanager"
             "libvirtd"
             "video"
@@ -45,7 +46,7 @@
         self.nixosModules.home-manager
         self.nixosModules.my-home
         self.nixosModules.common
-        inputs.ragenix.nixosModules.default
+        #inputs.ragenix.nixosModules.default
         inputs.nur.nixosModules.nur
         ./audio.nix
         # ./ssh-authorize.nix

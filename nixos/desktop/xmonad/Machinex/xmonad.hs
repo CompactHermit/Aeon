@@ -1,5 +1,9 @@
--- Author: Compact Hermitian
+-- Author: Compact Hermit
 -- http://github.com/CompactHermit
+
+-- TODO:: Remove Polybar for taffybar
+-- TODO:: SANITIZE ALL THIS SHITTY CODE YOU ABSOLUTE MONKEY!!
+-- TODO:: Fix showHintForKeymap, you can just format the table and pipe it into DZEN via exec
 {-# LANGUAGE TypeSynonymInstances #-}
 {-# LANGUAGE DeriveDataTypeable #-}
 {-# LANGUAGE MultiParamTypeClasses #-}
@@ -1660,17 +1664,14 @@ main = do
         clickJustFocuses   = myClickJustFocuses,
         borderWidth        = myBorderWidth,
         modMask            = myModMask,
-        workspaces         = myTopicNames, -- Note, add when done configuring topic dirs
+        workspaces         = myTopicNames, 
         normalBorderColor  = myNormalBorderColor,
         focusedBorderColor = myFocusedBorderColor,
-      -- key bindings
         keys               = mainKeymap,
         mouseBindings      = myMouseBindings,
-
-      -- hooks, layouts
         manageHook = myManageHook,
-        layoutHook = myLayout, -- <$>myLayout
-        handleEventHook    =  swallowEventHook (className =? "alacritty" <||> className =? "Termite") (return True)<+>fullscreenEventHook,
+        layoutHook = spacingWithEdge 10 $ myLayout,
+        handleEventHook    =  swallowEventHook (className =? "alacritty" <||> className =? "kitty") (return True)<+>fullscreenEventHook,
         logHook            =  dynamicLogWithPP (myLogHook dbus) <+> myEventHook,
         startupHook        = myStartupHook >> addEWMHFullscreen
     }
