@@ -46,7 +46,7 @@
         self.nixosModules.home-manager
         self.nixosModules.my-home
         self.nixosModules.common
-        #inputs.ragenix.nixosModules.default
+        inputs.sops-nix.nixosModules.sops
         inputs.nur.nixosModules.nur
         ./audio.nix
         # ./ssh-authorize.nix

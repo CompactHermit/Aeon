@@ -17,6 +17,7 @@
     printing.enable = true;
     printing.drivers = [ pkgs.hplip ];
     greenclip.enable = true;
+    udisks2.enable = true;
   };
 
   programs.firejail.enable = true;

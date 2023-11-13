@@ -22,19 +22,20 @@
     ];
 
     imports = with inputs; [
-      parts.flakeModules.easyOverlay
+      #parts.flakeModules.easyOverlay
       nixos-flake.flakeModule
       treefmt.flakeModule
       pch.flakeModule
-      mission-control.flakeModule
-      flake-root.flakeModule
+      mission-control.flakeModule # These Need to Go
+      flake-root.flakeModule # These Need to Go
     ] ++ [
+      #./packages ## Custom Packages
       ./machines/Ragnarok #ISO
       ./checks #PCH/TREEFMT
-      ./users # OPTIONS DECLARATION
-      ./home  #hm-modules
-      ./nixos #nixosModules
-      ./scripts # MC / ISO flashing
+      ./users # Config Dir ++ Libs
+      ./home  #HM Garbage
+      ./nixos #NixOS Modules
+      ./scripts # MC / ISO flashing // TODO:: Use Justfiles instead (-_-)
     ];
 
     flake = {
@@ -58,7 +59,6 @@
           };
 
         };
-
       darwinConfigurations = {
         Alexander = self.nixos-flake.lib.mkMacosSystem {
           nixpkgs.hostPlatform = "aarch64-darwin";
@@ -68,11 +68,11 @@
           ];
         };
       };
+      # lib = {};
     };
 
 
     perSystem = { self', system, pkgs, lib, config, inputs',...}:{
-
       packages = {
         default = self'.packages.activate;
       };
@@ -136,7 +136,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nuenv.url = "github:DeterminateSystems/nuenv";
-    ragenix.url = "github:yaxitech/ragenix";
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -145,15 +144,24 @@
       url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    sops-nix.url = "github:Mic92/sops-nix";
     nixci.url = "github:srid/nixci";
     attic.url = "github:zhaofengli/attic";
     yazi.url = "github:sxyazi/yazi";
     zellij.url = "github:a-kenji/zellij-nix";
+    zjstatus.url = "github:dj95/zjstatus";
+    zworkspaces = {
+      url = "github:vdbulcke/zellij-workspace";
+      flake = false;
+    };
     kmonad.url = "github:kmonad/kmonad/master?dir=nix";
-
-    # @Media::
     schizofox.url = "github:schizofox/schizofox";
 
+    # #Builders::
+    crane = {
+      url = "github:ipetkov/crane";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # @Overlays::
     firefox-nightly.url = "github:mozilla/nixpkgs-mozilla";
 
@@ -162,7 +170,8 @@
       url = "github:elkowar/eww";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    oxocarbon-gtk.url = "git+file:/home/CompactHermit/Dotfiles/oxocarbon-gtk";
+    # oxocarbon-gtk.url = "git+file:/home/CompactHermit/Dotfiles/oxocarbon-gtk";
+    oxocarbon-gtk.url = "github:CompactHermit/oxocarbon-gtk/master"; ## TODO:: Fixup Branch and PR clean
 
     # @Emcas:: My Beloved
     emacs-overlay.url = "github:nix-community/emacs-overlay";

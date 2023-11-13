@@ -6,11 +6,7 @@
         home.stateVersion = "22.11";
         # TODO:: (Hermit) Add custom mkModule Lib for path recursion
         imports = [
-          # ./tmux.nix
-          inputs.nur.hmModules.nur
-          inputs.nix-index-database.hmModules.nix-index
           ./zellij
-          # ./neovim
           ./yazi
           ./dunst.nix
           ./picom.nix
@@ -20,20 +16,30 @@
           ./gtk.nix
           # ./theme
           #./persist.nix
-          # ./yuzu.nix
+          ./yuzu.nix
           ./gui.nix
-          # ./emacs
+          ./emacs # My Beloved
           ./firefox
         ];
       };
 
       default = {pkgs,...}:{
         imports = [
+          inputs.nix-index-database.hmModules.nix-index
+          inputs.nur.hmModules.nur
           self.homeModules.common
         ];
         programs = {
           nix-index-database.comma.enable = true;
           home-manager.enable = true;
+        };
+        services = {
+          udiskie = {
+            enable = true;
+            notify = true;
+            automount = true;
+            tray = "auto";
+          };
         };
       };
 
