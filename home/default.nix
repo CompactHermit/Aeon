@@ -1,4 +1,4 @@
-{ self,inputs,flake, ... }:
+{ self,inputs, ... }:
 {
   flake = {
     homeModules = {
@@ -29,6 +29,11 @@
           inputs.nur.hmModules.nur
           self.homeModules.common
         ];
+
+        xsession = {
+          enable = true;
+          preferStatusNotifierItems = true;
+        };
         programs = {
           nix-index-database.comma.enable = true;
           home-manager.enable = true;
@@ -39,6 +44,10 @@
             notify = true;
             automount = true;
             tray = "auto";
+          };
+          taffybar = {
+            enable = true;
+            package = self.packages."x86_64-linux".hermit-bar; #FUCK OVERLAYS, SCOPE ERASING SHITS
           };
         };
       };

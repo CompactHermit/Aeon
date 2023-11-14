@@ -1,0 +1,27 @@
+@document.meta
+title: README
+description: 
+authors: CompactHermit
+categories: 
+created: 2023-11-15T12:00:50-0500
+updated: 2023-11-15T13:35:18-0500
+version: 1.1.1
+@end
+
+* Home-Baked Modules::
+  This dir will just contain inter/impls for certain services that aren't in Nixpkgs yet, or I'm too lazy to PR upstream. 
+** Design::
+   Every Option Is declared in {/ ./interfaces.nix}[Interfaces], and every option is declared in {/ ./implementation.nix}[implementation]. 
+   This is then imported into {/ ../default.nix}[NixOS's default modules], which will then allow the user to configure the options.
+
+   Eventually, I'd Like to migrate both /desktop/, /wayland/ and all other dirs into their respective `implementation.nix` file, and have the use import them via simple options.
+   For now, this is just a note dump for Idea's, about what options to have, and how we might present them to a user.
+** Dumps::
+*** Special Args::
+    By the way it looks, {nixos-flake}[NixOS-Flake] simply passes the specialArgs once. However, since the `user` dir contains the flake options, we can follow {/ ../ssh-authorize.nix}[this] and pass configs as a toplevel. What it'd mean is we'd have to config args:: the `flake.config` as well as 
+
+** Comp Arch::
+    Best done in the /Machines/ Dir.
+*** Bar::
+    Whether to use EWW, taffybar, or AGS, this'd mean we'd pass this into HM's call.
+**** Taffybar::

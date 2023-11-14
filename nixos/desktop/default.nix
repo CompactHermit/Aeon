@@ -2,6 +2,7 @@
   # TODO:: (CH) <10/25> Somehow incorporate an option system
   imports = [
     ./xmonad
+    #./taffybar
     ./hidpi.nix
     ./terminal.nix
     ./fonts.nix
@@ -17,7 +18,6 @@
 
     xorg.xmessage
     tor-browser-bundle-bin
-    gimp
     inkscape
     mupdf
 
@@ -28,18 +28,15 @@
     tdesktop
     iamb
 
-    # Basic Utilities
 
     # Torrent / P2P
     qbittorrent
     transmission-gtk
-    librsvg
 
     # video pkgs
     vlc
     dmenu
     untrunc
-    obs-studio
     ffmpeg-full
   ];
 

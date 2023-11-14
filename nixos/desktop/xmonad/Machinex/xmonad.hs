@@ -53,6 +53,7 @@ import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.SetWMName
 import XMonad.Hooks.EwmhDesktops ( ewmh )
+import XMonad.Hooks.TaffybarPagerHints
 
 import XMonad.Config.Desktop
 
@@ -1658,7 +1659,7 @@ main = do
      safeSpawn "mkfifo" ["/tmp/" ++ file]
 
 
-    xmonad $ Hacks.javaHack $ fullscreenSupport $ docks $ ewmh $ withSB myPolybar $ def {
+    xmonad $ Hacks.javaHack $ fullscreenSupport $ docks $ ewmh $ pagerHints $ def {
         terminal           = myTerminal,
         focusFollowsMouse  = myFocusFollowsMouse,
         clickJustFocuses   = myClickJustFocuses,

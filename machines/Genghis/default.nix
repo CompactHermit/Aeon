@@ -26,6 +26,7 @@
   };
 
   boot = {
+    tmp.cleanOnBoot = true;
     loader.grub = {
       enable = true;
       efiSupport = true;

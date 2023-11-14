@@ -3,18 +3,9 @@
   # Configuration common to all Linux systems
   flake = {
     nixosModules = {
-      common.imports = [
+      shared.imports = [
         ./nix.nix
       ];
-
-      system.imports = [
-        inputs.lanzaboote.nixosModules.lanzaboote
-        ./desktop
-        # ./secure-boot.nix
-        ./services # Hydra/Attic Services
-        # ./persist.nix
-      ];
-      server.imports = [];
 
       my-home = {
         users.users.${config.people.myself} = {
@@ -42,13 +33,23 @@
         programs.dconf.enable = true;
       };
 
-      default.imports = [
-        self.nixosModules.home-manager
-        self.nixosModules.my-home
-        self.nixosModules.common
+      system.imports = [
+        inputs.lanzaboote.nixosModules.lanzaboote
         inputs.sops-nix.nixosModules.sops
         inputs.nur.nixosModules.nur
+        self.nixosModules.shared
+        # ./secure-boot.nix
+        ./services
+        # ./persist.nix
+      ];
+      wayland.imports = [];
+
+
+      xmonad.imports = [
+        self.nixosModules.home-manager
+        self.nixosModules.my-home
         ./audio.nix
+        ./desktop
         # ./ssh-authorize.nix
         ./location.nix
       ];

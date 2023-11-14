@@ -4,14 +4,15 @@ description: Genghis:: The framework Machine
 authors: strange_cofunctor
 categories: 
 created: 2023-10-25T14:44:18-0500
-updated: 2023-10-25T14:47:14-0500
+updated: 2023-11-15T11:42:03-0500
 version: 1.1.1
 @end
 
-* Genghis:: Framework 13 (AMD)
-** Disco::
+* Configs:: TopLevel User declarations
+** ::
 *** Design::
-    I'm Testing this so far, it's quite odd, but it's alright.
-    This will Be both `BTRFS` + `TMPFS` with `LVM` + `LUKS`
-*** URLS::
-**** {https://github.com/nix-community/disko/tree/master/docs}[DOCS]
+    According to the {https://zero-to-flakes.com/nixos-flake/module-outputs}[wiki], flake-part's config is implicitly passed onto the end user. So technically, all we need to do is pass in modules from the top level, and have the use directly call them. Essentially, this will get passed as `flake.config.<mod>`.
+
+    We can go further and make a custom `modules/` dir specifically to import via {/ ../nixos/default.nix}[the NixOS dir]
+
+

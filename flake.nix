@@ -26,16 +26,17 @@
       nixos-flake.flakeModule
       treefmt.flakeModule
       pch.flakeModule
-      mission-control.flakeModule # These Need to Go
-      flake-root.flakeModule # These Need to Go
+      #mission-control.flakeModule # These Need to Go
+      #flake-root.flakeModule # These Need to Go
     ] ++ [
-      #./packages ## Custom Packages
-      ./machines/Ragnarok #ISO
+      ./lib
+      #./machines/Ragnarok #ISO, a bit broken RN but it's all g
+      ./packages
       ./checks #PCH/TREEFMT
       ./users # Config Dir ++ Libs
       ./home  #HM Garbage
       ./nixos #NixOS Modules
-      ./scripts # MC / ISO flashing // TODO:: Use Justfiles instead (-_-)
+      #./scripts # MC / ISO flashing // TODO:: Use Justfiles with custom shellscripts, ya MONKEy!!
     ];
 
     flake = {
@@ -44,7 +45,7 @@
           Kepler = self.nixos-flake.lib.mkLinuxSystem {
             nixpkgs.hostPlatform = "x86_64-linux";
             imports = [
-              self.nixosModules.default
+              self.nixosModules.xmonad
               self.nixosModules.system
               ./machines/Genghis
             ];
@@ -59,30 +60,30 @@
           };
 
         };
-      darwinConfigurations = {
-        Alexander = self.nixos-flake.lib.mkMacosSystem {
-          nixpkgs.hostPlatform = "aarch64-darwin";
-          imports = [
-            self.darwinModules.default # Defined in nix-darwin/default.nix
-            ./machines/Alexander
-          ];
+        darwinConfigurations = {
+          Alexander = self.nixos-flake.lib.mkMacosSystem {
+            nixpkgs.hostPlatform = "aarch64-darwin";
+            imports = [
+              self.darwinModules.default # Defined in nix-darwin/default.nix
+              ./machines/Alexander
+            ];
+          };
         };
       };
-      # lib = {};
-    };
 
 
-    perSystem = { self', system, pkgs, lib, config, inputs',...}:{
-      packages = {
-        default = self'.packages.activate;
-      };
+      perSystem = { self', pkgs, config,...}:{
+        packages = {
+          default = self'.packages.activate;
+        };
 
-      devShells = {
-        default = pkgs.mkShell {
-          name = "flash-ISO";
-          inputsFrom = [
-            config.treefmt.build.devShell
-            config.mission-control.devShell
+        devShells = {
+          default = pkgs.mkShell {
+            name = "Lazy ISO Flashing";
+            inputsFrom = with config;[
+              treefmt.build.devShell
+              pre-commit.devShell
+            #config.mission-control.devShell
           ];
         };
       };
@@ -127,8 +128,8 @@
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    mission-control.url = "github:Platonic-Systems/mission-control";
-    flake-root.url = "github:srid/flake-root";
+    # mission-control.url = "github:Platonic-Systems/mission-control";
+    # flake-root.url = "github:srid/flake-root";
 
     # @Tooling
     disko = {
@@ -155,9 +156,10 @@
       flake = false;
     };
     kmonad.url = "github:kmonad/kmonad/master?dir=nix";
+    taffybar.url = "github:taffybar/taffybar";
     schizofox.url = "github:schizofox/schizofox";
 
-    # #Builders::
+    # @Builders::
     crane = {
       url = "github:ipetkov/crane";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -170,8 +172,8 @@
       url = "github:elkowar/eww";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # oxocarbon-gtk.url = "git+file:/home/CompactHermit/Dotfiles/oxocarbon-gtk";
-    oxocarbon-gtk.url = "github:CompactHermit/oxocarbon-gtk/master"; ## TODO:: Fixup Branch and PR clean
+    oxocarbon-gtk.url = "git+file:/home/CompactHermit/Dotfiles/oxocarbon-gtk";
+    # oxocarbon-gtk.url = "github:CompactHermit/oxocarbon-gtk/master"; ## TODO:: Fixup Branch and PR clean
 
     # @Emcas:: My Beloved
     emacs-overlay.url = "github:nix-community/emacs-overlay";

@@ -17,29 +17,27 @@ layout {
     }
     tab name="Ψ" cwd="~/.config/nvim" {
         pane stacked=true {
-            pane name="NVIM CONFIG" command="nu"
-            pane name="Nvim Sources" command="nu"
+            pane name="NVIM Configs" command="nu"
         }
     }
-    tab name="Σ" cwd="~/Programming/Book_Excercises/classes/"{
-        pane name="Latex Dev"
+    tab name="Σ" cwd="~/Programming"{
+        pane name="General"
     }
     tab name="λ" {
         pane name="Monitor" {
             command "btop"
         }
     }
-    tab name="Ω" { 
-        pane name=" :: Cmus " {
-            command "cmus"
-        }
-    }
+//    tab name="Ω" { 
+//        pane name=" :: Cmus " {
+//            command "cmus"
+//        }
+//    }
     tab name=""{
-        pane name=" ::Mail" cwd="~/.config/neomutt/" {
+        pane name=" ::Mail"{
         }
     }
 }
-
 
 session_name "Dev::  "
 attach_to_session true

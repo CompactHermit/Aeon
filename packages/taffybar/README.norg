@@ -1,0 +1,19 @@
+@document.meta
+title: README
+description: TaffyBar config
+authors: CompactHermit
+categories: [
+    TaffyBar 
+    Haskell
+]
+created: 2023-11-14T14:53:05-0500
+updated: 2023-11-15T16:19:03-0500
+version: 1.1.1
+@end
+
+* Taffybar::
+** Notes::
+   TaffyBar is a Library, much like xmonad. You essentially hot-reload the binary for each usage. Hence, we need to import taffybar's overlay, which is weird? You'd expect a custom build to just work, but apparently not .
+
+** Issues::
+   It seems taffybar requires a hard overlay, because of upstream issues. It build fine on my PC, but honestly the way it works is quite alarming

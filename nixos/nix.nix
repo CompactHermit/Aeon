@@ -9,11 +9,12 @@
         "zotero-6.0.27"
       ];
     };
-    # Avoid these when needed honestly
     overlays = [
       flake.inputs.firefox-nightly.overlays.firefox
       flake.inputs.nuenv.overlays.nuenv
       flake.inputs.attic.overlays.default
+      flake.inputs.taffybar.overlay
+      #(import ../packages/overlay.nix { inherit flake; inherit (pkgs) system; })
     ];
   };
 

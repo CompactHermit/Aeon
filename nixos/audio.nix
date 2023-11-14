@@ -14,6 +14,7 @@
     #media-session.enable = true;
   };
   environment.systemPackages = with pkgs;[
+    cmus
     pavucontrol
     pulsemixer
     alsa-utils

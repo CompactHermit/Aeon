@@ -1,5 +1,8 @@
-{self',pkgs,...}:{
-  perSystem = {
+{
+  inputs,
+  pkgs
+  ,...}:{
+    perSystem = {
     pkgs,
     inputs,
     flake,

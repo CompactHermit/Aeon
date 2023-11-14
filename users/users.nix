@@ -16,26 +16,28 @@ let
       };
     };
   };
-  peopleSubmodule = lib.types.submodule {
-    options = {
-      users = lib.mkOption {
-        type = lib.types.attrsOf userSubmodule;
-      };
-      myself = lib.mkOption {
-        type = lib.types.str;
-        description = ''
-          The name of the user that represents myself.
-
-          Admin user in all contexts.
-        '';
-      };
-    };
-  };
 in
 {
   options = {
     people = lib.mkOption {
-      type = peopleSubmodule;
+      type = lib.types.submodule {
+        options = {
+          users = lib.mkOption {
+            type = lib.types.attrsOf userSubmodule;
+            description = ''
+            The name of the use, their email/domain,
+            and Trusted SSH-keys
+            '';
+          };
+          myself = lib.mkOption {
+            type = lib.types.str;
+            description = ''
+            The name of the user that represents myself.
+            Admin user in all contexts.
+            '';
+          };
+        };
+      };
     };
   };
   config = {

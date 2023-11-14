@@ -1,14 +1,12 @@
-{ pkgs
-, lib
-, flake
-, config
-, ...
+{ 
+  flake
+  , ...
 }: {
   gtk = {
     enable = true;
     font.name = "VictorMono Nerd Font";
     theme = {
-      name = "oxocarbon-gtk";
+      name = "oomox-base16-oxocarbon-dark";
       package = flake.inputs.oxocarbon-gtk.packages."x86_64-linux".default;
     };
   };
@@ -126,9 +124,7 @@
         border-top-right-radius: 0px;
     }
   '';
-  home.sessionVariables = {
-    GTK_THEME = "nordic";
-    #   GTK_CSD = "0";
-    #   LD_PRELOAD = "${config.nur.repos.dukzcry.gtk3-nocsd}/lib/libgtk3-nocsd.so.0";
-  };
+  # home.sessionVariables = {
+  #   GTK_THEME = "nordic";
+  # };
 }

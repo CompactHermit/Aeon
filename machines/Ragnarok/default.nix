@@ -60,7 +60,7 @@
             '';
           in {
             imports = [
-              ../Genghis/disko/one-nvme-luks.nix
+              ../Genghis/disks.nix
             ];
 
             # we don't want to generate filesystem entries on this image
