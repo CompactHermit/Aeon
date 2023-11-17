@@ -29,8 +29,8 @@
       #mission-control.flakeModule # These Need to Go
       #flake-root.flakeModule # These Need to Go
     ] ++ [
-      ./lib
       #./machines/Ragnarok #ISO, a bit broken RN but it's all g
+      ./lib
       ./packages
       ./checks #PCH/TREEFMT
       ./users # Config Dir ++ Libs
@@ -60,30 +60,28 @@
           };
 
         };
-        darwinConfigurations = {
-          Alexander = self.nixos-flake.lib.mkMacosSystem {
-            nixpkgs.hostPlatform = "aarch64-darwin";
-            imports = [
-              self.darwinModules.default # Defined in nix-darwin/default.nix
-              ./machines/Alexander
-            ];
-          };
+      darwinConfigurations = {
+        Alexander = self.nixos-flake.lib.mkMacosSystem {
+          nixpkgs.hostPlatform = "aarch64-darwin";
+          imports = [
+            self.darwinModules.default # Defined in nix-darwin/default.nix
+            ./machines/Alexander
+          ];
         };
       };
+    };
 
 
       perSystem = { self', pkgs, config,...}:{
         packages = {
           default = self'.packages.activate;
         };
-
         devShells = {
           default = pkgs.mkShell {
             name = "Lazy ISO Flashing";
             inputsFrom = with config;[
               treefmt.build.devShell
               pre-commit.devShell
-            #config.mission-control.devShell
           ];
         };
       };
@@ -177,7 +175,8 @@
 
     # @Emcas:: My Beloved
     emacs-overlay.url = "github:nix-community/emacs-overlay";
-    nix-doom-emacs.url = "github:nix-community/nix-doom-emacs";
+    nix-doom.url = "github:nix-community/nix-doom-emacs";
+
 
     # @Neovim::
     nyoom = {

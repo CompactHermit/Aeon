@@ -1,4 +1,4 @@
-{ flake, pkgs, lib, ... }:
+{ flake, pkgs, ... }:
 {
   nixpkgs = {
     config = {
@@ -14,6 +14,8 @@
       flake.inputs.nuenv.overlays.nuenv
       flake.inputs.attic.overlays.default
       flake.inputs.taffybar.overlay
+      flake.inputs.emacs-overlay.overlays.default
+      (self: super: {ico-patched  = import ../packages/icomoon.nix {inherit flake; inherit pkgs;};} )
       #(import ../packages/overlay.nix { inherit flake; inherit (pkgs) system; })
     ];
   };

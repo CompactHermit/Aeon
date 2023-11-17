@@ -1,4 +1,6 @@
-{flake,pkgs,...}:{
+{flake,config,...}:{
+
+  sops.secrets."attic_key" = {};
   imports = [
     flake.inputs.attic.nixosModules.atticd
   ];
@@ -9,9 +11,7 @@
   ];
   services.atticd = {
     enable = true;
-
-    # TODO:: Make This secret with sopsnix
-    credentialsFile = ./atticd.env;
+    credentialsFile = config.sops.secrets.attic_key.path;
     settings = {
       listen = "[::]:8080"; # 127.0.0.1::8080
       chunking = {

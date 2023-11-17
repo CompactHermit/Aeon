@@ -192,15 +192,15 @@ myWorkspaces = flip widgetSetClassGI "workspaces" =<< workspacesNew
 
 myLabelSetter workspace = return
     $ case workspaceName workspace of
-        "1" -> "一"
-        "2" -> "二"
-        "3" -> "三"
-        "4" -> "四"
-        "5" -> "五"
-        "6" -> "六"
-        "7" -> "七"
-        "8" -> "八"
-        "9" -> "九"
+        "1" -> "\63083"
+        "2" -> "\63288"
+        "3" -> "\63306"
+        "4" -> "\61723"
+        "5" -> "\63107"
+        "6" -> "\63601"
+        "7" -> "\63391"
+        "8" -> "\61713"
+        "9" -> "\61884"
         n   -> n
 
 

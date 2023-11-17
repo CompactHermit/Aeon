@@ -1417,10 +1417,8 @@ workspacesKeymap = -- Workspaces
 
 rofiKeymap = -- Rofi Document Searcher
    [ ("h", spawn "~/bin/Com_papers.sh") -- ComSci paper search
-   , ("j", spawn ("~/bin/papers.sh")) -- Paper Search
-   , ("k", spawn ("~/bin/chess_search.sh")) -- Chess Search
    , ("l", spawn ("~/bin/book_search.sh")) -- Math Book Search
-   , ("<Space>", spawn ("rofi -no-lazy-grab -show drun -modi run,drun,window -theme $HOME/.config/rofi/launcher/style -drun-icon-theme \'candy-icons\' ") ) -- Rofi Spawner
+   , ("<Space>", spawn ("rofi -no-lazy-grab -show drun -modi run,drun,window -theme $HOME/.config/rofi/config.rasi") ) -- Rofi Spawner
    ]
 
 

@@ -4,6 +4,9 @@
   flake = {
     nixosModules = {
       shared.imports = [
+        inputs.lanzaboote.nixosModules.lanzaboote
+        inputs.nur.nixosModules.nur
+        inputs.sops-nix.nixosModules.sops
         ./nix.nix
       ];
 
@@ -35,16 +38,23 @@
 
       system.imports = [
         inputs.lanzaboote.nixosModules.lanzaboote
-        inputs.sops-nix.nixosModules.sops
-        inputs.nur.nixosModules.nur
         self.nixosModules.shared
+        ({config,...}:{ #SOPS
+          sops = {
+            defaultSopsFormat = "yaml";
+            defaultSopsFile = ../machines/Genghis/secrets.yaml;
+            age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
+            age.keyFile = "/home/CompactHermit/.config/sops/age/keys.txt"; # TODO:: SHift this over to /var/lib/sops bcs imperm stuffs
+            age.generateKey = true;
+          };
+        })
         # ./secure-boot.nix
         ./services
         # ./persist.nix
       ];
-      wayland.imports = [];
-
-
+      wayland.imports = [
+        #Probably use something configured in lua
+      ];
       xmonad.imports = [
         self.nixosModules.home-manager
         self.nixosModules.my-home

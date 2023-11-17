@@ -1,4 +1,8 @@
-{...}:{
+{config,...}:{
+  sops.secrets."syncthing/gui-password/password" = {
+    group = "users";
+  };
+
   services.syncthing = {
     enable = true;
     user = "CompactHermit";
@@ -18,12 +22,12 @@
         "Docs" = {
           path = "/home/CompactHermit/Programming/Notes/Math/";
           devices = [ "Genghis" ];
-          ignorePerms = false;     
+          ignorePerms = false;
         };
       };
       gui = {
         user = "CompactHermit";
-        password = "Password"; # TODO:: SOPS!
+        password = "$(cat ${config.sops.secrets."syncthing/gui-password/password".path})"; 
       };
     };
     guiAddress = "0.0.0.0:8384";

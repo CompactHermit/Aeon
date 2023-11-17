@@ -5,5 +5,6 @@
     #./arxiv_terminal.nix
     #./zworkspaces.nix
     ./taffybar
+    #./icomoon.nix
   ];
 }

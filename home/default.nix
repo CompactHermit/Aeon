@@ -14,20 +14,20 @@
           ./git.nix
           ./kitty.nix
           ./gtk.nix
-          # ./theme
           #./persist.nix
           ./yuzu.nix
           ./gui.nix
-          ./emacs # My Beloved
           ./firefox
         ];
       };
 
       default = {pkgs,...}:{
         imports = [
+          inputs.nix-doom.hmModule
           inputs.nix-index-database.hmModules.nix-index
           inputs.nur.hmModules.nur
           self.homeModules.common
+          ./emacs # My Beloved
         ];
 
         xsession = {
@@ -39,12 +39,12 @@
           home-manager.enable = true;
         };
         services = {
-          udiskie = {
-            enable = true;
-            notify = true;
-            automount = true;
-            tray = "auto";
-          };
+          # udiskie = {
+          #   enable = true;
+          #   notify = true;
+          #   automount = true;
+          #   tray = "auto";
+          # };
           taffybar = {
             enable = true;
             package = self.packages."x86_64-linux".hermit-bar; #FUCK OVERLAYS, SCOPE ERASING SHITS
