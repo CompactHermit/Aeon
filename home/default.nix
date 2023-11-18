@@ -39,12 +39,12 @@
           home-manager.enable = true;
         };
         services = {
-          # udiskie = {
-          #   enable = true;
-          #   notify = true;
-          #   automount = true;
-          #   tray = "auto";
-          # };
+          udiskie = {
+            enable = true;
+            notify = true;
+            automount = true;
+            tray = "auto";
+          };
           taffybar = {
             enable = true;
             package = self.packages."x86_64-linux".hermit-bar; #FUCK OVERLAYS, SCOPE ERASING SHITS

@@ -7,6 +7,7 @@
         monospace = [
           "VictorMono Nerd Font"
           "Iosevka Term"
+          "Julia-mono"
           "Iosevka Term Nerd Font Complete Mono"
           "Iosevka Nerd Font"
           "Noto Color Emoji"

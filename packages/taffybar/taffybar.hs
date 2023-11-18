@@ -71,7 +71,7 @@ main = do
             }
         selectedConfig =
           fromMaybe baseConfig $ lookup hostName
-            [ ("thinkpad-e595", baseConfig { endWidgets = laptopEndWidgets })
+            [ ("CompactHermit", baseConfig { endWidgets = laptopEndWidgets })
             , ("probook-440g3", baseConfig { endWidgets = laptopEndWidgets })
             ]
         simpleTaffyConfig = selectedConfig

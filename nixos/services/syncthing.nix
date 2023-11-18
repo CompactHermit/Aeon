@@ -27,7 +27,7 @@
       };
       gui = {
         user = "CompactHermit";
-        password = "$(cat ${config.sops.secrets."syncthing/gui-password/password".path})"; 
+        password = (builtins.readFile "${config.sops.secrets."syncthing/gui-password/password".path}"); 
       };
     };
     guiAddress = "0.0.0.0:8384";
