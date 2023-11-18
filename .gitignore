@@ -1,3 +1,4 @@
 # Nix Specifics::
-./result
+result
 *.iso
+.direnv/

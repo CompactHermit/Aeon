@@ -1,5 +1,8 @@
-{ self,inputs, ... }:
 {
+  self,
+  inputs,
+  ...
+}: {
   flake = {
     homeModules = {
       common = {
@@ -21,7 +24,7 @@
         ];
       };
 
-      default = {pkgs,...}:{
+      default = {pkgs, ...}: {
         imports = [
           inputs.nix-doom.hmModule
           inputs.nix-index-database.hmModules.nix-index

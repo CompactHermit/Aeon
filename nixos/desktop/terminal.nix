@@ -1,4 +1,9 @@
-{pkgs ,lib ,config ,...}:{
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
   environment = {
     sessionVariables = {
       PAGER = "less";
@@ -105,44 +110,42 @@
       #platformio
       #obs-wlrobs
     ];
-    shellAliases =
-      let ifSudo = lib.mkIf config.security.sudo.enable;
-      in
-      {
-        # quick cd
-        ".." = "cd ..";
-        "..." = "cd ../..";
-        "...." = "cd ../../..";
-        "....." = "cd ../../../..";
+    shellAliases = let
+      ifSudo = lib.mkIf config.security.sudo.enable;
+    in {
+      # quick cd
+      ".." = "cd ..";
+      "..." = "cd ../..";
+      "...." = "cd ../../..";
+      "....." = "cd ../../../..";
 
-        # git
-        g = "git";
+      # git
+      g = "git";
 
-        # grep
-        grep = "rg";
-        gi = "grep -i";
-        nv = "nv";
+      # grep
+      grep = "rg";
+      gi = "grep -i";
+      nv = "nv";
 
-        # internet ip
-        myip = "dig +short myip.opendns.com @208.67.222.222 2>&1";
+      # internet ip
+      myip = "dig +short myip.opendns.com @208.67.222.222 2>&1";
 
-        mn = ''
-          manix "" | grep '^# ' | sed 's/^# \(.*\) (.*/\1/;s/ (.*//;s/^# //' | sk --preview="manix '{}'" | xargs manix
-        '';
+      mn = ''
+        manix "" | grep '^# ' | sed 's/^# \(.*\) (.*/\1/;s/ (.*//;s/^# //' | sk --preview="manix '{}'" | xargs manix
+      '';
 
-        # top
-        top = "btm";
+      # top
+      top = "btm";
 
-        # systemd
-        ctl = "systemctl";
-        stl = ifSudo "s systemctl";
-        utl = "systemctl --user";
-        ut = "systemctl --user start";
-        un = "systemctl --user stop";
-        up = ifSudo "s systemctl start";
-        dn = ifSudo "s systemctl stop";
-        jtl = "journalctl";
-
-      };
+      # systemd
+      ctl = "systemctl";
+      stl = ifSudo "s systemctl";
+      utl = "systemctl --user";
+      ut = "systemctl --user start";
+      un = "systemctl --user stop";
+      up = ifSudo "s systemctl start";
+      dn = ifSudo "s systemctl stop";
+      jtl = "journalctl";
+    };
   };
 }

@@ -7,8 +7,7 @@
     self',
     pkgs,
     ...
-  }:
-  let
+  }: let
     inherit (inputs) nixos-generators;
 
     defaultModule = {...}: {
@@ -20,7 +19,6 @@
       _module.args.inputs = inputs;
     };
   in {
-
     packages = {
       Ragnarok = nixos-generators.nixosGenerate {
         inherit pkgs;

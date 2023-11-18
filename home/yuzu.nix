@@ -1,5 +1,9 @@
-{ pkgs, config, ... }: {
-  home.packages = [ pkgs.yuzu-mainline ];
+{
+  pkgs,
+  config,
+  ...
+}: {
+  home.packages = [pkgs.yuzu-mainline];
 
   # NOTE!:: We'll just persist home-dirs, FUse is a bitch to deal with
   # home.persistence = {

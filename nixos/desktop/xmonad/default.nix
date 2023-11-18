@@ -1,16 +1,20 @@
-{ config, pkgs,inputs, ... }:
-let
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}: let
   myXmonadProject = ./Machinex;
-in
-  {
-    environment.systemPackages = with pkgs; [
+in {
+  environment.systemPackages = with pkgs;
+    [
       xorg.xdpyinfo
       xorg.xrandr
       arandr
       autorandr
       dzen2
-    ] ++ 
-    (with pkgs.haskellPackages; [
+    ]
+    ++ (with pkgs.haskellPackages; [
       notifications-tray-icon
       gtk-sni-tray
       gnome.adwaita-icon-theme
@@ -18,22 +22,21 @@ in
       dbus-hslogger
     ]);
 
-    services.xserver = {
+  services.xserver = {
+    enable = true;
+    layout = "us";
+    #numlock.enable = true;
+    #preferStatusNotifierItems = true;
+    displayManager.defaultSession = "none+xmonad";
+    windowManager.xmonad = {
       enable = true;
-      layout = "us";
-      #numlock.enable = true;
-      #preferStatusNotifierItems = true;
-      displayManager.defaultSession = "none+xmonad";
-      windowManager.xmonad = {
-        enable = true;
-        haskellPackages = pkgs.haskellPackages.extend (import "${myXmonadProject}/overlay.nix" { inherit pkgs; });
-        extraPackages = hp: [
-          hp.xmonad-contrib
-          hp.xmonad-extras
-          hp.xmonad-dbus
-        ];
-        config = pkgs.lib.readFile "${myXmonadProject}/xmonad.hs";
-      };
+      haskellPackages = pkgs.haskellPackages.extend (import "${myXmonadProject}/overlay.nix" {inherit pkgs;});
+      extraPackages = hp: [
+        hp.xmonad-contrib
+        hp.xmonad-extras
+        hp.xmonad-dbus
+      ];
+      config = pkgs.lib.readFile "${myXmonadProject}/xmonad.hs";
     };
-
-  }
+  };
+}

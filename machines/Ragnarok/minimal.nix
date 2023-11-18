@@ -3,8 +3,7 @@
   lib,
   pkgs,
   ...
-}:
-let
+}: let
   inherit (lib) mkForce;
 in {
   environment.systemPackages = with pkgs; [
@@ -45,9 +44,8 @@ in {
     services.sshd.wantedBy = mkForce ["multi-user.target"];
   };
 
-
   # Heard you weren't building bloated docs into yout ISO, here, an extra 3 GB for your ventoy kiddo
-      ## -- Some Boomer maintainer in Nixpkgs, probably
+  ## -- Some Boomer maintainer in Nixpkgs, probably
   documentation = {
     enable = false;
     man.enable = lib.mkOverride 500 false;

@@ -1,5 +1,8 @@
-{ flake, pkgs, ... }:
 {
+  flake,
+  pkgs,
+  ...
+}: {
   nixpkgs = {
     config = {
       allowBroken = false;
@@ -15,14 +18,19 @@
       flake.inputs.attic.overlays.default
       flake.inputs.taffybar.overlay
       flake.inputs.emacs-overlay.overlays.default
-      (self: super: {ico-patched  = import ../packages/icomoon.nix {inherit flake; inherit pkgs;};} )
+      (self: super: {
+        ico-patched = import ../packages/icomoon.nix {
+          inherit flake;
+          inherit pkgs;
+        };
+      })
       #(import ../packages/overlay.nix { inherit flake; inherit (pkgs) system; })
     ];
   };
 
   nix = {
     package = pkgs.nixUnstable; # Need 2.15 for bug fixes
-    nixPath = [ "nixpkgs=${flake.inputs.nixpkgs}" ]; # Enables use of `nix-shell -p ...` etc
+    nixPath = ["nixpkgs=${flake.inputs.nixpkgs}"]; # Enables use of `nix-shell -p ...` etc
     registry.nixpkgs.flake = flake.inputs.nixpkgs; # Make `nix shell` etc use pinned nixpkgs
     gc.automatic = true;
     optimise.automatic = true;
@@ -31,7 +39,7 @@
       # Nullify the registry for purity.
       flake-registry = builtins.toFile "empty-flake-registry.json" ''{"flakes":[],"version":2}'';
       # netrc-file = /home/${flake.config.people.myself}/.netrc;
-      system-features = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
+      system-features = ["nixos-test" "benchmark" "big-parallel" "kvm"];
       sandbox = true;
     };
     extraOptions = ''
@@ -40,4 +48,3 @@
     '';
   };
 }
-

@@ -1,7 +1,6 @@
-{...}:
-{
-  perSystem = {pkgs,config,...}:{
-    treefmt = import ./treefmt.nix {};
-    # pch = import ./pch.nix {};
-  };
+{flake, ...}: {
+  imports = [
+    ./pch.nix
+    ./treefmt.nix
+  ];
 }

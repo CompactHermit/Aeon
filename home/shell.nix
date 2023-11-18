@@ -1,4 +1,4 @@
-{pkgs,...}:{
+{pkgs, ...}: {
   home.packages = with pkgs; [
     zsh
     btop
@@ -6,6 +6,8 @@
     xsel
     wmctrl
     xdotool
+    gh
+    sops
     playerctl
     lutgen
     atuin
@@ -35,7 +37,6 @@
         truecolor = true;
         vim_keys = true;
       };
-
     };
     atuin = {
       enable = true;
@@ -44,7 +45,7 @@
 
     zoxide = {
       enable = true;
-      enableNushellIntegration = true;
+      #enableNushellIntegration = true;
     };
 
     starship = {
@@ -53,14 +54,11 @@
       settings = builtins.fromTOML (builtins.readFile ./starship.toml);
     };
 
-
     carapace = {
       enable = true;
       enableNushellIntegration = true;
       enableFishIntegration = true;
     };
-
-
 
     # Actual Nushell Config
 
@@ -68,32 +66,36 @@
       enable = true;
       configFile.source = ./nushell/config.nu;
       envFile.source = ./nushell/env.nu;
-      extraConfig = /*nu*/''
-      $env.config = ($env.config | merge {
-        edit_mode: vi
-        show_banner: false
-      });
+      extraConfig =
+        /*
+        nu
+        */
+        ''
+            $env.config = ($env.config | merge {
+              edit_mode: vi
+              show_banner: false
+            });
 
-      register ${pkgs.nushellPlugins.query}/bin/nu_plugin_query
+            register ${pkgs.nushellPlugins.query}/bin/nu_plugin_query
 
-    # maybe useful functions
-    # use ${pkgs.nu_scripts}/share/nu_scripts/modules/formats/to-number-format.nu *
-    # use ${pkgs.nu_scripts}/share/nu_scripts/sourced/api_wrappers/wolframalpha.nu *
-    # use ${pkgs.nu_scripts}/share/nu_scripts/modules/background_task/job.nu *
-    # use ${pkgs.nu_scripts}/share/nu_scripts/modules/network/ssh.nu *
+          # maybe useful functions
+          # use ${pkgs.nu_scripts}/share/nu_scripts/modules/formats/to-number-format.nu *
+          # use ${pkgs.nu_scripts}/share/nu_scripts/sourced/api_wrappers/wolframalpha.nu *
+          # use ${pkgs.nu_scripts}/share/nu_scripts/modules/background_task/job.nu *
+          # use ${pkgs.nu_scripts}/share/nu_scripts/modules/network/ssh.nu *
 
-    # completions
-    use ${pkgs.nu_scripts}/share/nu_scripts/custom-completions/git/git-completions.nu *
-    use ${pkgs.nu_scripts}/share/nu_scripts/custom-completions/btm/btm-completions.nu *
-    use ${pkgs.nu_scripts}/share/nu_scripts/custom-completions/cargo/cargo-completions.nu *
-    use ${pkgs.nu_scripts}/share/nu_scripts/custom-completions/nix/nix-completions.nu *
-    use ${pkgs.nu_scripts}/share/nu_scripts/custom-completions/tealdeer/tldr-completions.nu *
-    use ${pkgs.nu_scripts}/share/nu_scripts/custom-completions/poetry/poetry-completions.nu *
-    use ${pkgs.nu_scripts}/share/nu_scripts/custom-completions/zellij/zellij-completions.nu *
-    '';
+          # completions
+          use ${pkgs.nu_scripts}/share/nu_scripts/custom-completions/git/git-completions.nu *
+          use ${pkgs.nu_scripts}/share/nu_scripts/custom-completions/btm/btm-completions.nu *
+          use ${pkgs.nu_scripts}/share/nu_scripts/custom-completions/cargo/cargo-completions.nu *
+          use ${pkgs.nu_scripts}/share/nu_scripts/custom-completions/nix/nix-completions.nu *
+          use ${pkgs.nu_scripts}/share/nu_scripts/custom-completions/tealdeer/tldr-completions.nu *
+          use ${pkgs.nu_scripts}/share/nu_scripts/custom-completions/poetry/poetry-completions.nu *
+          use ${pkgs.nu_scripts}/share/nu_scripts/custom-completions/zellij/zellij-completions.nu *
+        '';
+    };
   };
-   };
-   xdg.configFile."nushell/nu-zellij/mod.nu" = {
-     source = ./nushell/nu-zellij.nu;
-   };
+  xdg.configFile."nushell/nu-zellij/mod.nu" = {
+    source = ./nushell/nu-zellij.nu;
+  };
 }

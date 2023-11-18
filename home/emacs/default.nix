@@ -8,7 +8,7 @@
   emc = pkgs.writeShellScriptBin "em" ''
     #!/bin/sh
     emacsclient -nc $@
-    '';
+  '';
 in {
   home = {
     packages = [

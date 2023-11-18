@@ -1,7 +1,5 @@
-{lib,...}:
-let
-
-in{
+{lib, ...}: let
+in {
   options = {
     theme.base16 = {};
   };

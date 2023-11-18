@@ -11,36 +11,38 @@
     ];
   };
 
+  outputs = inputs @ {
+    self,
+    parts,
+    ...
+  }:
+    parts.lib.mkFlake {inherit inputs;} {
+      debug = true;
 
-  outputs = inputs@{ self,parts, ... }:
-  parts.lib.mkFlake { inherit inputs; } {
-    debug = true;
+      systems = [
+        "x86_64-linux"
+        "aarch64-linux"
+      ];
 
-    systems = [
-      "x86_64-linux"
-      "aarch64-linux"
-    ];
+      imports = with inputs;
+        [
+          nixos-flake.flakeModule
+          treefmt.flakeModule
+          pch.flakeModule
+        ]
+        ++ [
+          #./machines/Ragnarok #ISO, a bit broken RN but it's all g
+          ./packages
+          ./checks #PCH/TREEFMT
+          ./users # Config Dir ++ Libs
+          ./home #HM Garbage
+          ./nixos #NixOS Modules
+          #./scripts # MC / ISO flashing // TODO:: Use Justfiles with custom shellscripts, ya MONKEY!!
+        ];
 
-    imports = with inputs; [
-      #parts.flakeModules.easyOverlay
-      nixos-flake.flakeModule
-      treefmt.flakeModule
-      pch.flakeModule
-      #mission-control.flakeModule # These Need to Go
-      #flake-root.flakeModule # These Need to Go
-    ] ++ [
-      #./machines/Ragnarok #ISO, a bit broken RN but it's all g
-      ./lib
-      ./packages
-      ./checks #PCH/TREEFMT
-      ./users # Config Dir ++ Libs
-      ./home  #HM Garbage
-      ./nixos #NixOS Modules
-      #./scripts # MC / ISO flashing // TODO:: Use Justfiles with custom shellscripts, ya MONKEy!!
-    ];
-
-    flake = {
-      nixosConfigurations = {
+      flake = {
+        lib = import ./lib/default.nix {inherit (inputs.nixpkgs) lib;};
+        nixosConfigurations = {
           # Work Machine
           Kepler = self.nixos-flake.lib.mkLinuxSystem {
             nixpkgs.hostPlatform = "x86_64-linux";
@@ -58,35 +60,38 @@
               ./machines/Caesar
             ];
           };
-
         };
-      darwinConfigurations = {
-        Alexander = self.nixos-flake.lib.mkMacosSystem {
-          nixpkgs.hostPlatform = "aarch64-darwin";
-          imports = [
-            self.darwinModules.default # Defined in nix-darwin/default.nix
-            ./machines/Alexander
-          ];
+        darwinConfigurations = {
+          Alexander = self.nixos-flake.lib.mkMacosSystem {
+            nixpkgs.hostPlatform = "aarch64-darwin";
+            imports = [
+              self.darwinModules.default # Defined in nix-darwin/default.nix
+              ./machines/Alexander
+            ];
+          };
         };
       };
-    };
 
-
-      perSystem = { self', pkgs, config,...}:{
+      perSystem = {
+        self',
+        pkgs,
+        config,
+        ...
+      }: {
         packages = {
           default = self'.packages.activate;
         };
         devShells = {
           default = pkgs.mkShell {
             name = "Lazy ISO Flashing";
-            inputsFrom = with config;[
+            inputsFrom = with config; [
               treefmt.build.devShell
               pre-commit.devShell
-          ];
+            ];
+          };
         };
       };
     };
-  };
 
   inputs = {
     # @ System
@@ -176,7 +181,6 @@
     # @Emcas:: My Beloved
     emacs-overlay.url = "github:nix-community/emacs-overlay";
     nix-doom.url = "github:nix-community/nix-doom-emacs";
-
 
     # @Neovim::
     nyoom = {

@@ -1,9 +1,6 @@
-{
-  pkgs,
-  ...
-}:{
+{pkgs, ...}: {
   imports = [
-    ./hydra.nix
+    #./hydra.nix
     ./kmonad.nix
     ./monitors.nix
     ./syncthing.nix
@@ -13,9 +10,9 @@
     dbus.enable = true;
     flatpak.enable = true;
     tor.enable = true;
-    tor.client.enable = true; 
+    tor.client.enable = true;
     printing.enable = true;
-    printing.drivers = [ pkgs.hplip ];
+    printing.drivers = [pkgs.hplip];
     greenclip.enable = true;
     udisks2.enable = true;
   };

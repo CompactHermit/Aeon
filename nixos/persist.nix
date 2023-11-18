@@ -1,7 +1,12 @@
-{flake,lib,pkgs,config,...}:
-let
-    # Root diff for btrfs
-    root-diff = pkgs.writeShellScriptBin "root-diff" ''
+{
+  flake,
+  lib,
+  pkgs,
+  config,
+  ...
+}: let
+  # Root diff for btrfs
+  root-diff = pkgs.writeShellScriptBin "root-diff" ''
     # Check current root for any files that are not persisted.
     # (These files will be lost on a reboot.)
 
@@ -38,7 +43,7 @@ let
     done
 
     umount /mnt/tmp-root
-    '';
+  '';
 in {
   imports = [flake.inputs.impermanence.nixosModules.impermanence];
   # Rollbacks::
@@ -103,8 +108,8 @@ in {
       # Once we're done rolling back to a blank snapshot,
       # we can unmount /mnt and continue on the boot process.
       umount /mnt
-      '';
-    };
+    '';
+  };
   boot.initrd.systemd.services.persisted-files = {
     description = "Hard-link persisted files from /persist";
     wantedBy = [
@@ -116,39 +121,39 @@ in {
     unitConfig.DefaultDependencies = "no";
     serviceConfig.Type = "oneshot";
     script = ''
-    mkdir -p /sysroot/etc/
-    ln -snfT /persist/etc/machine-id /sysroot/etc/machine-id
+      mkdir -p /sysroot/etc/
+      ln -snfT /persist/etc/machine-id /sysroot/etc/machine-id
     '';
   };
 
- # Impermenance
- environment.persistence."/persist" = {
-   directories = [
-     "/etc/secureboot"
-     "/home/CompactHermit"
-     "/etc/NetworkManager/system-connections"
-     "/var/lib/bluetooth"
-     "/var/lib/colord"
-     "/var/lib/docker"
-     "/var/lib/fprint"
-     "/var/lib/tailscale"
-     "/var/lib/hydra"
-     "/var/lib/upower"
-     "/var/lib/systemd"
-     "/var/lib/nixos"
-     "/var/log"
-     "/srv"
-   ];
-   files = [
-     "/var/lib/NetworkManager/secret_key"
-     "/var/lib/NetworkManager/seen-bssids"
-     "/var/lib/NetworkManager/timestamps"
-     "/var/lib/power-profiles-daemon/state.ini"
-   ];
-   users."${config.people.myself}" = [
-     ".config"
-   ];
- };
+  # Impermenance
+  environment.persistence."/persist" = {
+    directories = [
+      "/etc/secureboot"
+      "/home/CompactHermit"
+      "/etc/NetworkManager/system-connections"
+      "/var/lib/bluetooth"
+      "/var/lib/colord"
+      "/var/lib/docker"
+      "/var/lib/fprint"
+      "/var/lib/tailscale"
+      "/var/lib/hydra"
+      "/var/lib/upower"
+      "/var/lib/systemd"
+      "/var/lib/nixos"
+      "/var/log"
+      "/srv"
+    ];
+    files = [
+      "/var/lib/NetworkManager/secret_key"
+      "/var/lib/NetworkManager/seen-bssids"
+      "/var/lib/NetworkManager/timestamps"
+      "/var/lib/power-profiles-daemon/state.ini"
+    ];
+    users."${config.people.myself}" = [
+      ".config"
+    ];
+  };
 
- environment.systemPackages = lib.mkBefore [ root-diff ];
+  environment.systemPackages = lib.mkBefore [root-diff];
 }

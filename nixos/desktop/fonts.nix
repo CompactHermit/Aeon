@@ -1,5 +1,8 @@
-{ flake, pkgs, ... }:
 {
+  flake,
+  pkgs,
+  ...
+}: {
   fonts = {
     enableDefaultPackages = true;
     fontconfig = {
@@ -16,7 +19,7 @@
         sansSerif = [
           "Lexend"
           "Noto Color Emoji"
-          "VictorMono Nerd Font" 
+          "VictorMono Nerd Font"
         ];
 
         serif = [
@@ -30,7 +33,7 @@
       };
     };
     # TODO:: Use ICOMOON to add custom Fonts for Kitty's fallback feature
-    packages = (with pkgs; [
+    packages = with pkgs; [
       corefonts
       material-design-icons
       roboto
@@ -57,6 +60,6 @@
       cascadia-code
       nerdfonts
       ico-patched
-    ]);
+    ];
   };
 }

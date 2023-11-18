@@ -1,6 +1,4 @@
-{ pkgs, ...}:
-
-{
+{pkgs, ...}: {
   sound.enable = true;
   security.rtkit.enable = true;
 
@@ -13,7 +11,7 @@
     #wireplumber.enable = true;
     #media-session.enable = true;
   };
-  environment.systemPackages = with pkgs;[
+  environment.systemPackages = with pkgs; [
     cmus
     pavucontrol
     pulsemixer

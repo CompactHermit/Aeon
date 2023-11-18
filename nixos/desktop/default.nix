@@ -1,4 +1,4 @@
-{pkgs,...}:{
+{pkgs, ...}: {
   # TODO:: (CH) <10/25> Somehow incorporate an option system
   imports = [
     ./xmonad
@@ -28,7 +28,6 @@
     tdesktop
     iamb
 
-
     # Torrent / P2P
     qbittorrent
     transmission-gtk
@@ -56,5 +55,4 @@
     systemd-udev-settle.enable = false;
     NetworkManager-wait-online.enable = false;
   };
-
 }

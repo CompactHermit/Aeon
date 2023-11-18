@@ -1,5 +1,4 @@
-{...}:
-{
+{...}: {
   services.hydra = {
     enable = true;
     hydraURL = "http://localhost:3000"; # externally visible URL

@@ -1,5 +1,8 @@
-{ lib, pkgs, ... }: {
-
+{
+  lib,
+  pkgs,
+  ...
+}: {
   boot.loader = {
     efi = {
       efiSysMountPoint = "/boot";
@@ -8,7 +11,7 @@
   };
 
   hardware.enableAllFirmware = true;
-  boot.supportedFilesystems = [ "btrfs" "ntfs" ];
+  boot.supportedFilesystems = ["btrfs" "ntfs"];
 
   # Quiet boot with plymouth - supports LUKS passphrase entry if needed
   boot.consoleLogLevel = 0;

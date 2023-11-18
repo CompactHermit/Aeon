@@ -1,5 +1,9 @@
-{ self, config, inputs, ... }:
 {
+  self,
+  config,
+  inputs,
+  ...
+}: {
   # Configuration common to all Linux systems
   flake = {
     nixosModules = {
@@ -39,11 +43,12 @@
       system.imports = [
         inputs.lanzaboote.nixosModules.lanzaboote
         self.nixosModules.shared
-        ({config,...}:{ #SOPS
+        ({config, ...}: {
+          #SOPS
           sops = {
             defaultSopsFormat = "yaml";
             defaultSopsFile = ../machines/Genghis/secrets.yaml;
-            age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
+            age.sshKeyPaths = ["/etc/ssh/ssh_host_ed25519_key"];
             age.keyFile = "/home/CompactHermit/.config/sops/age/keys.txt"; # TODO:: SHift this over to /var/lib/sops bcs imperm stuffs
             age.generateKey = true;
           };

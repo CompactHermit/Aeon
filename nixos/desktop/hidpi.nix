@@ -1,4 +1,8 @@
-{ config, pkgs, lib, ... }:
 {
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
   services.xserver.dpi = 170;
 }

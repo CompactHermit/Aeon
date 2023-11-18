@@ -1,10 +1,12 @@
-{flake,config,...}:{
-
+{
+  flake,
+  config,
+  ...
+}: {
   sops.secrets."attic_key" = {};
   imports = [
     flake.inputs.attic.nixosModules.atticd
   ];
-
 
   environment.systemPackages = with flake.inputs; [
     attic.packages."x86_64-linux".attic

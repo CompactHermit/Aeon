@@ -1,5 +1,4 @@
-{ ... }:
-{
+{...}: {
   disko.devices = {
     disk.Genghis = {
       device = "/dev/nvme0n1";

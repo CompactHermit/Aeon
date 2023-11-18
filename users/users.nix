@@ -1,5 +1,4 @@
-{ lib, ... }:
-let
+{lib, ...}: let
   userSubmodule = lib.types.submodule {
     options = {
       name = lib.mkOption {
@@ -16,8 +15,7 @@ let
       };
     };
   };
-in
-{
+in {
   options = {
     people = lib.mkOption {
       type = lib.types.submodule {
@@ -25,15 +23,15 @@ in
           users = lib.mkOption {
             type = lib.types.attrsOf userSubmodule;
             description = ''
-            The name of the use, their email/domain,
-            and Trusted SSH-keys
+              The name of the use, their email/domain,
+              and Trusted SSH-keys
             '';
           };
           myself = lib.mkOption {
             type = lib.types.str;
             description = ''
-            The name of the user that represents myself.
-            Admin user in all contexts.
+              The name of the user that represents myself.
+              Admin user in all contexts.
             '';
           };
         };
