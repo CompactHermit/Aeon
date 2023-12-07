@@ -1,0 +1,35 @@
+@document.meta
+title: README
+description: 
+authors: CompactHermit
+categories: [
+    Nix
+    Services
+]
+created: 2023-12-09T13:37:24-0500
+updated: 2023-12-09T20:27:18-0500
+version: 1.1.1
+@end
+
+* Service Notes::
+** Tailscale::
+   |Custom Tailscale module -  SSH from anywhere::
+*** Module Design::
+    Ultimately, tailscale is relatively easy to setup on nix, with the following {https://mynixos.com/search?q=tailscale}[options]
+    @code nix
+    services.openssh = {
+        ports = [2222]; # default tailscale port
+    }
+    services.tailscale.enable = true;
+    firewall.trustedInterfaces = ["tailscale0"];
+    @end
+    You'd then setup tailscale with nginx, and thats
+** Jellyfin::
+   |Binary Nix Cache::
+** Atticd::
+   |Binary Nix Cache::
+** Gitea::
+   |Host your own private git repo::
+** Syncthing::
+   |File syncing::
+  ** 

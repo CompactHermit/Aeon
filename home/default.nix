@@ -50,7 +50,7 @@
           };
           taffybar = {
             enable = true;
-            package = self.packages."x86_64-linux".hermit-bar; #FUCK OVERLAYS, SCOPE ERASING SHITS
+            package = pkgs.hermit-bar; #FUCK OVERLAYS, SCOPE ERASING SHITS
           };
         };
       };

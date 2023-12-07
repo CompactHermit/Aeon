@@ -18,24 +18,21 @@
       flake.inputs.attic.overlays.default
       flake.inputs.taffybar.overlay
       flake.inputs.emacs-overlay.overlays.default
-      (self: super: {
-        ico-patched = import ../packages/icomoon.nix {
-          inherit flake;
-          inherit pkgs;
-        };
+      (import ../packages/overlay.nix {
+        inherit flake;
+        inherit (pkgs) system;
       })
-      #(import ../packages/overlay.nix { inherit flake; inherit (pkgs) system; })
     ];
   };
 
   nix = {
-    package = pkgs.nixUnstable; # Need 2.15 for bug fixes
+    package = pkgs.nixUnstable;
     nixPath = ["nixpkgs=${flake.inputs.nixpkgs}"]; # Enables use of `nix-shell -p ...` etc
     registry.nixpkgs.flake = flake.inputs.nixpkgs; # Make `nix shell` etc use pinned nixpkgs
     gc.automatic = true;
     optimise.automatic = true;
     settings = {
-      experimental-features = "nix-command flakes repl-flake";
+      experimental-features = "nix-command flakes repl-flake auto-allocate-uids";
       # Nullify the registry for purity.
       flake-registry = builtins.toFile "empty-flake-registry.json" ''{"flakes":[],"version":2}'';
       # netrc-file = /home/${flake.config.people.myself}/.netrc;

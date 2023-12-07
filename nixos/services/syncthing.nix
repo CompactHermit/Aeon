@@ -1,4 +1,19 @@
-{config, ...}: {
+{config, ...}: let
+  devices = {
+    Genghis = [
+      /*
+      place ID here
+      */
+    ];
+    Alexander = [
+      /**/
+    ];
+    Caesar = [
+      /**/
+    ];
+  };
+  allDevs = builtins.attrValues devices;
+in {
   sops.secrets."syncthing/gui-password/password" = {
     group = "users";
   };
@@ -24,10 +39,15 @@
           devices = ["Genghis"];
           ignorePerms = false;
         };
+        "sync" = {
+          path = "~/sync";
+          devices = ["Genghis"];
+          copyOwnershipFromParent = true;
+        };
       };
       gui = {
         user = "CompactHermit";
-        password = builtins.readFile "${config.sops.secrets."syncthing/gui-password/password".path}";
+        password = "cat ${config.sops.secrets."syncthing/gui-password/password".path}";
       };
     };
     guiAddress = "0.0.0.0:8384";

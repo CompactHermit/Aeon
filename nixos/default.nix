@@ -13,8 +13,7 @@
         inputs.sops-nix.nixosModules.sops
         ./nix.nix
       ];
-
-      my-home = {
+      my-user = {
         users.users.${config.people.myself} = {
           isNormalUser = true;
           extraGroups = [
@@ -37,13 +36,13 @@
             self.homeModules.default
           ];
         };
-        programs.dconf.enable = true;
       };
-
       system.imports = [
         inputs.lanzaboote.nixosModules.lanzaboote
+        inputs.aagl.nixosModules.default
         self.nixosModules.shared
         ({config, ...}: {
+          #NOTE:: (Hermit) Somehow, the flake.config variable is OOScope here, why?
           #SOPS
           sops = {
             defaultSopsFormat = "yaml";
@@ -53,20 +52,24 @@
             age.generateKey = true;
           };
         })
-        # ./secure-boot.nix
         ./services
+        ./android.nix
+        ./virtualization.nix
+        # ./secure-boot.nix
         # ./persist.nix
       ];
-      wayland.imports = [
-        #Probably use something configured in lua
-      ];
+      wayland.imports = [];
       xmonad.imports = [
         self.nixosModules.home-manager
-        self.nixosModules.my-home
+        self.nixosModules.my-user
         ./audio.nix
         ./desktop
-        # ./ssh-authorize.nix
+        ./ssh-authorize.nix
         ./location.nix
+      ];
+      wsl.imports = [
+        inputs.wsl.nixosModules.wsl
+        ./wsl
       ];
     };
   };

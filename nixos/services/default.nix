@@ -1,11 +1,24 @@
 {pkgs, ...}: {
+  #will use gate later
   imports = [
     #./hydra.nix
+    #./mail.nix #TODO:: (Hermit) Setup reverse DNS
     ./kmonad.nix
     ./monitors.nix
     ./syncthing.nix
     ./attic.nix
+    ./vaultwarden.nix
+    ./ccache.nix
+    ./jellyfin.nix
+    ./nginx.nix
+    ./tailscale.nix
+    ./gitea.nix
+    ./postgres.nix
+    ./spicetify.nix
+    ./nextcloud.nix
+    #./fail2ban.nix
   ];
+  #++ [./monitoring];
   services = {
     dbus.enable = true;
     flatpak.enable = true;

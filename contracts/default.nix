@@ -1,7 +1,13 @@
 {lib, ...}: let
-  inherit (builtins) pathExists readDir readFileType elemAt;
-  inherit (lib) mkOption types optionals literalExpression mapAttrs concatMapAttrs genAttrs;
+  inherit (builtins) pathExists readDir readFileType;
+  inherit (lib) concatMapAttrs;
   inherit (lib.strings) hasSuffix removeSuffix;
+
+  swamp = import ./swamp/default.nix {};
+  gate = import ./gate/default.nix {};
+
+  listEntries = path:
+    map (name: path + "/${name}") (builtins.attrNames (builtins.readDir path));
 
   readModules = dir:
     if pathExists "${dir}.nix" && readFileType "${dir}.nix" == "regular"
@@ -22,5 +28,5 @@
       (readDir dir)
     else {};
 in {
-  inherit readModules;
+  inherit readModules listEntries swamp gate;
 }

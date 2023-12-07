@@ -1,5 +1,5 @@
 {
-  flake,
+  self,
   pkgs,
   ...
 }: {

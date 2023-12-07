@@ -1638,7 +1638,7 @@ myStartupHook = do
   spawn "xsetroot -cursor_name left_ptr"
   -- spawn "exec ~/bin/lock.sh"
   -- spawnOnce "kmonad ~/.config/kmonad/config.kbd"
-  spawnOnce "feh --bg-scale ~/wallpapers/gojo2.png"
+  spawnOnce "feh --bg-scale ~/wallpapers/Exec_3.jpg"
   -- spawnOnce "picom"
   -- spawnOnce "greenclip daemon"
   -- spawnOnce "dunst"

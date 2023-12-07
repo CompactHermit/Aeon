@@ -2,12 +2,10 @@
   description = "Aeon:: The timeless Flake";
   nixConfig = {
     extra-substituters = [
-      # "https://cache.nixos.org"
-      "https://nix-community.cachix.org"
+      "https://ezkea.cachix.org"
     ];
     extra-trusted-public-keys = [
-      # "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
     ];
   };
 
@@ -29,10 +27,10 @@
           nixos-flake.flakeModule
           treefmt.flakeModule
           pch.flakeModule
+          hci.flakeModule
         ]
         ++ [
           #./machines/Ragnarok #ISO, a bit broken RN but it's all g
-          ./packages
           ./checks #PCH/TREEFMT
           ./users # Config Dir ++ Libs
           ./home #HM Garbage
@@ -41,7 +39,7 @@
         ];
 
       flake = {
-        lib = import ./lib/default.nix {inherit (inputs.nixpkgs) lib;};
+        lib = import ./contracts/default.nix {inherit (inputs.nixpkgs) lib;};
         nixosConfigurations = {
           # Work Machine
           Kepler = self.nixos-flake.lib.mkLinuxSystem {
@@ -58,6 +56,17 @@
             nixpkgs.hostPlatform = "x86_64-linux";
             imports = [
               ./machines/Caesar
+            ];
+          };
+
+          # Android Phone::
+
+          # WSL::
+          Gryphon = self.nixos-flake.lib.mkLinuxSystem {
+            nixpkgs.hostPlatform = "x86_64-linux";
+            imports = [
+              self.nixosModules.xmonad
+              self.nixosModules.wsl
             ];
           };
         };
@@ -88,6 +97,7 @@
               treefmt.build.devShell
               pre-commit.devShell
             ];
+            packages = with pkgs; [just gum];
           };
         };
       };
@@ -131,8 +141,10 @@
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # mission-control.url = "github:Platonic-Systems/mission-control";
-    # flake-root.url = "github:srid/flake-root";
+    hci = {
+      url = "github:hercules-ci/hercules-ci-effects";
+      inputs.flake-parts.follows = "parts";
+    };
 
     # @Tooling
     disko = {
@@ -149,34 +161,43 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     sops-nix.url = "github:Mic92/sops-nix";
-    nixci.url = "github:srid/nixci";
-    attic.url = "github:zhaofengli/attic";
-    yazi.url = "github:sxyazi/yazi";
-    zellij.url = "github:a-kenji/zellij-nix";
-    zjstatus.url = "github:dj95/zjstatus";
-    zworkspaces = {
-      url = "github:vdbulcke/zellij-workspace";
-      flake = false;
-    };
-    kmonad.url = "github:kmonad/kmonad/master?dir=nix";
-    taffybar.url = "github:taffybar/taffybar";
-    schizofox.url = "github:schizofox/schizofox";
-
-    # @Builders::
-    crane = {
-      url = "github:ipetkov/crane";
+    #schizofox.url = "github:schizofox/schizofox";
+    #nixci.url = "github:srid/nixci";
+    attic = {
+      url = "github:zhaofengli/attic";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # @Overlays::
+    yazi = {
+      url = "github:sxyazi/yazi";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    zellij = {
+      url = "github:a-kenji/zellij-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    kmonad.url = "github:kmonad/kmonad/master?dir=nix";
     firefox-nightly.url = "github:mozilla/nixpkgs-mozilla";
+    conduit.url = "gitlab:famedly/conduit?ref=next";
+    mailserver = {
+      url = "gitlab:simple-nixos-mailserver/nixos-mailserver";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    # @Ricing
+    # @Ricing/Gaming::
     eww = {
       url = "github:elkowar/eww";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    spicetify-nix = {
+      url = "github:Gerg-L/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    taffybar.url = "github:taffybar/taffybar";
     oxocarbon-gtk.url = "git+file:/home/CompactHermit/Dotfiles/oxocarbon-gtk";
-    # oxocarbon-gtk.url = "github:CompactHermit/oxocarbon-gtk/master"; ## TODO:: Fixup Branch and PR clean
+    aagl.url = "github:ezKEa/aagl-gtk-on-nix";
+
+    # @Android Development::
+    android-nixpkgs.url = "github:tadfisher/android-nixpkgs/canary";
 
     # @Emcas:: My Beloved
     emacs-overlay.url = "github:nix-community/emacs-overlay";

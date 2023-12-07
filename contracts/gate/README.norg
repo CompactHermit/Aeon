@@ -1,0 +1,15 @@
+@document.meta
+title: README
+description: Gate:: Basic Std Libs
+authors: CompactHermit
+categories: 
+created: 2023-12-11T13:21:39-0500
+updated: 2023-12-11T13:23:33-0500
+version: 1.1.1
+@end
+
+* Contract with the Gate::
+** Searches::
+   %Used for reading modules%
+** Importers::
+   %Custom Importers%

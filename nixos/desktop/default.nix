@@ -2,11 +2,11 @@
   # TODO:: (CH) <10/25> Somehow incorporate an option system
   imports = [
     ./xmonad
-    #./taffybar
     ./hidpi.nix
     ./terminal.nix
     ./fonts.nix
     ./gnome-keyring.nix
+    ./gaming.nix
   ];
 
   environment.systemPackages = with pkgs; [
@@ -16,7 +16,6 @@
     kitty
     alacritty
 
-    xorg.xmessage
     tor-browser-bundle-bin
     inkscape
     mupdf
@@ -49,6 +48,7 @@
     portal.enable = true;
   };
 
+  programs.dconf.enable = true;
   # NOTE:: (Hermit) Speeds up Boot
   # https://discourse.nixos.org/t/boot-faster-by-disabling-udev-settle-and-nm-wait-online/6339
   systemd.services = {

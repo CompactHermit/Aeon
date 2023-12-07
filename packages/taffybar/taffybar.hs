@@ -157,7 +157,7 @@ logDebug = do
     saveGlobalLogger $ setLevel DEBUG logger2
 
 cssFilesByHostname =
-    [("thinkpad-e595", ["taffybar.css"])
+    [("CompactHermit", ["taffybar.css"])
     , ("probook-440g3", ["taffybar.css"])]
 
 myCPU = deocrateWithSetClassAndBoxes "cpu"

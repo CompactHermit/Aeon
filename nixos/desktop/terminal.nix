@@ -52,7 +52,6 @@
       iproute2
       protonvpn-cli_2
 
-      appimage-run
       cntr
       adoptopenjdk-icedtea-web
 
@@ -60,7 +59,6 @@
       wf-recorder
       boost175
       bottom
-      clang
       cmake
       encfs
       file
@@ -72,10 +70,6 @@
       gnupg
       gpgme
 
-      #go
-      gopls
-      #gopass
-      go-2fa
       imagemagick
       less
       ncdu
@@ -86,29 +80,18 @@
       nixpkgs-review
       nil
 
-      nodejs
-      yarn
       libusb1
 
-      texlive.combined.scheme-full
       pandoc
-      #orgtoinvoice
       sshfs
       pkg-config
-      rubber
-      sqlite
       tig
       tokei
       tree
       viu
       wget
       youtube-dl
-      #lmms
-      #fluidsynth
-      #audacity
       obs-studio
-      #platformio
-      #obs-wlrobs
     ];
     shellAliases = let
       ifSudo = lib.mkIf config.security.sudo.enable;

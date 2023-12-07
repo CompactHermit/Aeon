@@ -23,7 +23,7 @@ in {
       settings = {
         inherit excludes;
         hooks = {
-          alejandra = mkHook "Alejandra" {enable = true;};
+          #TODO:: (Hermit) Add cabal linter
           actionlint = mkHook "actionlint" {enable = true;};
           treefmt = mkHook "treefmt" {enable = true;};
           prettier = mkHook "prettier" {enable = true;};
@@ -32,7 +32,6 @@ in {
             always_run = true;
           };
         };
-
         # NOTE:: (Hemrit) Numtide Unoficcially said they were on drugs when they made this
         # (Hermit) This Looks so fucking stupid, settings.<settings>.?
         settings = {

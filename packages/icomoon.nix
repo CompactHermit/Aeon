@@ -1,10 +1,8 @@
-{pkgs, ...}:
-pkgs.stdenv.mkDerivation {
+{stdenv}:
+stdenv.mkDerivation {
   pname = "icomoon-glyphs";
   version = "0.0.1";
-
   src = ./fonts;
-
   installPhase = ''
     runHook preInstall
     mkdir -p $out/share/fonts/truetype

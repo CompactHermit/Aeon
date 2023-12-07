@@ -1,20 +1,21 @@
 {
   config,
-  pkgs,
-  lib,
   flake,
   ...
-}: {
+}: let
+  people = flake.config.people;
+  myKeys = people.users.${people.myself}.sshKeys;
+in {
   # Let me login
-  users.users = let
-    people = flake.config.people;
-    myKeys = people.users.${people.myself}.sshKeys;
-    password = people.users.${people.myself}.hashedPassword;
-  in {
+  users.users = {
     root.openssh.authorizedKeys.keys = myKeys;
     ${people.myself} = {
-      hashedPassword = password;
       openssh.authorizedKeys.keys = myKeys;
     };
+    ${config.services.gitea.user} = {
+      openssh.authorizedKeys.keys = [(builtins.elemAt myKeys 2)];
+      extraGroups = ["postgres"];
+    };
+    ${config.services.nginx.user}.extraGroups = [config.services.gitea.group];
   };
 }

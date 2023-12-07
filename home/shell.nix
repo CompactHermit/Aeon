@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   home.packages = with pkgs; [
     zsh
     btop
@@ -7,14 +11,19 @@
     wmctrl
     xdotool
     gh
+    age
+    himalaya
     sops
     playerctl
+    bitwarden-cli
     lutgen
     atuin
     git-crypt
     zoxide
     nushell
+    lm_sensors
     tree-sitter
+    hyperfine
     ttags
     starship
     carapace
@@ -44,8 +53,16 @@
     };
 
     zoxide = {
+      package = pkgs.zoxide.overrideAttrs {
+        src = pkgs.fetchFromGitHub {
+          owner = "ajeetdsouza";
+          repo = "zoxide";
+          rev = "v0.9.2";
+          sha256 = "sha256-h/T3McaKKASwQt+0SBBxFXMnYyt+0Xl+5i8IulUAdnU=";
+        };
+      };
       enable = true;
-      #enableNushellIntegration = true;
+      enableNushellIntegration = true;
     };
 
     starship = {
@@ -60,7 +77,9 @@
       enableFishIntegration = true;
     };
 
-    # Actual Nushell Config
+    # himalaya = {
+    #   enable = true;
+    # };
 
     nushell = {
       enable = true;
