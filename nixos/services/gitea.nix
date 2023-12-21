@@ -1,4 +1,8 @@
-{config, ...}: {
+{
+  pkgs,
+  config,
+  ...
+}: {
   sops.secrets."postgres/gitea_dbpass" = {
     owner = config.services.gitea.user;
   };
@@ -6,6 +10,7 @@
   services.gitea = {
     enable = true;
     stateDir = "/persist/services/gitea";
+    package = pkgs.forgejo;
     appName = "Gitea on Nix";
     settings = {
       server = {
@@ -16,7 +21,14 @@
         PROTOCOL = "http+unix";
         UNIX_SOCKET_PERMISSION = "660";
       };
-      ui.DEFAULT_THEME = "arc-green";
+      "git.timeout" = {
+        DEFAULT = 720;
+        MIGRATE = 30000;
+        MIRROR = 72000;
+        CLONE = 30000;
+        PULL = 30000;
+        GC = 60;
+      };
       service.DISABLE_REGISTRATION = true;
     };
     database = {
@@ -26,15 +38,3 @@
     };
   };
 }
-# services.gitea = {
-#    enable = true;
-#    appName = "My awesome Gitea server"; # Give the site a name
-#    database = {
-#      type = "postgres";
-#      passwordFile = config.sops.secrets."postgres/gitea_dbpass".path;
-#    };
-#    domain = "git.my-domain.tld";
-#    rootUrl = "https://git.my-domain.tld/";
-#    httpPort = 3001;
-#  };
-

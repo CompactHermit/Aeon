@@ -1,14 +1,5 @@
 {
   description = "Aeon:: The timeless Flake";
-  nixConfig = {
-    extra-substituters = [
-      "https://ezkea.cachix.org"
-    ];
-    extra-trusted-public-keys = [
-      "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-    ];
-  };
-
   outputs = inputs @ {
     self,
     parts,
@@ -45,9 +36,9 @@
           Kepler = self.nixos-flake.lib.mkLinuxSystem {
             nixpkgs.hostPlatform = "x86_64-linux";
             imports = [
+              ./machines/Genghis
               self.nixosModules.xmonad
               self.nixosModules.system
-              ./machines/Genghis
             ];
           };
 
@@ -55,23 +46,31 @@
           Copernicus = self.nixos-flake.lib.mkLinuxSystem {
             nixpkgs.hostPlatform = "x86_64-linux";
             imports = [
-              ./machines/Caesar
+              ./machines/Siegfried
             ];
           };
 
-          # Android Phone::
-
-          # WSL::
-          Gryphon = self.nixos-flake.lib.mkLinuxSystem {
+          # PinePhone::
+          Dirac = self.nixos-flake.lib.mkLinuxSystem {
             nixpkgs.hostPlatform = "x86_64-linux";
             imports = [
-              self.nixosModules.xmonad
+              ./machines/Caesar
+              self.nixosModules.mobile
+            ];
+          };
+
+          # WSL::
+          Schrodinger = self.nixos-flake.lib.mkLinuxSystem {
+            nixpkgs.hostPlatform = "x86_64-linux";
+            imports = [
+              ./machines/Tell
               self.nixosModules.wsl
             ];
           };
         };
+
         darwinConfigurations = {
-          Alexander = self.nixos-flake.lib.mkMacosSystem {
+          Nikola = self.nixos-flake.lib.mkMacosSystem {
             nixpkgs.hostPlatform = "aarch64-darwin";
             imports = [
               self.darwinModules.default # Defined in nix-darwin/default.nix
@@ -102,7 +101,14 @@
         };
       };
     };
-
+  nixConfig = {
+    extra-substituters = [
+      "https://ezkea.cachix.org"
+    ];
+    extra-trusted-public-keys = [
+      "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+    ];
+  };
   inputs = {
     # @ System
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";

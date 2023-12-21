@@ -20,13 +20,6 @@
     recommendedProxySettings = true;
     recommendedTlsSettings = true;
     virtualHosts = {
-      # "search.hermit.dev" = {
-      #   forceSSL = true;
-      #   sslCertificate = config.sops.secrets.ch_ssl_cert.path;
-      #   sslCertificateKey = config.sops.secrets.ch_ssl_key.path;
-      #   locations."/".extraConfig = "uwsgi_pass unix:${config.services.searx.uwsgiConfig.socket};";
-      #   extraConfig = "access_log off;";
-      # };
       # "webmail.compacthermit.dev" = {
       #   forceSSL = true;
       #   enableACME = true;
@@ -39,6 +32,13 @@
       #     proxyPass = "http://mail";
       #   };
       # };
+      "search.compacthermit.dev" = {
+        forceSSL = true;
+        sslCertificate = config.sops.secrets.ch_ssl_cert.path;
+        sslCertificateKey = config.sops.secrets.ch_ssl_key.path;
+        locations."/".extraConfig = "uwsgi_pass unix:${config.services.searx.uwsgiConfig.socket};";
+        extraConfig = "access_log off;";
+      };
       "git.compacthermit.dev" = {
         forceSSL = true;
         sslCertificate = config.sops.secrets.ch_ssl_cert.path;
@@ -69,13 +69,12 @@
         sslCertificate = config.sops.secrets.ch_ssl_cert.path;
         sslCertificateKey = config.sops.secrets.ch_ssl_key.path;
       };
-
-      # "headscale.hermit.dev" = {
-      #   forceSSL = true;
-      #   sslCertificate = config.sops.secrets.ch_ssl_cert.path;
-      #   sslCertificateKey = config.sops.secrets.ch_ssl_key.path;
-      #   locations."/".proxyPass = "http://unix:${config.systemd.services.vaultwarden.environment.LISTEN_ADDR}";
-      # };
+      "hs.compacthermit.dev" = {
+        forceSSL = true;
+        sslCertificate = config.sops.secrets.ch_ssl_cert.path;
+        sslCertificateKey = config.sops.secrets.ch_ssl_key.path;
+        locations."/".proxyPass = "http://localhost:${toString config.services.headscale.port}";
+      };
     };
   };
 }

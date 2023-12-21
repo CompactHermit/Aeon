@@ -24,12 +24,16 @@ version: 1.1.1
     firewall.trustedInterfaces = ["tailscale0"];
     @end
     You'd then setup tailscale with nginx, and thats
+** HeadScale:: %No head?%
+   |Self-Hostable Tailscale Service::
 ** Jellyfin::
    |Binary Nix Cache::
 ** Atticd::
    |Binary Nix Cache::
 ** Gitea::
    |Host your own private git repo::
+*** ForgeJo::
 ** Syncthing::
    |File syncing::
-  ** 
+** Attic::
+   |Self-Hostable Binary Cache::

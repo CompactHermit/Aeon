@@ -52,7 +52,6 @@
   };
 
   nixpkgs = {
-    #config.allowUnfree = true;
     hostPlatform = lib.mkDefault "x86_64-linux";
   };
 
@@ -91,12 +90,6 @@
 
   services.resolved = {
     enable = false;
-    # dnssec = "true";
-    # domains = [ "compacthermit.dev" ];
-    # fallbackDns = [ "1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one" ];
-    # extraConfig = ''
-    # DNSOverTLS=yes
-    # '';
   };
   security.sudo.wheelNeedsPassword = false;
   users.users.root.hashedPasswordFile = "/persist/passwords/root";

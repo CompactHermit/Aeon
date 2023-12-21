@@ -7,6 +7,7 @@
     ./monitors.nix
     ./syncthing.nix
     ./attic.nix
+    ./searx.nix
     ./vaultwarden.nix
     ./ccache.nix
     ./jellyfin.nix
@@ -16,6 +17,7 @@
     ./postgres.nix
     ./spicetify.nix
     ./nextcloud.nix
+    ./headscale.nix
     #./fail2ban.nix
   ];
   #++ [./monitoring];
