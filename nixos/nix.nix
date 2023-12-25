@@ -17,7 +17,7 @@
       flake.inputs.nuenv.overlays.nuenv
       flake.inputs.attic.overlays.default
       flake.inputs.taffybar.overlay
-      flake.inputs.emacs-overlay.overlays.default
+      #flake.inputs.emacs-overlay.overlays.default
       (import ../packages/overlay.nix {
         inherit flake;
         inherit (pkgs) system;

@@ -8,13 +8,13 @@ in {
       enable = true;
       address = "0.0.0.0";
       port = port;
-      serverUrl = "https://${domain}";
       settings = {
+        serverUrl = "https://${domain}";
         logtail.enabled = false;
-      };
-      dns = {
-        baseDomain = "compacthermit.dev";
-        domains = ["${domain}"];
+        dns_config = {
+          base_domain = "compacthermit.dev";
+          domains = ["${domain}"];
+        };
       };
     };
   };

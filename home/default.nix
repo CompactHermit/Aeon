@@ -30,7 +30,7 @@
           inputs.nix-index-database.hmModules.nix-index
           inputs.nur.hmModules.nur
           self.homeModules.common
-          ./emacs # My Beloved
+          #./emacs # My Beloved
         ];
 
         xsession = {

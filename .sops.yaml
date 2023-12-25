@@ -4,6 +4,6 @@ keys:
 creation_rules:
   - path_regex: machines/Genghis/secrets.yaml$
     key_groups:
-    - age:
-      - *geng_us
-        #- *geng_rt
+      - age:
+          - *geng_us
+            #- *geng_rt

@@ -24,5 +24,6 @@
         ovmf.enable = true;
       };
     };
+    docker.enable = true;
   };
 }

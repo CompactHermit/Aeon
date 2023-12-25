@@ -75,6 +75,12 @@
         sslCertificateKey = config.sops.secrets.ch_ssl_key.path;
         locations."/".proxyPass = "http://localhost:${toString config.services.headscale.port}";
       };
+      "drone.compacthermit.dev" = {
+        forceSSL = true;
+        sslCertificate = config.sops.secrets.ch_ssl_cert.path;
+        sslCertificateKey = config.sops.secrets.ch_ssl_key.path;
+        locations."/".proxyPass = "http://localhost:3030/";
+      };
     };
   };
 }

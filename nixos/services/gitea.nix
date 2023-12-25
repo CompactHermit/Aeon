@@ -2,7 +2,9 @@
   pkgs,
   config,
   ...
-}: {
+}: let
+  droneserver = config.users.users.droneserver.name;
+in {
   sops.secrets."postgres/gitea_dbpass" = {
     owner = config.services.gitea.user;
   };

@@ -53,14 +53,6 @@
     };
 
     zoxide = {
-      package = pkgs.zoxide.overrideAttrs {
-        src = pkgs.fetchFromGitHub {
-          owner = "ajeetdsouza";
-          repo = "zoxide";
-          rev = "v0.9.2";
-          sha256 = "sha256-h/T3McaKKASwQt+0SBBxFXMnYyt+0Xl+5i8IulUAdnU=";
-        };
-      };
       enable = true;
       enableNushellIntegration = true;
     };
