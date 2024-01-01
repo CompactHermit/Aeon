@@ -1,12 +1,15 @@
 {
   pkgs,
   lib,
+  flake,
   config,
   ...
 }: let
   l = lib // builtins;
   settings = {
+    "browser.aboutConfig.showWarning" = false;
     "browser.ctrlTab.recentlyUsedOrder" = false;
+    "browser.toolbars.bookmarks.visibility" = "always";
     "browser.uidensity" = 1;
     "browser.urlbar.update1" = true;
     "privacy.trackingprotection.enabled" = true;
@@ -21,32 +24,58 @@
     "gfx.webrender.all" = true;
     "general.smoothScroll" = true;
   };
-  extensions = {
-    rycee = config.nur.repos.rycee.firefox-addons;
-    bandithedoge = config.nur.repos.bandithedoge.firefoxAddons;
-  };
+
+  extensions = flake.inputs.firefoxAddons.packages."x86_64-linux";
+  prof = ["Maxwell" "Laplace" "Leonidas"];
 in {
+  imports = [
+    flake.inputs.schizofox.homeManagerModule
+  ];
+
   programs.firefox = {
     enable = true;
-    package = pkgs.latest.firefox-nightly-bin;
+    package = pkgs.latest.firefox-nightly-bin.override {
+      extraPolicies = {
+        CaptivePortal = false;
+        DisableFirefoxStudies = true;
+        DisablePocket = true;
+        DisableTelemetry = true;
+        DisableFirefoxAccounts = true;
+        FirefoxHome = {
+          Pocket = false;
+          Snippets = false;
+        };
+        UserMessaging = {
+          ExtensionRecommendations = false;
+          SkipOnboarding = true;
+        };
+        OverrideFirstRunPage = "";
+        #Extensions.Install = map (x: x.src.outPath) config.home-manager.users.tzlil.programs.firefox.profiles."Maxwell".extensions;
+        SearchEngines.Default = "DuckDuckGo";
+        ExtensionSettings = {
+          "google@search.mozilla.org" = {installation_mode = "blocked";};
+          "amazondotcom@search.mozilla.org" = {installation_mode = "blocked";};
+          "wikipedia@search.mozilla.org" = {installation_mode = "blocked";};
+          "bing@search.mozilla.org" = {installation_mode = "blocked";};
+        };
+      };
+    };
     profiles = {
       Maxwell = {
         id = 0;
         inherit settings;
-        # note:: Just directly grab rycees pkgs, you don't even use the NUR anyway
         extensions = with extensions; [
-          rycee.sidebery
-          rycee.tridactyl
-          rycee.tampermonkey
-          rycee.ublock-origin
-          rycee.umatrix
-          rycee.bitwarden
-          rycee.user-agent-string-switcher
-          bandithedoge.sourcegraph
-          rycee.c-c-search-extension
+          sidebery
+          tridactyl
+          ublock-origin
+          privacy-possum
+          bitwarden
+          sourcegraph
+          canvasblocker
+          firenvim
+          gitako-github-file-tree
         ];
       };
-      # Shavara = {};
     };
   };
 

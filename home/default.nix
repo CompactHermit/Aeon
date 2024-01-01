@@ -28,7 +28,7 @@
         imports = [
           inputs.nix-doom.hmModule
           inputs.nix-index-database.hmModules.nix-index
-          inputs.nur.hmModules.nur
+          #inputs.nur.hmModules.nur
           self.homeModules.common
           #./emacs # My Beloved
         ];

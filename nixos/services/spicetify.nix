@@ -2,7 +2,9 @@
   spicetify-nix = flake.inputs.spicetify-nix;
   spicePkgs = spicetify-nix.legacyPackages;
 in {
-  imports = [spicetify-nix.nixosModules.default];
+  imports = [
+    spicetify-nix.nixosModules.default
+  ];
   programs.spicetify = {
     enable = true;
     enabledExtensions = builtins.attrValues {
@@ -11,6 +13,7 @@ in {
     theme = spicePkgs."x86_64-linux".themes.dribbblish;
     colorScheme = "custom";
     customColorScheme = {
+      # TODO:: (Hermit) Add oxocarbon theme
       text = "f8f8f8";
       subtext = "f8f8f8";
       sidebar-text = "79dac8";

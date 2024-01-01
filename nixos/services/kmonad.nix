@@ -4,14 +4,15 @@
     enable = true;
     keyboards = {
       "Ogre" = {
-        device = "/dev/input/by-id/usb-Logitech_USB_Receiver-if01-event-kbd";
+        #device = "/dev/input/by-id/usb-Logitech_USB_Receiver-if01-event-kbd";
+        device = "/dev/input/by-id/usb-Dell_Computer_Corp_Dell_Universal_Receiver-event-kbd";
         config =
           /*
-          kbd
+          fennel
           */
           ''
             (defcfg
-            input  (device-file "/dev/input/by-id/usb-Logitech_USB_Receiver-if01-event-kbd")
+            input  (device-file "/dev/input/by-id/usb-Dell_Computer_Corp_Dell_Universal_Receiver-event-if01")
             output (uinput-sink "KMonad output")
             fallthrough true
             )

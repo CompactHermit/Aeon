@@ -92,13 +92,12 @@ in {
       #   hashedPasswordFile = cfgp.ch_ms_matrix.path;
       #   };
     };
-    #certificateScheme = "acme-nginx";
     certificateScheme = "manual"; #Manual:: We to add a custom pem file
     keyFile = cfgp.ch_ssl_key.path;
     certificateFile = cfgp.ch_ssl_cert.path;
   };
-  security.acme.acceptTerms = true;
-  security.acme.defaults.email = "security@compacthermit.dev";
+  #security.acme.acceptTerms = true;
+  #security.acme.defaults.email = "security@compacthermit.dev";
   #
   services = {
     roundcube = {

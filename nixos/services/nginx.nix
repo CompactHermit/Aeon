@@ -21,16 +21,14 @@
     recommendedTlsSettings = true;
     virtualHosts = {
       # "webmail.compacthermit.dev" = {
-      #   forceSSL = true;
-      #   enableACME = true;
-      # };
-      # "mail.compacthermit.dev" = {
-      #   forceSSL = true;
       #   sslCertificate = config.sops.secrets.ch_ssl_cert.path;
       #   sslCertificateKey = config.sops.secrets.ch_ssl_key.path;
-      #   locations."/" = {
-      #     proxyPass = "http://mail";
-      #   };
+      #   forceSSL = true;
+      # };
+      # "mail.compacthermit.dev" = {
+      #   sslCertificate = config.sops.secrets.ch_ssl_cert.path;
+      #   sslCertificateKey = config.sops.secrets.ch_ssl_key.path;
+      #   forceSSL = true;
       # };
       "search.compacthermit.dev" = {
         forceSSL = true;
@@ -73,7 +71,10 @@
         forceSSL = true;
         sslCertificate = config.sops.secrets.ch_ssl_cert.path;
         sslCertificateKey = config.sops.secrets.ch_ssl_key.path;
-        locations."/".proxyPass = "http://localhost:${toString config.services.headscale.port}";
+        locations."/" = {
+          proxyPass = "http://localhost:${toString config.services.headscale.port}";
+          proxyWebsockets = true;
+        };
       };
       "drone.compacthermit.dev" = {
         forceSSL = true;

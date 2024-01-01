@@ -1,0 +1,12 @@
+@document.meta
+title: README
+description: Contract With the Swamp
+authors: CompactHermit
+categories:
+created: 2023-12-29T01:48:53-0500
+updated: 2023-12-29T08:20:41-0500
+version: 1.1.1
+@end
+
+* Swamp:: Fusing and fuddling modules::
+  > Custom Options and module-types. Made for when I get drunk and think I'm coding in haskell.

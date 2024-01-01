@@ -8,7 +8,6 @@
   flake = {
     nixosModules = {
       shared.imports = [
-        inputs.nur.nixosModules.nur
         inputs.sops-nix.nixosModules.sops
         ./nix.nix
       ];

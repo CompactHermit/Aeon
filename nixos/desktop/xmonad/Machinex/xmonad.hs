@@ -405,7 +405,7 @@ coloredGSConfig colorizer = (buildDefaultGSConfig colorizer)
 
 
 myTopics :: [TopicItem]
-myTopics = [ TI "\63083" "" (spawnInTopicDir "kitty nu") --1
+myTopics = [ TI "\63083" "" (spawnInTopicDir "wezterm") --1
             , TI "\63288" "" (spawnInTopicDir "firefox-nightly") --2
             , TI "\63306" "" (return ()) --3
             , TI "\61723" "" (spawnInTopicDir "zotero") --4

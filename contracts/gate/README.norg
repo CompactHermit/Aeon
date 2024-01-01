@@ -4,12 +4,22 @@ description: Gate:: Basic Std Libs
 authors: CompactHermit
 categories: 
 created: 2023-12-11T13:21:39-0500
-updated: 2023-12-11T13:23:33-0500
+updated: 2023-12-29T01:45:13-0500
 version: 1.1.1
 @end
 
 * Contract with the Gate::
 ** Searches::
-   %Used for reading modules%
+   > Used for reading modules
+
+   Custom Module Builder.
+
 ** Importers::
-   %Custom Importers%
+   > Custom Importers
+
+** HomeFile::
+   > An makes tmpfiles for xdg-dirs
+
+   It mimics the home.file option from home-manager, but insteads creates a set of tmp-file rules. We essentially pass it in as a module and can use it like `home.file`.
+** DAG::
+   > Directed Acyclic Graphs

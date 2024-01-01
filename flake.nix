@@ -30,7 +30,7 @@
         ];
 
       flake = {
-        lib = import ./contracts/default.nix {inherit (inputs.nixpkgs) lib;};
+        lib = import ./contracts/default.nix {inherit (inputs.nixpkgs) lib;}; # NOTE:: (Hermit) Flake.lib is out of scope. Pass it in as a specialArg
         nixosConfigurations = {
           # Work Machine
           Kepler = self.nixos-flake.lib.mkLinuxSystem {
@@ -101,19 +101,23 @@
         };
       };
     };
-  nixConfig = {
-    extra-substituters = [
-      "https://ezkea.cachix.org"
-    ];
-    extra-trusted-public-keys = [
-      "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-    ];
-  };
+  # nixConfig = {
+  #   extra-substituters = [
+  #     "https://ezkea.cachix.org"
+  #   ];
+  #   extra-trusted-public-keys = [
+  #     "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+  #   ];
+  # };
   inputs = {
     # @ System
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
-    nur.url = "github:nix-community/NUR";
+    #nur.url = "github:nix-community/NUR";
+    firefoxAddons = {
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -167,7 +171,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     sops-nix.url = "github:Mic92/sops-nix";
-    #schizofox.url = "github:schizofox/schizofox";
+    schizofox = {
+      url = "github:schizofox/schizofox";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     #nixci.url = "github:srid/nixci";
     attic = {
       url = "github:zhaofengli/attic";
