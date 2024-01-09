@@ -1,8 +1,4 @@
-{
-  self,
-  inputs,
-  ...
-}: {
+{ self, inputs, ... }: {
   flake = {
     homeModules = {
       common = {
@@ -24,9 +20,8 @@
         ];
       };
 
-      default = {pkgs, ...}: {
+      default = { pkgs, ... }: {
         imports = [
-          inputs.nix-doom.hmModule
           inputs.nix-index-database.hmModules.nix-index
           #inputs.nur.hmModules.nur
           self.homeModules.common
@@ -50,16 +45,12 @@
           };
           taffybar = {
             enable = true;
-            package = pkgs.hermit-bar; #FUCK OVERLAYS, SCOPE ERASING SHITS
+            package = pkgs.hermit-bar; # FUCK OVERLAYS, SCOPE ERASING SHITS
           };
         };
       };
 
-      darwin = {
-        imports = [
-          self.homeModules.common
-        ];
-      };
+      darwin = { imports = [ self.homeModules.common ]; };
 
       wsl = {
         imports = [

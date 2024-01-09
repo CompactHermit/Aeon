@@ -1,6 +1,1 @@
-{flake, ...}: {
-  imports = [
-    ./pch.nix
-    ./treefmt.nix
-  ];
-}
+{ flake, ... }: { imports = [ ./pch.nix ./treefmt.nix ]; }

@@ -1,10 +1,5 @@
-{
-  pkgs,
-  lib,
-  flake,
-  config,
-  ...
-}: let
+{ pkgs, lib, flake, config, ... }:
+let
   l = lib // builtins;
   settings = {
     "browser.aboutConfig.showWarning" = false;
@@ -26,11 +21,9 @@
   };
 
   extensions = flake.inputs.firefoxAddons.packages."x86_64-linux";
-  prof = ["Maxwell" "Laplace" "Leonidas"];
+  prof = [ "Maxwell" "Laplace" "Leonidas" ];
 in {
-  imports = [
-    flake.inputs.schizofox.homeManagerModule
-  ];
+  imports = [ ];
 
   programs.firefox = {
     enable = true;
@@ -53,10 +46,12 @@ in {
         #Extensions.Install = map (x: x.src.outPath) config.home-manager.users.tzlil.programs.firefox.profiles."Maxwell".extensions;
         SearchEngines.Default = "DuckDuckGo";
         ExtensionSettings = {
-          "google@search.mozilla.org" = {installation_mode = "blocked";};
-          "amazondotcom@search.mozilla.org" = {installation_mode = "blocked";};
-          "wikipedia@search.mozilla.org" = {installation_mode = "blocked";};
-          "bing@search.mozilla.org" = {installation_mode = "blocked";};
+          "google@search.mozilla.org" = { installation_mode = "blocked"; };
+          "amazondotcom@search.mozilla.org" = {
+            installation_mode = "blocked";
+          };
+          "wikipedia@search.mozilla.org" = { installation_mode = "blocked"; };
+          "bing@search.mozilla.org" = { installation_mode = "blocked"; };
         };
       };
     };

@@ -1,4 +1,4 @@
-{flake, ...}: {
+{ flake, ... }: {
   programs.zellij = {
     enable = true;
     package = flake.inputs.zellij.packages."x86_64-linux".zellij;

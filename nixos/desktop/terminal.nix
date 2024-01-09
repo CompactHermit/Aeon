@@ -1,9 +1,4 @@
-{
-  pkgs,
-  lib,
-  config,
-  ...
-}: {
+{ pkgs, lib, config, ... }: {
   environment = {
     sessionVariables = {
       PAGER = "less";
@@ -93,8 +88,7 @@
       youtube-dl
       obs-studio
     ];
-    shellAliases = let
-      ifSudo = lib.mkIf config.security.sudo.enable;
+    shellAliases = let ifSudo = lib.mkIf config.security.sudo.enable;
     in {
       # quick cd
       ".." = "cd ..";

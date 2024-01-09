@@ -1,4 +1,4 @@
-{pkgs, ...}:
+{ pkgs, ... }:
 pkgs.stdenv.mkDerivation rec {
   pname = "Arxiv-Terminal";
   version = "v0.3.1";

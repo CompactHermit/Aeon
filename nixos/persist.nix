@@ -1,10 +1,5 @@
-{
-  flake,
-  lib,
-  pkgs,
-  config,
-  ...
-}: let
+{ flake, lib, pkgs, config, ... }:
+let
   # Root diff for btrfs
   root-diff = pkgs.writeShellScriptBin "root-diff" ''
     # Check current root for any files that are not persisted.
@@ -45,21 +40,17 @@
     umount /mnt/tmp-root
   '';
 in {
-  imports = [flake.inputs.impermanence.nixosModules.impermanence];
+  imports = [ flake.inputs.impermanence.nixosModules.impermanence ];
   # Rollbacks::
   boot.initrd.systemd.enable = lib.mkDefault true;
   boot.initrd.systemd.services.rollback = {
     description = "Rollback BTRFS root subvolume to a pristine state";
-    wantedBy = [
-      "initrd.target"
-    ];
+    wantedBy = [ "initrd.target" ];
     after = [
       # LUKS/TPM process
       "systemd-cryptsetup@enc.service"
     ];
-    before = [
-      "sysroot.mount"
-    ];
+    before = [ "sysroot.mount" ];
     unitConfig.DefaultDependencies = "no";
     serviceConfig.Type = "oneshot";
     script = ''
@@ -112,12 +103,8 @@ in {
   };
   boot.initrd.systemd.services.persisted-files = {
     description = "Hard-link persisted files from /persist";
-    wantedBy = [
-      "initrd.target"
-    ];
-    after = [
-      "sysroot.mount"
-    ];
+    wantedBy = [ "initrd.target" ];
+    after = [ "sysroot.mount" ];
     unitConfig.DefaultDependencies = "no";
     serviceConfig.Type = "oneshot";
     script = ''
@@ -150,10 +137,8 @@ in {
       "/var/lib/NetworkManager/timestamps"
       "/var/lib/power-profiles-daemon/state.ini"
     ];
-    users."${config.people.myself}" = [
-      ".config"
-    ];
+    users."${config.people.myself}" = [ ".config" ];
   };
 
-  environment.systemPackages = lib.mkBefore [root-diff];
+  environment.systemPackages = lib.mkBefore [ root-diff ];
 }

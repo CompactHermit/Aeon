@@ -1,4 +1,4 @@
-{...}: {
+{ ... }: {
   # Should open on port 8096
   services.jellyfin = {
     enable = true;

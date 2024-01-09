@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   # TODO:: (CH) <10/25> Somehow incorporate an option system
   imports = [
     ./xmonad
@@ -17,6 +17,7 @@
     alacritty
 
     tor-browser-bundle-bin
+    floorp
     inkscape
     mupdf
 
@@ -44,9 +45,7 @@
   };
 
   #XDG_Configs Here::
-  xdg = {
-    portal.enable = true;
-  };
+  xdg = { portal.enable = true; };
 
   programs.dconf.enable = true;
   # NOTE:: (Hermit) Speeds up Boot

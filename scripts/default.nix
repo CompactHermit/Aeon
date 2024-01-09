@@ -1,5 +1,1 @@
-{...}: {
-  imports = [
-    ./flash.nix
-  ];
-}
+{ ... }: { imports = [ ./flash.nix ]; }

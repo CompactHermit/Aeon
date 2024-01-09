@@ -11,7 +11,7 @@ layout {
     }
     tab name=" " focus=true borderless=true {
         pane stacked=true {
-            pane name="Nix:: Aeon" borderless=false expanded=true cwd="~/Downloads/github_dumps/nix-projects/organist"
+            pane name="Nix:: Aeon" borderless=false expanded=true cwd="~/Dotfiles/Aeon"
         }
     }
     tab name=" :: Dev" cwd="~/Programming/Work" {
@@ -26,7 +26,7 @@ layout {
             pane name="LaTex Notes:: Books"
         }
     }
-    tab name=" :: Dev (Crane)" {
+    tab name=" :: Dev (Rust)" {
         pane name=" :: Rust" stacked=true {
             pane name="Rust"
         }

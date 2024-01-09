@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   services.dunst = {
     enable = true;
     settings = {
@@ -18,10 +18,13 @@
         separator_color = "frame";
         sort = true;
         idle_threshold = 120;
-        font = "Helvetica Neue LT Std,HelveticaNeueLT Std Lt Cn:style=47 Light Condensed,Regular";
+        font =
+          "Helvetica Neue LT Std,HelveticaNeueLT Std Lt Cn:style=47 Light Condensed,Regular";
         line_height = 0;
         markup = "full";
-        format = "<b>%s</b>\n%b";
+        format = ''
+          <b>%s</b>
+          %b'';
         alignment = "center";
         show_age_threshold = 60;
         word_wrap = true;
@@ -40,9 +43,7 @@
         startup_notification = false;
         force_xinerama = false;
       };
-      experimental = {
-        per_monitor_dpi = false;
-      };
+      experimental = { per_monitor_dpi = false; };
       shortcuts = {
         close = "ctrl+space";
         close_all = "ctrl+shift+space";

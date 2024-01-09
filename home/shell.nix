@@ -1,8 +1,4 @@
-{
-  pkgs,
-  config,
-  ...
-}: {
+{ pkgs, config, ... }: {
   home.packages = with pkgs; [
     zsh
     btop
@@ -41,7 +37,7 @@
     btop = {
       enable = true;
       settings = {
-        color_theme = "nord"; ## TODO:: Make Oxocarbon btop Theme
+        color_theme = "nord"; # # TODO:: Make Oxocarbon btop Theme
         theme_background = true;
         truecolor = true;
         vim_keys = true;
@@ -78,9 +74,7 @@
       configFile.source = ./nushell/config.nu;
       envFile.source = ./nushell/env.nu;
       extraConfig =
-        /*
-        nu
-        */
+        # nu
         ''
             $env.config = ($env.config | merge {
               edit_mode: vi

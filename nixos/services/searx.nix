@@ -1,10 +1,6 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
-  sops.secrets.searx_keys = {};
-  users.users.${config.services.nginx.user}.extraGroups = ["searx"];
+{ config, pkgs, ... }: {
+  sops.secrets.searx_keys = { };
+  users.users.${config.services.nginx.user}.extraGroups = [ "searx" ];
   services.searx = {
     enable = true;
     package = pkgs.searxng;
@@ -21,10 +17,7 @@
         secret_key = "@SEARXNG_SECRET@";
         base_url = "https://search.compacthermit.dev";
       };
-      search.formats = [
-        "html"
-        "json"
-      ];
+      search.formats = [ "html" "json" ];
 
       # TODO:: (Hermit) add Arxiv
       engines = [
@@ -59,11 +52,12 @@
         {
           name = "hoogle";
           engine = "xpath";
-          search_url = "https://hoogle.haskell.org/?hoogle={query}&start={pageno}";
-          results_xpath = "//div[@class=\"result\"]";
-          title_xpath = "./div[@class=\"ans\"]";
-          url_xpath = "./div[@class=\"ans\"]//a/@href";
-          content_xpath = "./div[contains(@class, \"doc\")]";
+          search_url =
+            "https://hoogle.haskell.org/?hoogle={query}&start={pageno}";
+          results_xpath = ''//div[@class="result"]'';
+          title_xpath = ''./div[@class="ans"]'';
+          url_xpath = ''./div[@class="ans"]//a/@href'';
+          content_xpath = ''./div[contains(@class, "doc")]'';
           categories = "it";
           shortcut = "h";
         }

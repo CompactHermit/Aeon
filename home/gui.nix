@@ -1,8 +1,4 @@
-{
-  flake,
-  pkgs,
-  ...
-}: {
+{ flake, pkgs, ... }: {
   home.packages = with pkgs; [
     zeal
     # zotero # CVE 5217, apparently it uses firefox v60?? lmao
@@ -18,13 +14,9 @@
     enable = true;
     cycle = true;
   };
-  services.betterlockscreen = {
-    enable = true;
-  };
+  services.betterlockscreen = { enable = true; };
   xdg.configFile."rofi/config.rasi".text =
-    /*
-    rasi
-    */
+    # rasi
     ''
       /*****----- Configuration -----*****/
       configuration {

@@ -28,11 +28,6 @@ layout {
             command "btop"
         }
     }
-//    tab name="Ω" { 
-//        pane name=" :: Cmus " {
-//            command "cmus"
-//        }
-//    }
     tab name=""{
         pane name=" ::Mail"{
         }

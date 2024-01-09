@@ -1,5 +1,5 @@
-{config, ...}: {
-  sops.secrets."Vaultwarden" = {};
+{ config, ... }: {
+  sops.secrets."Vaultwarden" = { };
 
   systemd.services.backup-vaultwarden.serviceConfig = {
     User = "root";

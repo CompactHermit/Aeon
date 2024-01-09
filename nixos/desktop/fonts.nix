@@ -1,8 +1,4 @@
-{
-  self,
-  pkgs,
-  ...
-}: {
+{ self, pkgs, ... }: {
   fonts = {
     enableDefaultPackages = true;
     fontconfig = {
@@ -16,20 +12,11 @@
           "Noto Color Emoji"
         ];
 
-        sansSerif = [
-          "Lexend"
-          "Noto Color Emoji"
-          "VictorMono Nerd Font"
-        ];
+        sansSerif = [ "Lexend" "Noto Color Emoji" "VictorMono Nerd Font" ];
 
-        serif = [
-          "Noto Serif"
-          "Noto Color Emoji"
-        ];
+        serif = [ "Noto Serif" "Noto Color Emoji" ];
 
-        emoji = [
-          "Noto Color Emoji"
-        ];
+        emoji = [ "Noto Color Emoji" ];
       };
     };
     # TODO:: Use ICOMOON to add custom Fonts for Kitty's fallback feature

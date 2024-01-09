@@ -1,4 +1,4 @@
-{flake, ...}: {
+{ flake, ... }: {
   gtk = {
     enable = true;
     font.name = "VictorMono Nerd Font";
@@ -10,9 +10,7 @@
 
   # gtk 4 themes suck
   xdg.configFile."gtk-4.0/gtk.css".text =
-    /*
-    css
-    */
+    # css
     ''
       @define-color surface-strongest rgb(10, 10, 10);
       @define-color surface-strong rgb(20, 20, 20);

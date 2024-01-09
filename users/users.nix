@@ -1,12 +1,9 @@
-{lib, ...}: let
+{ lib, ... }:
+let
   userSubmodule = lib.types.submodule {
     options = {
-      name = lib.mkOption {
-        type = lib.types.str;
-      };
-      email = lib.mkOption {
-        type = lib.types.str;
-      };
+      name = lib.mkOption { type = lib.types.str; };
+      email = lib.mkOption { type = lib.types.str; };
       sshKeys = lib.mkOption {
         type = lib.types.listOf lib.types.str;
         description = ''
@@ -38,7 +35,5 @@ in {
       };
     };
   };
-  config = {
-    people = import ./config.nix;
-  };
+  config = { people = import ./config.nix; };
 }

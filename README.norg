@@ -8,7 +8,7 @@ categories: [
     Seek Therapy
 ]
 created: 2023-10-31T18:18:33-0500
-updated: 2023-12-24T20:46:24-0500
+updated: 2024-01-26T20:32:46-0500
 version: 1.1.1
 @end
 
@@ -19,17 +19,27 @@ version: 1.1.1
 *** {/ ./nixos/services/servers}[Servers]
 
 ** Machines::
+   %Why Does Norg not have tables???? Dammit Vhyrro%
 *** Genghis::
-    > FrameWork Laptop::
+    > FrameWork 13 AMD Ryzen 5::
 
 *** Siegfried::
-    > Hopefully future hetzner VPS which I'll migrate all my services to. %Eventually (._.)%::
+    > Future hetzner VPS. %Hopefully (._.)%::
 
 *** Alexander::
-    > Darwin Machine::
+    > Old M1's, essentially a website rotslave::
 
 *** Caesar::
-    > PinePhone Pro, Imperm
+    > PinePhone Pro, Impermed
 
 *** Tell::
-    > WSL Machine::
+    > ~WLS~ Glorified Docker Image::
+
+*** Gilgamesh::
+    > QNap NAS::
+      Hosts papers, pdfs, books, Notes, and makes them accesable via syncthing/nextcloud and over _Tailnet_.
+
+* TODOS::
+  #contexts someday
+  - (-) Remove and Rewrite `./nixos` and `./home` folders.
+  -- (!) Have all internal modules rely `Contracts`.

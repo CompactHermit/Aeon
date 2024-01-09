@@ -1,4 +1,4 @@
-{stdenv}:
+{ stdenv }:
 stdenv.mkDerivation {
   pname = "icomoon-glyphs";
   version = "0.0.1";

@@ -1,42 +1,35 @@
 {
   description = "Aeon:: The timeless Flake";
-  outputs = inputs @ {
-    self,
-    parts,
-    ...
-  }:
-    parts.lib.mkFlake {inherit inputs;} {
+  outputs = inputs@{ self, parts, ... }:
+    parts.lib.mkFlake { inherit inputs; } {
       debug = true;
-
-      systems = [
-        "x86_64-linux"
-        "aarch64-linux"
-      ];
-
+      herculesCI.ciSystems = [ "x86_64-linux" "aarch64-linux" ];
+      systems = [ "x86_64-linux" "aarch64-linux" ];
       imports = with inputs;
         [
           nixos-flake.flakeModule
           treefmt.flakeModule
           pch.flakeModule
           hci.flakeModule
-        ]
-        ++ [
-          #./machines/Ragnarok #ISO, a bit broken RN but it's all g
-          ./checks #PCH/TREEFMT
+        ] ++ [
+          ./checks # PCH/TREEFMT
           ./users # Config Dir ++ Libs
-          ./home #HM Garbage
-          ./nixos #NixOS Modules
-          #./scripts # MC / ISO flashing // TODO:: Use Justfiles with custom shellscripts, ya MONKEY!!
+          ./home # HM Garbage
+          ./nixos # NixOS Modules
+          # ./parts/scripts # MC / ISO flashing // TODO:: Use Justfiles with custom shellscripts, ya MONKEY!!
+          #./machines/Ragnarok #ISO, a bit broken RN but it's all g
         ];
-
       flake = {
-        lib = import ./contracts/default.nix {inherit (inputs.nixpkgs) lib;}; # NOTE:: (Hermit) Flake.lib is out of scope. Pass it in as a specialArg
+        contracts = import ./contracts {
+          inherit (inputs.nixpkgs) lib;
+          inherit self;
+        };
         nixosConfigurations = {
           # Work Machine
           Kepler = self.nixos-flake.lib.mkLinuxSystem {
             nixpkgs.hostPlatform = "x86_64-linux";
             imports = [
-              ./machines/Genghis
+              ./machines/_3Genghis
               self.nixosModules.xmonad
               self.nixosModules.system
             ];
@@ -45,30 +38,21 @@
           # Home-Server
           Copernicus = self.nixos-flake.lib.mkLinuxSystem {
             nixpkgs.hostPlatform = "x86_64-linux";
-            imports = [
-              ./machines/Siegfried
-            ];
+            imports = [ ./machines/Siegfried ];
           };
 
           # PinePhone::
           Dirac = self.nixos-flake.lib.mkLinuxSystem {
             nixpkgs.hostPlatform = "x86_64-linux";
-            imports = [
-              ./machines/Caesar
-              self.nixosModules.mobile
-            ];
+            imports = [ ./machines/Caesar self.nixosModules.mobile ];
           };
 
           # WSL::
           Schrodinger = self.nixos-flake.lib.mkLinuxSystem {
             nixpkgs.hostPlatform = "x86_64-linux";
-            imports = [
-              ./machines/Tell
-              self.nixosModules.wsl
-            ];
+            imports = [ ./machines/Tell self.nixosModules.wsl ];
           };
         };
-
         darwinConfigurations = {
           Nikola = self.nixos-flake.lib.mkMacosSystem {
             nixpkgs.hostPlatform = "aarch64-darwin";
@@ -80,15 +64,8 @@
         };
       };
 
-      perSystem = {
-        self',
-        pkgs,
-        config,
-        ...
-      }: {
-        packages = {
-          default = self'.packages.activate;
-        };
+      perSystem = { self', pkgs, config, ... }: {
+        packages = { default = self'.packages.activate; };
         devShells = {
           default = pkgs.mkShell {
             name = "Lazy ISO Flashing";
@@ -96,7 +73,7 @@
               treefmt.build.devShell
               pre-commit.devShell
             ];
-            packages = with pkgs; [just gum];
+            packages = with pkgs; [ just gum nixfmt ];
           };
         };
       };
@@ -113,7 +90,6 @@
     # @ System
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware";
-    #nur.url = "github:nix-community/NUR";
     firefoxAddons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -126,15 +102,8 @@
       url = "github:nix-community/NixOS-WSL";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    home-manager-wsl = {
-      url = "github:viperML/home-manager-wsl";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
-    };
     impermanence.url = "github:nix-community/impermanence";
-    lanzaboote = {
-      url = "github:nix-community/lanzaboote/v0.3.0";
-    };
+    lanzaboote = { url = "github:nix-community/lanzaboote/v0.3.0"; };
     flake-registry = {
       url = "github:NixOS/flake-registry";
       flake = false;
@@ -161,7 +130,6 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nuenv.url = "github:DeterminateSystems/nuenv";
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -171,13 +139,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     sops-nix.url = "github:Mic92/sops-nix";
-    schizofox = {
-      url = "github:schizofox/schizofox";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    #nixci.url = "github:srid/nixci";
+    # schizofox = {
+    #   url = "github:schizofox/schizofox";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+    # For headscale ui
+    nyxpkgs.url = "github:notashelf/nyxpkgs";
     attic = {
-      url = "github:zhaofengli/attic";
+      # url = "github:zhaofengli/attic";
+      url = "github:JRMurr/attic/fix-lint"; # temporary
       inputs.nixpkgs.follows = "nixpkgs";
     };
     yazi = {
@@ -210,11 +180,11 @@
     aagl.url = "github:ezKEa/aagl-gtk-on-nix";
 
     # @Android Development::
-    android-nixpkgs.url = "github:tadfisher/android-nixpkgs/canary";
+    #android-nixpkgs.url = "github:tadfisher/android-nixpkgs/canary";
 
     # @Emcas:: My Beloved
-    emacs-overlay.url = "github:nix-community/emacs-overlay";
-    nix-doom.url = "github:nix-community/nix-doom-emacs";
+    #emacs-overlay.url = "github:nix-community/emacs-overlay";
+    #nix-doom.url = "github:nix-community/nix-doom-emacs";
 
     # @Neovim::
     nyoom = {

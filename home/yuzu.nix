@@ -1,7 +1,1 @@
-{
-  pkgs,
-  config,
-  ...
-}: {
-  home.packages = [pkgs.yuzu-mainline];
-}
+{ pkgs, config, ... }: { home.packages = [ pkgs.yuzu-mainline ]; }

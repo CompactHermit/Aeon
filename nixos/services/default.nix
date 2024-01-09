@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   #will use gate later
   imports = [
     #./hydra.nix
@@ -18,6 +18,7 @@
     ./spicetify.nix
     ./nextcloud.nix
     ./headscale.nix
+    ./shiori.nix
     #./fail2ban.nix
   ];
   #++ [./monitoring];
@@ -27,7 +28,7 @@
     tor.enable = true;
     tor.client.enable = true;
     printing.enable = true;
-    printing.drivers = [pkgs.hplip];
+    printing.drivers = [ pkgs.hplip ];
     greenclip.enable = true;
     udisks2.enable = true;
   };

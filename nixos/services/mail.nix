@@ -1,35 +1,26 @@
-{
-  config,
-  flake,
-  lib,
-  pkgs,
-  ...
-}: let
+{ config, flake, lib, pkgs, ... }:
+let
   cfgs = config.services;
   cfgp = config.sops.secrets;
 in {
-  imports = [
-    flake.inputs.mailserver.nixosModules.mailserver
-  ];
+  imports = [ flake.inputs.mailserver.nixosModules.mailserver ];
   sops.secrets = {
-    "ch_mail_admin" = {};
-    "ch_mail_pass" = {};
-    "ch_ms_matrix" = {};
-    "ch_ms_vault" = {};
+    "ch_mail_admin" = { };
+    "ch_mail_pass" = { };
+    "ch_ms_matrix" = { };
+    "ch_ms_vault" = { };
   };
   mailserver = {
     enable = true;
     fqdn = "mail.compacthermit.dev";
-    domains = ["compacthermit.dev"];
+    domains = [ "compacthermit.dev" ];
     lmtpSaveToDetailMailbox = "no";
     recipientDelimiter = "+-";
     fullTextSearch = {
       enable = true;
       autoIndex = true;
       indexAttachments = true;
-      /*
-      * Only works for plain text, weird
-      */
+      # * Only works for plain text, weird
       enforced = "body";
     };
     mailboxes = {
@@ -55,9 +46,7 @@ in {
       };
     };
     loginAccounts = {
-      /*
-      * Admin
-      */
+      # * Admin
       "ragnarok@compacthermit.dev" = {
         hashedPasswordFile = cfgp.ch_mail_admin.path;
         aliases = [
@@ -71,28 +60,24 @@ in {
       };
 
       "genghis@compacthermit.dev" = {
-        aliases = ["genghis"];
+        aliases = [ "genghis" ];
         hashedPasswordFile = cfgp.ch_mail_pass.path;
       };
 
-      /*
-      * Needed for creating vaultwarden accounts
-      */
+      # * Needed for creating vaultwarden accounts
       "vaultwarden@compacthermit.dev" = lib.mkIf cfgs.vaultwarden.enable {
-        aliases = ["vaultwarden" "vault"];
+        aliases = [ "vaultwarden" "vault" ];
         hashedPasswordFile = cfgp.ch_ms_vault.path;
       };
 
       # TODO:: (Hermit) Add conduit
-      /*
-      * Needed for creating matrix accounts
-      */
+      # * Needed for creating matrix accounts
       # "matrix@compacthermit.dev" = lib.mkIf cfgs.matrix.enable {
       #   aliases = ["matrix"];
       #   hashedPasswordFile = cfgp.ch_ms_matrix.path;
       #   };
     };
-    certificateScheme = "manual"; #Manual:: We to add a custom pem file
+    certificateScheme = "manual"; # Manual:: We to add a custom pem file
     keyFile = cfgp.ch_ssl_key.path;
     certificateFile = cfgp.ch_ssl_cert.path;
   };
@@ -104,7 +89,7 @@ in {
       enable = true;
       database.username = "roundcube";
       maxAttachmentSize = 50;
-      dicts = with pkgs.aspellDicts; [en de];
+      dicts = with pkgs.aspellDicts; [ en de ];
       hostName = "webmail.compacthermit.dev";
       extraConfig = ''
         $config['imap_host'] = array(
@@ -125,9 +110,7 @@ in {
       '';
     };
 
-    /*
-    * For blocklisting mails
-    */
+    # * For blocklisting mails
     postfix = {
       dnsBlacklists = [
         "all.s5h.net"
@@ -141,15 +124,11 @@ in {
         127.0.0.0/8 OK
         192.168.0.0/16 OK
       '';
-      headerChecks = [
-        {
-          action = "IGNORE";
-          pattern = "/^User-Agent.*Roundcube Webmail/";
-        }
-      ];
-      config = {
-        smtp_helo_name = config.mailserver.fqdn;
-      };
+      headerChecks = [{
+        action = "IGNORE";
+        pattern = "/^User-Agent.*Roundcube Webmail/";
+      }];
+      config = { smtp_helo_name = config.mailserver.fqdn; };
     };
 
     phpfpm.pools.roundcube.settings = {

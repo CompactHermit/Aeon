@@ -507,11 +507,9 @@ flexFloatSSSP dx dy = customFloating (flexSSScratchpadSize dx dy)
 flexFloatBSP dx dy = customFloating (flexScratchpadSize dx dy)
 
 
--- TODO:: make repl designed with a function::
-    --takes some list [xs] and foldr the name into boilerplate
+--NOTE::(Hermit) Use a fucking MAP!!!!
 scratchpads =
-  [ NS "conky"   spawnConky findConky manageConky
-  , NS "pavuControl"   spawnPavu findPavu managePavu
+  [ NS "pavuControl"   spawnPavu findPavu managePavu
   , NS "term0"  (myTerminal ++ " --title term") (title =? "term") (flexFloatBSP (1/20) (1/20))
   , NS "term1" (myTerminal ++ " --title term1  -e nu") (title =? "term1") (flexFloatBSP (2/20) (2/20))
   , NS "term2" (myTerminal ++ " --title term2 -e nu") (title =? "term2") (flexFloatBSP (3/20) (3/20))
@@ -525,13 +523,11 @@ scratchpads =
   , NS "nix"  (myTerminal ++ " --title nix_repl -e nix repl --file '<nixpkgs>'") (title =? "nix_repl") (flexFloatBSP (6/20) (1/10))
   , NS "btop"   (myTerminal ++ " -e btop") (title =? "btop") (flexFloatSSP (1/4) (1/4))
   , NS "alsaMixer"  (myTerminal ++ " -e alsamixer -t alsamixer") (title =? "alsamixer") (flexFloatSSSP (1/4) (1/4))
+  , NS "Sketchpad" ("brave --class=Sketchpad --user-data-dir=/tmp/brave-scratch --app=https://excalidraw.com") (className =? "brave") (customFloating $ W.RationalRect (1 / 10) (1 / 10) (2 / 5) (2 / 5))
   ]
   where
-    spawnConky  = "conky -c ~/.config/conky/Erics.conkyrc" -- launch conky:: TODO:: Make Hydra mode for this
-    findConky   = title =? "system_conky"   -- its window,  has a own_window_title of "system_conky"
-    manageConky = (flexFloatSSP (1/4) (1/4))
     spawnPavu  = "pavucontrol"
-    findPavu   = title =? "pavucontrol"
+    findPavu   = (className =? "pavucontrol")
     managePavu = (flexFloatSSP (1/4) (1/4))
 
 -- Scratchpad invocation / Dismissal
@@ -681,9 +677,9 @@ gsUtilities =
 -- This is how to make a runSelectedAction grid select menu.
 -- A grid select for scratchpads.
 myScratchpadMenu =
-  [ ("Conky", (scratchToggle "conky"))
-  , ("Volume",(scratchToggle "pavuControl"))
+  [ ("Volume",(scratchToggle "pavuControl"))
   , ("Music mixer", (scratchToggle "alsaMixer"))
+  , ("Sketchpad",   (scratchToggle "Sketchpad"))
   , ("GHCI",  (scratchToggle "ghci"))
   , ("Top",   (scratchToggle "btop"))
   , ("evcxr",   (scratchToggle "evcxr"))
@@ -712,7 +708,7 @@ namedScratchpadsKeymap = -- Scratch Pads
     , ("j", scratchToggle "julia") -- Julia Repl
     , ("k", scratchToggle "nickel") -- Julia Repl
     , ("n", scratchToggle "nix") -- Nix Repl
-    , ("C", scratchToggle "conky") -- Conky
+    , ("S", scratchToggle "Sketchpad") -- Excalidraw
     , ("v", scratchToggle "pavuControl") -- Pavu Control
     , ("m", scratchToggle "alsaMixer") -- Pavu Control
     , ("t", scratchToggle "top") -- htop

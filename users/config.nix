@@ -1,4 +1,4 @@
-{...}: {
+{ ... }: {
   myself = "CompactHermit";
   users = {
     CompactHermit = {
