@@ -4,7 +4,7 @@
       allowBroken = false;
       allowUnsupportedSystem = true;
       allowUnfree = true;
-      permittedInsecurePackages = [ "zotero-6.0.27" ];
+      permittedInsecurePackages = [ "freeimage-unstable-2021-11-01" ];
     };
     overlays = [
       flake.inputs.firefox-nightly.overlays.firefox
@@ -19,7 +19,7 @@
   };
 
   nix = {
-    package = pkgs.nixUnstable;
+    package = pkgs.nixVersions.git;
     nixPath = [
       "nixpkgs=${flake.inputs.nixpkgs}"
     ]; # Enables use of `nix-shell -p ...` etc
@@ -28,12 +28,9 @@
     gc.automatic = true;
     optimise.automatic = true;
     settings = {
-      experimental-features =
-        [ "nix-command" "flakes" "repl-flake" "auto-allocate-uids" ];
-      # Nullify the registry for purity.
+      experimental-features = [ "nix-command" "flakes" "auto-allocate-uids" ];
       flake-registry = builtins.toFile "empty-flake-registry.json"
         ''{"flakes":[],"version":2}'';
-      # netrc-file = /home/${flake.config.people.myself}/.netrc;
       system-features = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
       auto-allocate-uids = true;
       sandbox = true;

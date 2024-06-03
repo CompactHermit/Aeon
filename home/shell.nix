@@ -8,7 +8,9 @@
     xdotool
     gh
     age
+    glow
     himalaya
+    hexyl
     sops
     playerctl
     bitwarden-cli
@@ -18,16 +20,14 @@
     zoxide
     nushell
     lm_sensors
-    tree-sitter
     hyperfine
-    ttags
     starship
     carapace
     fish # Nushell Kinda needs this  (╯°□°)╯︵ ┻━┻.
   ];
 
+  home.file.".cache/atuin/init.nu" = { source = ./nushell/atuin.nu; };
   programs = {
-    # Don't really use it, but whatever
     direnv = {
       enable = true;
       nix-direnv.enable = true;
@@ -45,9 +45,8 @@
     };
     atuin = {
       enable = true;
-      enableNushellIntegration = true;
+      enableNushellIntegration = false;
     };
-
     zoxide = {
       enable = true;
       enableNushellIntegration = true;
@@ -58,17 +57,11 @@
       enableNushellIntegration = true;
       settings = builtins.fromTOML (builtins.readFile ./starship.toml);
     };
-
     carapace = {
       enable = true;
       enableNushellIntegration = true;
       enableFishIntegration = true;
     };
-
-    # himalaya = {
-    #   enable = true;
-    # };
-
     nushell = {
       enable = true;
       configFile.source = ./nushell/config.nu;
@@ -81,13 +74,13 @@
               show_banner: false
             });
 
-            register ${pkgs.nushellPlugins.query}/bin/nu_plugin_query
+            # plugin use ${pkgs.nushellPlugins.query}/bin/nu_plugin_query
 
           # maybe useful functions
           # use ${pkgs.nu_scripts}/share/nu_scripts/modules/formats/to-number-format.nu *
           # use ${pkgs.nu_scripts}/share/nu_scripts/sourced/api_wrappers/wolframalpha.nu *
           # use ${pkgs.nu_scripts}/share/nu_scripts/modules/background_task/job.nu *
-          # use ${pkgs.nu_scripts}/share/nu_scripts/modules/network/ssh.nu *
+           # use ${pkgs.nu_scripts}/share/nu_scripts/modules/network/ssh.nu *
 
           # completions
           use ${pkgs.nu_scripts}/share/nu_scripts/custom-completions/git/git-completions.nu *

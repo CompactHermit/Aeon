@@ -4,7 +4,7 @@ default:
 
 # just rs
 rebuild-switch:
-	sudo nixos-rebuild --impure switch --flake .#"$(gum choose --header "Choose a configuration" --header.foreground "620" "Kepler" "Copernicus" "Schrodinger")" -L
+	nixos-rebuild --verbose --impure switch --flake .#"$(gum choose --header "Choose a configuration" --header.foreground "620" "Kepler" "Copernicus" "Dirac"" "Schrodinger" ")" -L --use-remote-sudo
 
 #flashing
 
@@ -13,5 +13,3 @@ rebuild-switch:
 ##### Aliases ####
 # Rebuilds
 alias rs := rebuild-switch
-
-# vim: ft=make

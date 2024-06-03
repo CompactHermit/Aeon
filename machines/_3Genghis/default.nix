@@ -14,7 +14,7 @@
 
   services = {
     fwupd.enable = true;
-    fprintd.enable = true;
+    # fprintd.enable = true;
     openssh.enable = true;
     #power-profiles-daemon.enable = true;
   };

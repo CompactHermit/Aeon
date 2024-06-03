@@ -38,19 +38,19 @@
           # Home-Server
           Copernicus = self.nixos-flake.lib.mkLinuxSystem {
             nixpkgs.hostPlatform = "x86_64-linux";
-            imports = [ ./machines/Siegfried ];
+            imports = [ ./machines/_6Siegfried ];
           };
 
-          # PinePhone::
+          # PinePhonePro::
           Dirac = self.nixos-flake.lib.mkLinuxSystem {
             nixpkgs.hostPlatform = "x86_64-linux";
-            imports = [ ./machines/Caesar self.nixosModules.mobile ];
+            imports = [ ./machines/_2Caesar self.nixosModules.mobile ];
           };
 
           # WSL::
           Schrodinger = self.nixos-flake.lib.mkLinuxSystem {
             nixpkgs.hostPlatform = "x86_64-linux";
-            imports = [ ./machines/Tell self.nixosModules.wsl ];
+            imports = [ ./machines/_7Tell self.nixosModules.wsl ];
           };
         };
         darwinConfigurations = {
@@ -78,14 +78,11 @@
         };
       };
     };
-  # nixConfig = {
-  #   extra-substituters = [
-  #     "https://ezkea.cachix.org"
-  #   ];
-  #   extra-trusted-public-keys = [
-  #     "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-  #   ];
-  # };
+  nixConfig = {
+    extra-substituters = [ "https://ezkea.cachix.org" ];
+    extra-trusted-public-keys =
+      [ "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=" ];
+  };
   inputs = {
     # @ System
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -104,8 +101,18 @@
     };
     impermanence.url = "github:nix-community/impermanence";
     lanzaboote = { url = "github:nix-community/lanzaboote/v0.3.0"; };
+    # dwarffs.url = "https://github.com/edolstra/dwarffs";
     flake-registry = {
       url = "github:NixOS/flake-registry";
+      flake = false;
+    };
+    #for Pinephonepro Keyboard firmware
+    mobile-nixos = {
+      url = "github:NixOS/mobile-nixos/development";
+      flake = false;
+    };
+    ppkb-fix = {
+      url = "git+https://codeberg.org/aLilyBit/ppkb-layouts";
       flake = false;
     };
 
@@ -139,15 +146,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     sops-nix.url = "github:Mic92/sops-nix";
-    # schizofox = {
-    #   url = "github:schizofox/schizofox";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
     # For headscale ui
     nyxpkgs.url = "github:notashelf/nyxpkgs";
     attic = {
-      # url = "github:zhaofengli/attic";
-      url = "github:JRMurr/attic/fix-lint"; # temporary
+      url = "github:zhaofengli/attic";
+      #url = "github:JRMurr/attic/fix-lint"; # temporary
       inputs.nixpkgs.follows = "nixpkgs";
     };
     yazi = {
@@ -175,6 +178,7 @@
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    picom.url = "github:FT-Labs/picom";
     taffybar.url = "github:taffybar/taffybar";
     oxocarbon-gtk.url = "git+file:/home/CompactHermit/Dotfiles/oxocarbon-gtk";
     aagl.url = "github:ezKEa/aagl-gtk-on-nix";
@@ -182,14 +186,10 @@
     # @Android Development::
     #android-nixpkgs.url = "github:tadfisher/android-nixpkgs/canary";
 
-    # @Emcas:: My Beloved
-    #emacs-overlay.url = "github:nix-community/emacs-overlay";
-    #nix-doom.url = "github:nix-community/nix-doom-emacs";
-
-    # @Neovim::
-    nyoom = {
-      url = "github:CompactHermit/nyoom.nvim/nightly";
-      inputs.nixpkgs.follows = "nixpkgs";
+    # @Nightly Sources::
+    carapace = {
+      url = "github:carapace-sh/carapace-bin/";
+      flake = false;
     };
   };
 }

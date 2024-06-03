@@ -73,7 +73,6 @@
       #Nix-related
       nix-serve
       nixpkgs-review
-      nil
 
       libusb1
 

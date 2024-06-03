@@ -4,7 +4,7 @@
     package = pkgs.shiori.overrideAttrs (_: {
       patches = [
         # Thanks mic92. very cool
-        ../../contracts/Entities/0001-set-saner-postgresql-connection-default-and-make-use.patch
+        ../../contracts/_3Entities/0001-set-saner-postgresql-connection-default-and-make-use.patch
       ];
     });
     port = 4378;

@@ -26,7 +26,7 @@
           dbus-glib
           dbus
           fontconfig
-          freetype
+          #freetype
           gdk-pixbuf
           glib
           glibc

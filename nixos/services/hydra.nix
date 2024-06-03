@@ -1,11 +1,15 @@
 { ... }: {
   services.hydra = {
     enable = true;
-    hydraURL = "http://localhost:3000"; # externally visible URL
-    notificationSender = "hydra@localhost"; # e-mail of hydra service
-    # a standalone hydra will require you to unset the buildMachinesFiles list to avoid using a nonexistant /etc/nix/machines
+    notificationSender = "hydra@localhost";
     buildMachinesFiles = [ ];
-    # you will probably also want, otherwise *everything* will be built from scratch
+    hydraURL = "http://localhost:3000"; # externally visible URL
+    #buildMachinesFiles = [ "/etc/nix/hydra-machines" ];
     useSubstitutes = true;
+    # extraEnv = {
+    #   AWS_SHARED_CREDENTIALS_FILE = config.age.secrets.hydraS3.path;
+    #   PGPASSFILE =
+    #     config.age.secrets."hydra-database-credentials-for-hydra".path;
+    # };
   };
 }

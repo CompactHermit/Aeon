@@ -1,7 +1,7 @@
 { pkgs, ... }: {
   #will use gate later
   imports = [
-    #./hydra.nix
+    ./hydra.nix
     #./mail.nix #TODO:: (Hermit) Setup reverse DNS
     ./kmonad.nix
     ./monitors.nix
@@ -19,6 +19,7 @@
     ./nextcloud.nix
     ./headscale.nix
     ./shiori.nix
+    #./garage.nix
     #./fail2ban.nix
   ];
   #++ [./monitoring];

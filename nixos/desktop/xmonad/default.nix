@@ -18,8 +18,9 @@ in {
     displayManager.defaultSession = "none+xmonad";
     windowManager.xmonad = {
       enable = true;
-      haskellPackages = pkgs.haskellPackages.extend
-        (import "${myXmonadProject}/overlay.nix" { inherit pkgs; });
+      # haskellPackages = pkgs.haskellPackages.extend
+      #   (import "${myXmonadProject}/overlay.nix" { inherit pkgs; });
+      enableContribAndExtras = true;
       extraPackages = hp: [ hp.xmonad-contrib hp.xmonad-extras hp.xmonad-dbus ];
       config = pkgs.lib.readFile "${myXmonadProject}/xmonad.hs";
     };

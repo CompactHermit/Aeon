@@ -14,7 +14,6 @@
           ./kitty.nix
           ./gtk.nix
           #./persist.nix
-          ./yuzu.nix
           ./gui.nix
           ./firefox
         ];

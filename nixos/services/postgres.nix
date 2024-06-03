@@ -13,8 +13,10 @@
       "headscale"
       "atticd"
       "shiori"
+      "hydra"
     ];
 
+    #TODO (Hermit):: MapAtts this shit
     ensureUsers = [
       {
         name = "postgres";
@@ -28,6 +30,10 @@
       }
       {
         name = "gitea";
+        ensureDBOwnership = true;
+      }
+      {
+        name = "hydra";
         ensureDBOwnership = true;
       }
       {

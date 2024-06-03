@@ -7,13 +7,13 @@ categories: [
     Services
 ]
 created: 2023-12-09T13:37:24-0500
-updated: 2023-12-09T20:27:18-0500
+updated: 2024-04-19T22:50:25-0500
 version: 1.1.1
 @end
 
 * Service Notes::
 ** Tailscale::
-   |Custom Tailscale module -  SSH from anywhere::
+   > Custom Tailscale module -  SSH from anywhere::
 *** Module Design::
     Ultimately, tailscale is relatively easy to setup on nix, with the following {https://mynixos.com/search?q=tailscale}[options]
     @code nix
@@ -24,16 +24,16 @@ version: 1.1.1
     firewall.trustedInterfaces = ["tailscale0"];
     @end
     You'd then setup tailscale with nginx, and thats
-** HeadScale:: %No head?%
-   |Self-Hostable Tailscale Service::
+*** HeadScale:: %No head?%
+    > Self-Hostable Tailscale Service::
 ** Jellyfin::
-   |Binary Nix Cache::
+   > Binary Nix Cache::
 ** Atticd::
-   |Binary Nix Cache::
+   > Binary Nix Cache::
 ** Gitea::
-   |Host your own private git repo::
+   > Host your own private git repo::
 *** ForgeJo::
 ** Syncthing::
-   |File syncing::
+   > File syncing::
 ** Attic::
-   |Self-Hostable Binary Cache::
+   > Self-Hostable Binary Cache::

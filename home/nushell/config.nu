@@ -148,7 +148,7 @@ let theme = {
   shape_range: { fg: $stheme.yellow attr: b}
   shape_internalcall: { fg: $stheme.blue attr: b}
   shape_external: { fg: $stheme.blue attr: b}
-  shape_externalarg: $stheme.text 
+  shape_externalarg: $stheme.text
   shape_literal: $stheme.blue
   shape_operator: $stheme.yellow
   shape_signature: { fg: $stheme.green attr: b}
@@ -186,31 +186,31 @@ $env.config = {
 
     command_bar_text: '#C4C9C6'
     # command_bar: {fg: '#C4C9C6' bg: '#223311' }
-    
+
     status_bar_background: {fg: '#1D1F21' bg: '#C4C9C6' }
     # status_bar_text: {fg: '#C4C9C6' bg: '#223311' }
 
     highlight: {bg: 'yellow' fg: 'black' }
 
     status: {
-      # warn: {bg: 'yellow', fg: 'blue'} 
-      # error: {bg: 'yellow', fg: 'blue'} 
+      # warn: {bg: 'yellow', fg: 'blue'}
+      # error: {bg: 'yellow', fg: 'blue'}
       # info: {bg: 'yellow', fg: 'blue'}
     }
 
     try: {
-      # border_color: 'red' 
+      # border_color: 'red'
       # highlighted_color: 'blue'
 
       # reactive: false
     }
 
     table: {
-      split_line: '#404040' 
+      split_line: '#404040'
 
       cursor: true
 
-      line_index: true 
+      line_index: true
       line_shift: true
       line_head_top: true
       line_head_bottom: true
@@ -218,14 +218,14 @@ $env.config = {
       show_head: true
       show_index: true
 
-      # selected_cell: {fg: 'white', bg: '#777777'} 
-      # selected_row: {fg: 'yellow', bg: '#C1C2A3'} 
+      # selected_cell: {fg: 'white', bg: '#777777'}
+      # selected_row: {fg: 'yellow', bg: '#C1C2A3'}
       # selected_column: blue
 
-      # padding_column_right: 2 
+      # padding_column_right: 2
       # padding_column_left: 2
 
-      # padding_index_left: 2 
+      # padding_index_left: 2
       # padding_index_right: 1
     }
 
@@ -413,13 +413,13 @@ $env.config = {
       mode: [emacs, vi_normal, vi_insert] # Note: You can add the same keybinding to all modes by using a list
       event: { send: menuprevious }
     }
-    {
-      name: history_menu
-      modifier: control
-      keycode: char_r
-      mode: emacs
-      event: { send: menu name: history_menu }
-    }
+    # {
+    #   name: history_menu
+    #   modifier: control
+      # keycode: char_r
+    #   mode: emacs
+    #   event: { send: menu name: history_menu }
+    # }
     {
       name: next_page
       modifier: control
@@ -556,12 +556,23 @@ let multiple_completers = {|spans: list<string>|
     } | get -i $spans.0 | default $fish_completer | do $in $spans
 }
 
+def --env ya [...args] {
+	let tmp = (mktemp -t "yazi-cwd.XXXXX")
+	yazi ...$args --cwd-file $tmp
+	let cwd = (open $tmp)
+	if $cwd != "" and $cwd != $env.PWD {
+		cd $cwd
+	}
+	rm -fp $tmp
+}
+
 $env.config.completions.external = {
    enable: true
    max_results: 100
    completer: $multiple_completers
 }
 
+source /home/CompactHermit/.cache/atuin/init.nu
 # Aliases::
 alias ll = ls -l
 alias l = ls -l
@@ -572,4 +583,3 @@ alias nv = nvim
 alias alien = nix-alien
 alias nfb = nix-fast-build
 use ~/.config/nushell/nu-zellij
-

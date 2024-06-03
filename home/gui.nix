@@ -1,13 +1,17 @@
 { flake, pkgs, ... }: {
   home.packages = with pkgs; [
     zeal
-    # zotero # CVE 5217, apparently it uses firefox v60?? lmao
+    #  [Workspaces Are now private componenets, fml](https://github.com/NixOS/nixpkgs/pull/311924)
+    (pkgs.wrapFirefox (pkgs.floorp-unwrapped.overrideAttrs (old: {
+      configureFlags = (old.configureFlags or [ ])
+        ++ [ "--enable-private-components" ];
+    })) { })
     zathura
     discord
     webcord-vencord
     rofi
     dconf
-    zotero
+    zotero_7
     betterlockscreen
   ];
   programs.rofi = {

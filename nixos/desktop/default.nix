@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, flake, ... }: {
   # TODO:: (CH) <10/25> Somehow incorporate an option system
   imports = [
     ./xmonad
@@ -17,7 +17,6 @@
     alacritty
 
     tor-browser-bundle-bin
-    floorp
     inkscape
     mupdf
 

@@ -1,9 +1,21 @@
-{ flake, config, lib, ... }: {
+{
+  flake,
+  config,
+  lib,
+  ...
+}:
+{
   #TODO::(Hermit) Make Gen-Keys function
-  sops.secrets = lib.genAttrs [ "ch_ssl_key" "ch_ssl_cert" ] (_: {
-    owner = config.services.nginx.user;
-    inherit (config.services.nginx) group;
-  });
+  sops.secrets =
+    lib.genAttrs
+      [
+        "ch_ssl_key"
+        "ch_ssl_cert"
+      ]
+      (_: {
+        owner = config.services.nginx.user;
+        inherit (config.services.nginx) group;
+      });
   services.nginx = {
     enable = true;
     recommendedGzipSettings = true;
@@ -25,8 +37,7 @@
         forceSSL = true;
         sslCertificate = config.sops.secrets.ch_ssl_cert.path;
         sslCertificateKey = config.sops.secrets.ch_ssl_key.path;
-        locations."/".extraConfig =
-          "uwsgi_pass unix:${config.services.searx.uwsgiConfig.socket};";
+        locations."/".extraConfig = "uwsgi_pass unix:${config.services.searx.uwsgiConfig.socket};";
         extraConfig = "access_log off;";
       };
       "sync.compacthermit.dev" = {
@@ -49,8 +60,7 @@
         forceSSL = true;
         sslCertificate = config.sops.secrets.ch_ssl_cert.path;
         sslCertificateKey = config.sops.secrets.ch_ssl_key.path;
-        locations."/".proxyPass =
-          "http://unix:${config.services.gitea.settings.server.HTTP_ADDR}";
+        locations."/".proxyPass = "http://unix:${config.services.gitea.settings.server.HTTP_ADDR}";
       };
       "jelly.compacthermit.dev" = {
         forceSSL = true;
@@ -67,9 +77,7 @@
         sslCertificate = config.sops.secrets.ch_ssl_cert.path;
         sslCertificateKey = config.sops.secrets.ch_ssl_key.path;
         locations."/" = {
-          proxyPass = "http://127.0.0.1:${
-              toString config.services.vaultwarden.config.ROCKET_PORT
-            }";
+          proxyPass = "http://127.0.0.1:${toString config.services.vaultwarden.config.ROCKET_PORT}";
           extraConfig = "proxy_pass_header Authorization;";
         };
       };
@@ -92,7 +100,7 @@
         '';
         locations."/" = {
           recommendedProxySettings = true;
-          proxyPass = "http://127.0.0.1:8080";
+          proxyPass = "http://127.0.0.1:8081";
         };
       };
       "hs.compacthermit.dev" = {
@@ -101,15 +109,14 @@
         sslCertificateKey = config.sops.secrets.ch_ssl_key.path;
         locations = {
           "/" = {
-            proxyPass =
-              "http://localhost:${toString config.services.headscale.port}";
+            proxyPass = "http://localhost:${toString config.services.headscale.port}";
             proxyWebsockets = true;
           };
-          "/web" = {
-            root = "${
-                flake.inputs.nyxpkgs.packages."x86_64-linux".headscale-ui
-              }/share";
-          };
+          # "/web" = {
+          #   root = "${
+          #       flake.inputs.nyxpkgs.packages."x86_64-linux".headscale-ui
+          #     }/share";
+          # };
         };
       };
       "drone.compacthermit.dev" = {

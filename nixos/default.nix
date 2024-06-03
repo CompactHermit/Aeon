@@ -31,7 +31,7 @@
         ({ config, ... }: {
           sops = {
             defaultSopsFormat = "yaml";
-            defaultSopsFile = ../machines/Genghis/secrets.yaml;
+            defaultSopsFile = ../machines/_3Genghis/secrets.yaml;
             age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
             age.keyFile =
               "/home/CompactHermit/.config/sops/age/keys.txt"; # TODO:: Shift this over to /var/lib/sops bcs imperm
@@ -55,6 +55,8 @@
       ];
       wsl.imports =
         [ inputs.wsl.nixosModules.wsl self.nixosModules.shared ./wsl ];
+
+      mobile.imports = [ self.nixosModules.shared ./location.nix ];
     };
   };
 }

@@ -641,7 +641,7 @@ gsInternet =
   [ ("Brave", "brave")
   , ("Discord", "discord")
   , ("Element", "element-desktop")
-  , ("Librewolf", "Librewolf")
+  , ("floorp", "floorp")
   , ("Syncthing", "syncthing-gtk")
   , ("Qutebrowser", "qutebrowser")
   , ("Qbittorent", "qBittorent")
@@ -722,7 +722,7 @@ myScratchpadManageHook = namedScratchpadManageHook scratchpads
 --- grid select for some apps.
 myApps = [("Terminal",     (spawn     myTerminal))
 
-         ,("librewolf",      (runOrRaiseNext  "librewolf" (className =? "librewolf")))
+         ,("floorp",      (runOrRaiseNext  "floorp" (className =? "floorp")))
          -- ,("Firefox",      (raiseApp  "fox" "firefox"))
          -- ,("Chromium",     (raiseApp  "web" "chromium"))
 
@@ -1506,7 +1506,7 @@ ewwKeymap = -- Eww Controls
     ]
 -- Raise
 raiseKeymap = -- Raise
-    [ ("l",   runOrRaiseNext "librewolf" (className =? "LibreWolf")) -- Librewolf
+    [ ("l",   runOrRaiseNext "floorp" (className =? "floorp")) -- floorp
     , ("e",   raiseNext (className =? "Emacs")) -- Emacs cycle
     , ("s",   runOrRaise "Slack" (className =? "Slack")) -- Slack
     ]
@@ -1541,7 +1541,6 @@ mainKeymap c = mkKeymap c $ -- Main Keys
     , ("M4-S-<Backspace>", popOldestHiddenWindow) -- Unhide
     , ("M4-Insert",     pasteSelection) -- Paste selection
     , ("M4-<Space>",    sendMessage NextLayout) -- Next Layout
---    , ("M4-S-l",        myLayoutPrompt) -- Layout prompt
     , ("M4-j",          windows W.focusDown) --Focus Down
     , ("M4-k",          windows W.focusUp) --Focus Up
     , ("M4-S-j",        windows W.swapUp) -- Swap Up
