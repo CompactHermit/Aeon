@@ -10,6 +10,7 @@
       flake.inputs.firefox-nightly.overlays.firefox
       flake.inputs.attic.overlays.default
       flake.inputs.taffybar.overlay
+      flake.inputs.zellij.overlays.nightly
       #flake.inputs.emacs-overlay.overlays.default
       (import ../packages/overlay.nix {
         inherit flake;

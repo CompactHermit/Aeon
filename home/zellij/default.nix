@@ -1,7 +1,7 @@
-{ flake, ... }: {
+{ flake, pkgs, ... }: {
   programs.zellij = {
     enable = true;
-    package = flake.inputs.zellij.packages."x86_64-linux".zellij;
+    package = pkgs.zellij;
   };
 
   home.file.".config/zellij" = {

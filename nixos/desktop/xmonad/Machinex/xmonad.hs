@@ -515,7 +515,6 @@ scratchpads =
   , NS "term2" (myTerminal ++ " --title term2 -e nu") (title =? "term2") (flexFloatBSP (3/20) (3/20))
   , NS "term3" ("kitty --title term3 nu") (title =? "term3") (flexFloatBSP (4/20) (4/20))
   , NS "term4" (myTerminal ++ " --title term4") (title =? "term4") (flexFloatBSP (6/20) (4/20))
-  , NS "lf"  (myTerminal ++ " --title lf_ub -e lfub") (title =? "lf_ub") (flexFloatBSP (6/20) (1/10))
   , NS "ghci"  (myTerminal ++ " --title ghci -e ghci") (title =? "ghci") (flexFloatBSP (6/20) (1/10))
   , NS "evcxr"  (myTerminal ++ " --title evcxr -e evcxr") (title =? "evcxr") (flexFloatBSP (6/20) (1/10))
   , NS "nickel"  (myTerminal ++ " --title nickel_repl -e nickel repl") (title =? "nickel_repl") (flexFloatBSP (6/20) (1/10))
@@ -692,7 +691,6 @@ myScratchpadMenu =
   , ("e Term", (scratchToggle "term2"))
   , ("u Term", (scratchToggle "term3"))
   , ("h Term", (scratchToggle "term4"))
-  , ("lf", (scratchToggle "lf"))
   ]
 
 -- The scratch pad sub keymap
@@ -702,7 +700,6 @@ namedScratchpadsKeymap = -- Scratch Pads
     , ("e", scratchToggle "term2") -- Term2
     , ("u", scratchToggle "term3") -- Term3
     , ("h", scratchToggle "term4") -- Term4
-    , ("l", scratchToggle "lf") --   LF
     , ("g", scratchToggle "ghci") -- ghci Repl
     , ("r", scratchToggle "evcxr") -- Rust Repl
     , ("j", scratchToggle "julia") -- Julia Repl
@@ -1606,6 +1603,7 @@ mainKeymap c = mkKeymap c $ -- Main Keys
     , (f, mask) <- [(viewScreen def, ""), (sendToScreen def, "S-")]]
 --
 ------------------------------------------------------------------------
+
 
 myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList
   [

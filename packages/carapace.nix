@@ -2,7 +2,7 @@
 
 buildGoModule rec {
   pname = "carapace";
-  version = "1.0.1";
+  version = "";
   src = inputs.carapace;
   vendorHash = "sha256-HWczvkItE9SVGGQkddnb7/PBkTWrDAdKHjMOztlYV9M=";
   ldflags = [ "-s" "-w" "-X main.version=${version}" ];

@@ -1,7 +1,7 @@
 { pkgs, ... }:
 let
   floorp-nightly = pkgs.callPackage
-    ({ stdenv, lib, fetchFromGitHub, buildMozillaMach, nixosTests }:
+    ({ stdenv, lib, fetchFromGitHub, buildMozillaMach, nixosTests, }:
       ((buildMozillaMach rec {
         pname = "floorp";
         packageVersion = "11.9.0";
@@ -10,7 +10,6 @@ let
 
         # Must match the contents of `browser/config/version.txt` in the source tree
         version = "115.7.0";
-
         src = fetchFromGitHub {
           owner = "Floorp-Projects";
           repo = "Floorp";
@@ -20,7 +19,6 @@ let
             sha256-Mk/5bkaSLQYFFGhCSjVho8CUilZSYDGarnIt4Wg9/6g=
           '';
         };
-
         extraConfigureFlags = [
           "--with-app-name=${pname}"
           "--with-app-basename=${applicationName}"
@@ -29,7 +27,6 @@ let
           "--with-unsigned-addon-scopes=app,system"
           "--allow-addon-sideload"
         ];
-
         meta = {
           description =
             "A fork of Firefox, focused on keeping the Open, Private and Sustainable Web alive, built in Japan";
