@@ -19,11 +19,15 @@ in {
         pp = {
           description = "PPKB Layout (EN)";
           languages = [ "eng" ];
-          symbolsFile = "${flake.inputs.ppkb-fix}/xkb/pp";
+          symbolsFile = "${xkb-faker}/share/X11/xkb/symbols/pp";
         };
       };
       dir = "${xkb-faker}/etc/X11/xkb";
       layout = "pp";
     };
+  };
+  #https://github.com/NixOS/nixpkgs/pull/138207 works, IDK fml
+  environment.sessionVariables = {
+    XKB_CONFIG_ROOT = "${xkb-faker}/etc/X11/xkb";
   };
 }
