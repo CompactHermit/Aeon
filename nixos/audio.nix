@@ -1,5 +1,5 @@
-{ pkgs, ... }: {
-  sound.enable = true;
+{ pkgs, ... }:
+{
   security.rtkit.enable = true;
 
   services.pipewire = {

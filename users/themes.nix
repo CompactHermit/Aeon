@@ -1,1 +1,8 @@
-{ lib, ... }: let in { options = { theme.base16 = { }; }; }
+{ lib, ... }:
+let
+in
+{
+  options = {
+    theme.base16 = { };
+  };
+}

@@ -8,13 +8,23 @@ let
   domain = "cache.compacthermit.dev";
 in
 {
-  sops.secrets."attic_key" = { };
-  imports = [ flake.inputs.attic.nixosModules.atticd ];
+  sops = {
+    secrets."attic_key" = { };
+    templates."atticd.env" = {
+      owner = "atticd";
+      content = ''
+        ${config.sops.secrets.attic_key.path};
+      '';
+    };
+  };
+  #imports = [ flake.inputs.attic.nixosModules.atticd ];
 
-  environment.systemPackages = with flake.inputs.attic.packages."x86_64-linux"; [
-    attic
-    attic-client
-  ];
+  environment.systemPackages = builtins.attrValues {
+    inherit (flake.inputs.attic.packages."x86_64-linux")
+      attic
+      attic-client
+      ;
+  };
 
   networking.firewall.allowedTCPPorts = [ 8081 ];
   # Add user For service
@@ -31,10 +41,9 @@ in
   };
 
   services.atticd = {
-    enable = true;
-    credentialsFile = config.sops.secrets.attic_key.path;
     user = "atticd";
     group = "atticd";
+    environmentFile = config.sops.templates."attic_key".path;
     settings = {
       listen = "127.0.0.1:8081";
       #allowed-hosts = [ "${domain}" ];

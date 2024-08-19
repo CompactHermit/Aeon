@@ -1,4 +1,9 @@
-{ inputs, libclang, rustPlatform, ... }:
+{
+  inputs,
+  libclang,
+  rustPlatform,
+  ...
+}:
 # NOTE:: Find a way to sanitize lockfile generation
 rustPlatform.buildRustPackage {
   pname = "coogler";

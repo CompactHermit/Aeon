@@ -1,8 +1,15 @@
-{ config, flake, lib, pkgs, ... }:
+{
+  config,
+  flake,
+  lib,
+  pkgs,
+  ...
+}:
 let
   cfgs = config.services;
   cfgp = config.sops.secrets;
-in {
+in
+{
   imports = [ flake.inputs.mailserver.nixosModules.mailserver ];
   sops.secrets = {
     "ch_mail_admin" = { };
@@ -66,7 +73,10 @@ in {
 
       # * Needed for creating vaultwarden accounts
       "vaultwarden@compacthermit.dev" = lib.mkIf cfgs.vaultwarden.enable {
-        aliases = [ "vaultwarden" "vault" ];
+        aliases = [
+          "vaultwarden"
+          "vault"
+        ];
         hashedPasswordFile = cfgp.ch_ms_vault.path;
       };
 
@@ -89,7 +99,10 @@ in {
       enable = true;
       database.username = "roundcube";
       maxAttachmentSize = 50;
-      dicts = with pkgs.aspellDicts; [ en de ];
+      dicts = with pkgs.aspellDicts; [
+        en
+        de
+      ];
       hostName = "webmail.compacthermit.dev";
       extraConfig = ''
         $config['imap_host'] = array(
@@ -124,11 +137,15 @@ in {
         127.0.0.0/8 OK
         192.168.0.0/16 OK
       '';
-      headerChecks = [{
-        action = "IGNORE";
-        pattern = "/^User-Agent.*Roundcube Webmail/";
-      }];
-      config = { smtp_helo_name = config.mailserver.fqdn; };
+      headerChecks = [
+        {
+          action = "IGNORE";
+          pattern = "/^User-Agent.*Roundcube Webmail/";
+        }
+      ];
+      config = {
+        smtp_helo_name = config.mailserver.fqdn;
+      };
     };
 
     phpfpm.pools.roundcube.settings = {

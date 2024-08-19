@@ -1,11 +1,21 @@
-{ inputs, lib, buildGoModule, testers, carapace, }:
+{
+  inputs,
+  lib,
+  buildGoModule,
+  testers,
+  carapace,
+}:
 
 buildGoModule rec {
   pname = "carapace";
   version = "";
   src = inputs.carapace;
   vendorHash = "sha256-HWczvkItE9SVGGQkddnb7/PBkTWrDAdKHjMOztlYV9M=";
-  ldflags = [ "-s" "-w" "-X main.version=${version}" ];
+  ldflags = [
+    "-s"
+    "-w"
+    "-X main.version=${version}"
+  ];
   subPackages = [ "./cmd/carapace" ];
   tags = [ "release" ];
   preBuild = ''

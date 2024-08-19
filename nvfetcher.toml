@@ -1,0 +1,31 @@
+# [carapace]
+# fetch.src 
+
+[carapace] 
+fetch.github = "carapace-sh/carapace-bin"
+src.git = "https://github.com/carapace-sh/carapace-bin"
+
+[headscale-ui]
+fetch.github = "gurucomputing/headscale-ui"
+src.git = "https://github.com/gurucomputing/headscale-ui"
+
+[mobile-nixos]
+fetch.github = "NixOS/mobile-nixos"
+src.git = "https://github.com/NixOS/mobile-nixos"
+src.branch = "development"
+
+[infuse]
+src.git = "https://codeberg.org/amjoseph/infuse.nix"
+fetch.git = "https://codeberg.org/amjoseph/infuse.nix"
+
+[sixos]
+src.git = "https://codeberg.org/amjoseph/sixos"
+fetch.git = "https://codeberg.org/amjoseph/sixos"
+
+[snix-cache]
+src.git = "https://git.dgnum.eu/DGNum/snix-cache"
+fetch.git = "https://git.dgnum.eu/DGNum/snix-cache"
+
+[tmux-kitty]
+fetch.github = "jixiuf/tmux"
+src.git = "https://github.com/jixiuf/tmux"

@@ -1,0 +1,146 @@
+{
+    "carapace": {
+        "cargoLocks": null,
+        "date": "2025-04-12",
+        "extract": null,
+        "name": "carapace",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "carapace-sh",
+            "repo": "carapace-bin",
+            "rev": "1c34c1c619eee7b447f134e48d2db2d0c4d2beb3",
+            "sha256": "sha256-yUWhwQ4j3BXxo4YT2xSXaAUlV6W8GyhmVtH1L/KJuPY=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "1c34c1c619eee7b447f134e48d2db2d0c4d2beb3"
+    },
+    "headscale-ui": {
+        "cargoLocks": null,
+        "date": "2025-03-20",
+        "extract": null,
+        "name": "headscale-ui",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "gurucomputing",
+            "repo": "headscale-ui",
+            "rev": "84aec5f45a64d5537237f2fccdf86581df42726b",
+            "sha256": "sha256-dnh0OIsNIe7lHIR6T4TZKtzom3ZUoWTjRgq0pFpxRv8=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "84aec5f45a64d5537237f2fccdf86581df42726b"
+    },
+    "infuse": {
+        "cargoLocks": null,
+        "date": "2025-02-04",
+        "extract": null,
+        "name": "infuse",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "rev": "c8fb7397039215e1444c835e36a0da7dc3c743f8",
+            "sha256": "sha256-N+u3vnK3zyXLUuDj/vr62r9tM7uarhKVCaLHWxjo/YY=",
+            "sparseCheckout": [],
+            "type": "git",
+            "url": "https://codeberg.org/amjoseph/infuse.nix"
+        },
+        "version": "c8fb7397039215e1444c835e36a0da7dc3c743f8"
+    },
+    "mobile-nixos": {
+        "cargoLocks": null,
+        "date": "2025-04-04",
+        "extract": null,
+        "name": "mobile-nixos",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "NixOS",
+            "repo": "mobile-nixos",
+            "rev": "6679fd7a8dd4ccf4aa538b82216723861cfe61a2",
+            "sha256": "sha256-BedQ9Z3+nqtp9BRjHjJNPUeLIMVbTsP3Udbz0b1cUn0=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "6679fd7a8dd4ccf4aa538b82216723861cfe61a2"
+    },
+    "sixos": {
+        "cargoLocks": null,
+        "date": "2025-04-01",
+        "extract": null,
+        "name": "sixos",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "rev": "0936127f11698a00d72b13cf8521d9c43d6d371c",
+            "sha256": "sha256-Sn+IEto5iDncIkXpMEhmj/4/Sdx9/sRJSg18Axu435w=",
+            "sparseCheckout": [],
+            "type": "git",
+            "url": "https://codeberg.org/amjoseph/sixos"
+        },
+        "version": "0936127f11698a00d72b13cf8521d9c43d6d371c"
+    },
+    "snix-cache": {
+        "cargoLocks": null,
+        "date": "2025-04-02",
+        "extract": null,
+        "name": "snix-cache",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "rev": "8ad3b90a44ad82260a2e2c1874df95da76a9f3fa",
+            "sha256": "sha256-VYMOlZtJ9JsIEk1hPGmaRz40ht+TzcJmD+iEuK1cIwQ=",
+            "sparseCheckout": [],
+            "type": "git",
+            "url": "https://git.dgnum.eu/DGNum/snix-cache"
+        },
+        "version": "8ad3b90a44ad82260a2e2c1874df95da76a9f3fa"
+    },
+    "tmux-kitty": {
+        "cargoLocks": null,
+        "date": "2025-04-09",
+        "extract": null,
+        "name": "tmux-kitty",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "deepClone": false,
+            "fetchSubmodules": false,
+            "leaveDotGit": false,
+            "name": null,
+            "owner": "jixiuf",
+            "repo": "tmux",
+            "rev": "e6969ec4d8c12c76534cc801cea910b55f8eaadc",
+            "sha256": "sha256-t32ZiAJ1KsBwwsXFKji8RtKG+mm1WP/cQRcwPziqb5k=",
+            "sparseCheckout": [],
+            "type": "github"
+        },
+        "version": "e6969ec4d8c12c76534cc801cea910b55f8eaadc"
+    }
+}

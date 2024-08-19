@@ -3,10 +3,16 @@ let
 
   cfg = config.services.arxiv;
   inherit (lib.modules) mkDefault mkDerivedConfig;
-  inherit (lib) mkOption mkIf makeBinPath mkEnableOption;
+  inherit (lib)
+    mkOption
+    mkIf
+    makeBinPath
+    mkEnableOption
+    ;
   inherit (lib.types)
-  ;
-in {
+    ;
+in
+{
   options = {
     enable = mkEnableOption { type = "something"; };
 
@@ -28,7 +34,9 @@ in {
       enable = true;
       group = "multimedia";
     };
-    prowlarr = { enable = true; };
+    prowlarr = {
+      enable = true;
+    };
 
   };
 

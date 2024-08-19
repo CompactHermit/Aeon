@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   # Allows Nix to Crosscompile
   environment.systemPackages = with pkgs; [
     #FOR WAYDROID-ARKNIGHTS
@@ -6,15 +7,25 @@
     weston
   ];
   boot.binfmt = {
-    emulatedSystems = [ "aarch64-linux" "i686-linux" ];
+    emulatedSystems = [
+      "aarch64-linux"
+      "i686-linux"
+    ];
     registrations = {
       # aarch64 interpreter
-      aarch64-linux = { interpreter = "${pkgs.qemu}/bin/qemu-aarch64"; };
+      aarch64-linux = {
+        interpreter = "${pkgs.qemu}/bin/qemu-aarch64";
+      };
       # i686 interpreter
-      i686-linux = { interpreter = "${pkgs.qemu}/bin/qemu-i686"; };
+      i686-linux = {
+        interpreter = "${pkgs.qemu}/bin/qemu-i686";
+      };
     };
   };
-  nix.settings.extra-sandbox-paths = [ "/run/binfmt" "${pkgs.qemu}" ];
+  nix.settings.extra-sandbox-paths = [
+    "/run/binfmt"
+    "${pkgs.qemu}"
+  ];
   virtualisation = {
     libvirtd = {
       enable = true;
@@ -28,17 +39,19 @@
     waydroid.enable = true;
   };
   containers.vpn = {
-    config = { config, pkgs, ... }: {
-      environment.systemPackages = with pkgs; [
-        protonvpn-cli
-        zellij
-        youtube-dl
-        aria
-      ];
-      users.extraUsers.user = {
-        isNormalUser = true;
-        uid = 1000;
+    config =
+      { config, pkgs, ... }:
+      {
+        environment.systemPackages = with pkgs; [
+          protonvpn-cli
+          tmux
+          yt-dlp
+          aria
+        ];
+        users.extraUsers.user = {
+          isNormalUser = true;
+          uid = 1000;
+        };
       };
-    };
   };
 }

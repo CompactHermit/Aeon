@@ -1,12 +1,12 @@
-{ flake, ... }: {
+{ flake, ... }:
+{
   imports = [ flake.inputs.kmonad.nixosModules.default ];
   services.kmonad = {
     enable = true;
     keyboards = {
       "Ogre" = {
         #device = "/dev/input/by-id/usb-Logitech_USB_Receiver-if01-event-kbd";
-        device =
-          "/dev/input/by-id/usb-Dell_Computer_Corp_Dell_Universal_Receiver-event-kbd";
+        device = "/dev/input/by-id/usb-Dell_Computer_Corp_Dell_Universal_Receiver-event-kbd";
         config =
           # fennel
           ''

@@ -1,4 +1,5 @@
-{ config, ... }: {
+{ config, ... }:
+{
   sops.secrets."Vaultwarden" = { };
 
   systemd.services.backup-vaultwarden.serviceConfig = {

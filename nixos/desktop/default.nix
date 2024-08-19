@@ -1,4 +1,5 @@
-{ pkgs, flake, ... }: {
+{ pkgs, flake, ... }:
+{
   # TODO:: (CH) <10/25> Somehow incorporate an option system
   imports = [
     ./xmonad
@@ -9,42 +10,43 @@
     ./gaming.nix
   ];
 
-  environment.systemPackages = with pkgs; [
-    acpi
-    imv
+  environment.systemPackages = builtins.attrValues {
+    inherit (pkgs)
+      acpi
+      imv
 
-    kitty
-    alacritty
+      kitty
+      # alacritty
 
-    tor-browser-bundle-bin
-    inkscape
-    mupdf
+      inkscape
+      mupdf
 
-    # Messaging
-    vencord
-    element-desktop
-    signal-desktop
-    tdesktop
-    iamb
+      # Messaging
+      vencord
+      # element-desktop
+      # signal-desktop
+      # tdesktop
+      #iamb
 
-    # Torrent / P2P
-    qbittorrent
-    transmission-gtk
+      # Torrent / P2P
+      qbittorrent
+      transmission_4-gtk
 
-    # video pkgs
-    vlc
-    dmenu
-    untrunc
-    ffmpeg-full
-  ];
+      # video pkgs
+      mpv
+      ffmpeg
+      ;
+    inherit (flake.inputs.ghostty.packages."x86_64-linux") ghostty;
+  };
 
   hardware = {
     opengl.enable = true;
-    opengl.driSupport = true;
   };
 
   #XDG_Configs Here::
-  xdg = { portal.enable = true; };
+  xdg = {
+    portal.enable = true;
+  };
 
   programs.dconf.enable = true;
   # NOTE:: (Hermit) Speeds up Boot

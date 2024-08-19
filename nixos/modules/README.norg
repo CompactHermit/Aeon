@@ -18,7 +18,7 @@ version: 1.1.1
    For now, this is just a note dump for Idea's, about what options to have, and how we might present them to a user.
 ** Dumps::
 *** Special Args::
-    By the way it looks, {nixos-flake}[NixOS-Flake] simply passes the specialArgs once. However, since the `user` dir contains the flake options, we can follow {/ ../ssh-authorize.nix}[this] and pass configs as a toplevel. What it'd mean is we'd have to config args:: the `flake.config` as well as 
+    By the way it looks, {nixos-unified}[NixOS-Flake] simply passes the specialArgs once. However, since the `user` dir contains the flake options, we can follow {/ ../ssh-authorize.nix}[this] and pass configs as a toplevel. What it'd mean is we'd have to config args:: the `flake.config` as well as 
 
 ** Comp Arch::
     Best done in the /Machines/ Dir.

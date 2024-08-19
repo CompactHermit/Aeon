@@ -1,12 +1,27 @@
-{ config, pkgs, inputs, ... }:
-let myXmonadProject = ./Machinex;
-in {
-  environment.systemPackages = with pkgs;
-    [ xorg.xdpyinfo xorg.xrandr arandr autorandr dzen2 brave ]
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
+let
+  myXmonadProject = ./Machinex;
+in
+{
+  environment.systemPackages =
+    with pkgs;
+    [
+      xorg.xdpyinfo
+      adwaita-icon-theme
+      xorg.xrandr
+      arandr
+      autorandr
+      dzen2
+
+    ]
     ++ (with pkgs.haskellPackages; [
-      notifications-tray-icon
+      #notifications-tray-icon
       gtk-sni-tray
-      gnome.adwaita-icon-theme
       status-notifier-item
       dbus-hslogger
     ]);
@@ -21,7 +36,11 @@ in {
       # haskellPackages = pkgs.haskellPackages.extend
       #   (import "${myXmonadProject}/overlay.nix" { inherit pkgs; });
       enableContribAndExtras = true;
-      extraPackages = hp: [ hp.xmonad-contrib hp.xmonad-extras hp.xmonad-dbus ];
+      extraPackages = hp: [
+        hp.xmonad-contrib
+        hp.xmonad-extras
+        hp.xmonad-dbus
+      ];
       config = pkgs.lib.readFile "${myXmonadProject}/xmonad.hs";
     };
   };

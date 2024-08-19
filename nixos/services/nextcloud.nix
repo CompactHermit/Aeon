@@ -1,7 +1,11 @@
 { pkgs, config, ... }:
-let domain = "next.compacthermit.dev";
-in {
-  sops.secrets.nextcloud = { owner = "nextcloud"; };
+let
+  domain = "next.compacthermit.dev";
+in
+{
+  sops.secrets.nextcloud = {
+    owner = "nextcloud";
+  };
   users.users.nextcloud.extraGroups = [ "postgres" ];
   services.nextcloud = {
     enable = true;
@@ -16,8 +20,11 @@ in {
     enableImagemagick = true;
     extraApps = with config.services.nextcloud.package.packages.apps; {
       inherit
-      #news
-        bookmarks deck forms;
+        #news
+        bookmarks
+        deck
+        forms
+        ;
     };
     config = {
       overwriteProtocol = "https";

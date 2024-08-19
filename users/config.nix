@@ -1,6 +1,15 @@
-{ ... }: {
+{ ... }:
+{
   myself = "CompactHermit";
   users = {
+    Wyze = {
+      name = "Wyzeal";
+      email = "compacthermit@proton.me";
+      #Add after booting, not needed rn
+      sshKeys = [
+
+      ];
+    };
     CompactHermit = {
       name = "Compact Hermitian";
       email = "compacthermit@proton.me";

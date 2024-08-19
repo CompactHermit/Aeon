@@ -12,7 +12,8 @@ let
       };
     };
   };
-in {
+in
+{
   options = {
     people = lib.mkOption {
       type = lib.types.submodule {
@@ -35,5 +36,7 @@ in {
       };
     };
   };
-  config = { people = import ./config.nix; };
+  config = {
+    people = import ./config.nix;
+  };
 }

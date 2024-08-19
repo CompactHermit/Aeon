@@ -1,0 +1,646 @@
+!_TAG_FILE_FORMAT	2	/extended format/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_FILE_ENCODING	utf-8	//
+!_TAG_PROGRAM_NAME	nix-doc tags	//
+!_TAG_PROGRAM_URL	https://github.com/lf-/nix-doc	//
+Alexander	nixos/services/syncthing.nix	/^    Alexander = [ ];$/;"	m
+Archive	nixos/services/mail.nix	/^      Archive = {$/;"	m
+BindPaths	nixos/services/shiori.nix	/^      BindPaths = [ "\/run\/postgresql" ];$/;"	m
+CLONE	nixos/services/gitea.nix	/^        CLONE = 30000;$/;"	m
+Caesar	nixos/services/syncthing.nix	/^    Caesar = [ ];$/;"	m
+CaptivePortal	home/firefox/default.nix	/^        CaptivePortal = false;$/;"	m
+CompactHermit	users/config.nix	/^    CompactHermit = {$/;"	m
+Copernicus	flake.nix	/^          Copernicus = self.nixos-unified.lib.mkLinuxSystem {$/;"	m
+DEFAULT	nixos/services/gitea.nix	/^        DEFAULT = 720;$/;"	m
+DISABLE_REGISTRATION	nixos/services/gitea.nix	/^      service.DISABLE_REGISTRATION = true;$/;"	m
+DOMAIN	nixos/services/gitea.nix	/^        DOMAIN = "git.compacthermit.dev";$/;"	m
+Default	home/firefox/default.nix	/^        SearchEngines.Default = "DuckDuckGo";$/;"	m
+Dirac	flake.nix	/^          Dirac = self.nixos-unified.lib.mkLinuxSystem {$/;"	m
+DisableFirefoxAccounts	home/firefox/default.nix	/^        DisableFirefoxAccounts = true;$/;"	m
+DisableFirefoxStudies	home/firefox/default.nix	/^        DisableFirefoxStudies = true;$/;"	m
+DisablePocket	home/firefox/default.nix	/^        DisablePocket = true;$/;"	m
+DisableTelemetry	home/firefox/default.nix	/^        DisableTelemetry = true;$/;"	m
+Drafts	nixos/services/mail.nix	/^      Drafts = {$/;"	m
+ESP	machines/_3Genghis/disks.nix	/^          ESP = {$/;"	m
+EnvironmentFile	contracts/_2Swamp/_2Fused/ddns.nix	/^      EnvironmentFile = config.sops.secrets.cloudflare.path;$/;"	m
+ExtensionRecommendations	home/firefox/default.nix	/^          ExtensionRecommendations = false;$/;"	m
+ExtensionSettings	home/firefox/default.nix	/^        ExtensionSettings = {$/;"	m
+FirefoxHome	home/firefox/default.nix	/^        FirefoxHome = {$/;"	m
+GC	nixos/services/gitea.nix	/^        GC = 60;$/;"	m
+HTTP_ADDR	nixos/services/gitea.nix	/^        HTTP_ADDR = "\/run\/gitea\/gitea.sock";$/;"	m
+Junk	nixos/services/mail.nix	/^      Junk = {$/;"	m
+Kepler	flake.nix	/^          Kepler = self.nixos-unified.lib.mkLinuxSystem {$/;"	m
+Kepler_search	scripts/flash.nix	/^        Kepler_search = {$/;"	m
+LANDING_PAGE	nixos/services/gitea.nix	/^        LANDING_PAGE = "\/explore\/repos";$/;"	m
+LD_LIBRARY_PATH	packages/floorp.nix	/^        LD_LIBRARY_PATH = "\/run\/opengl-driver\/lib";$/;"	m
+LESS	nixos/desktop/terminal.nix	/^      LESS = "-iFJMRWX -z-4 -x4";$/;"	m
+LESSOPEN	nixos/desktop/terminal.nix	/^      LESSOPEN = "|\${pkgs.lesspipe}\/bin\/lesspipe.sh %s";$/;"	m
+LIBCLANG_PATH	packages/coogler/coogler.nix	/^  LIBCLANG_PATH = "\${libclang.lib}\/lib";$/;"	m
+MIGRATE	nixos/services/gitea.nix	/^        MIGRATE = 30000;$/;"	m
+MIRROR	nixos/services/gitea.nix	/^        MIRROR = 72000;$/;"	m
+MOZ_DATA_REPORTING	packages/floorp.nix	/^        MOZ_DATA_REPORTING = "";$/;"	m
+MOZ_REQUIRE_SIGNING	packages/floorp.nix	/^        MOZ_REQUIRE_SIGNING = "";$/;"	m
+MOZ_TELEMETRY_REPORTING	packages/floorp.nix	/^        MOZ_TELEMETRY_REPORTING = "";$/;"	m
+Maxwell	home/firefox/default.nix	/^      Maxwell = {$/;"	m
+Maxwell_pool	machines/_3Genghis/disks.nix	/^      Maxwell_pool = {$/;"	m
+Nikola	flake.nix	/^          Nikola = self.nixos-unified.lib.mkMacosSystem {$/;"	m
+OverrideFirstRunPage	home/firefox/default.nix	/^        OverrideFirstRunPage = "";$/;"	m
+PAGER	nixos/desktop/terminal.nix	/^      PAGER = "less";$/;"	m
+PROTOCOL	nixos/services/gitea.nix	/^        PROTOCOL = "http+unix";$/;"	m
+PULL	nixos/services/gitea.nix	/^        PULL = 30000;$/;"	m
+PasswordAuthentication	machines/_2Caesar/default.nix	/^  services.openssh.settings.PasswordAuthentication = false;$/;"	m
+Pocket	home/firefox/default.nix	/^          Pocket = false;$/;"	m
+ROCKET_ADDRESS	nixos/services/vaultwarden.nix	/^        ROCKET_ADDRESS = "127.0.0.1";$/;"	m
+ROCKET_PORT	nixos/services/vaultwarden.nix	/^        ROCKET_PORT = 8222;$/;"	m
+ROOT_URL	nixos/services/gitea.nix	/^        ROOT_URL = "https:\/\/git.compacthermit.dev\/";$/;"	m
+RUST_BACKTRACE	packages/coogler/coogler.nix	/^  RUST_BACKTRACE = 1;$/;"	m
+Ragnarok	machines/_5Ragnarok/default.nix	/^        Ragnarok = nixos-generators.nixosGenerate {$/;"	m
+Ragnarok-ISO	scripts/flash.nix	/^        Ragnarok-ISO = {$/;"	m
+RemainAfterExit	contracts/_2Swamp/_2Fused/ddns.nix	/^      RemainAfterExit = true;$/;"	m
+RestrictAddressFamilies	nixos/services/shiori.nix	/^      RestrictAddressFamilies = [ "AF_UNIX" ];$/;"	m
+SHIORI_DBMS	nixos/services/shiori.nix	/^    SHIORI_DBMS = "postgresql";$/;"	m
+SHIORI_PG_HOST	nixos/services/shiori.nix	/^    SHIORI_PG_HOST = "\/run\/postgresql";$/;"	m
+SHIORI_PG_NAME	nixos/services/shiori.nix	/^    SHIORI_PG_NAME = "shiori";$/;"	m
+SHIORI_PG_PASS	nixos/services/shiori.nix	/^    SHIORI_PG_PASS = "shiori";$/;"	m
+SHIORI_PG_PORT	nixos/services/shiori.nix	/^    SHIORI_PG_PORT = "5432";$/;"	m
+SHIORI_PG_USER	nixos/services/shiori.nix	/^    SHIORI_PG_USER = "shiori";$/;"	m
+SIGNUPS_ALLOWED	nixos/services/vaultwarden.nix	/^        SIGNUPS_ALLOWED = false;$/;"	m
+Schrodinger	flake.nix	/^          Schrodinger = self.nixos-unified.lib.mkLinuxSystem {$/;"	m
+Sent	nixos/services/mail.nix	/^      Sent = {$/;"	m
+SkipOnboarding	home/firefox/default.nix	/^          SkipOnboarding = true;$/;"	m
+Snippets	home/firefox/default.nix	/^          Snippets = false;$/;"	m
+Tell	nixos/services/syncthing.nix	/^    Tell = [ ];$/;"	m
+Trash	nixos/services/mail.nix	/^      Trash = {$/;"	m
+UNIX_SOCKET_PERMISSION	nixos/services/gitea.nix	/^        UNIX_SOCKET_PERMISSION = "660";$/;"	m
+UserMessaging	home/firefox/default.nix	/^        UserMessaging = {$/;"	m
+XKB_CONFIG_ROOT	machines/_2Caesar/ppkb.nix	/^    XKB_CONFIG_ROOT = "\${xkb-faker}\/etc\/X11\/xkb";$/;"	m
+__shiori	contracts/_3Entities/default.nix	/^  __shiori = .\/0001-set-saner-postgresql-connection-default-and-make-use.patch;$/;"	m
+a	home/git.nix	/^      a = "add -p";$/;"	m
+aagl	flake.nix	/^    aagl = {$/;"	m
+aarch64-linux	nixos/virtualization.nix	/^      aarch64-linux = {$/;"	m
+accept_license	nixos/android.nix	/^    nixpkgs.config.android_sdk.accept_license = true;$/;"	m
+action	nixos/services/mail.nix	/^          action = "IGNORE";$/;"	m
+activeBorderColor	home/git.nix	/^        activeBorderColor = [$/;"	m
+adblock	nixos/services/spicetify.nix	/^        adblock$/;"	m
+address	nixos/services/headscale.nix	/^      address = "0.0.0.0";$/;"	m
+adminpassFile	nixos/services/nextcloud.nix	/^      adminpassFile = config.sops.secrets.nextcloud.path;$/;"	m
+adminuser	nixos/services/nextcloud.nix	/^      adminuser = "admin-root";$/;"	m
+alignment	home/dunst.nix	/^        alignment = "center";$/;"	m
+allowAddonSideload	packages/floorp.nix	/^        allowAddonSideload = true;$/;"	m
+allowBroken	nixos/nix.nix	/^      allowBroken = false;$/;"	m
+allowUnfree	nixos/nix.nix	/^      allowUnfree = true;$/;"	m
+allowUnsupportedSystem	nixos/nix.nix	/^      allowUnsupportedSystem = true;$/;"	m
+always_run_script	home/dunst.nix	/^        always_run_script = true;$/;"	m
+animation-clamping	home/picom.nix	/^      animation-clamping = true;$/;"	m
+animation-dampening	home/picom.nix	/^      animation-dampening = 12;$/;"	m
+animation-for-open-window	home/picom.nix	/^      animation-for-open-window = "slide-left";$/;"	m
+animation-for-unmap-window	home/picom.nix	/^      animation-for-unmap-window = "zoom";$/;"	m
+animation-open-exclude	home/picom.nix	/^      animation-open-exclude = [ ];$/;"	m
+animation-stiffness	home/picom.nix	/^      animation-stiffness = 120;$/;"	m
+animation-unmap-exclude	home/picom.nix	/^      animation-unmap-exclude = [ ];$/;"	m
+animation-window-mass	home/picom.nix	/^      animation-window-mass = 0.5;$/;"	m
+animations	home/picom.nix	/^      animations = true;$/;"	m
+appName	nixos/services/gitea.nix	/^    appName = "Gitea on Nix";$/;"	m
+applicationName	packages/floorp.nix	/^        applicationName = "Floorp";$/;"	m
+arguments	home/gui.nix	/^    arguments = [$/;"	m
+arxiv-fetch	contracts/_2Swamp/_1Circuits/arxiv.nix	/^    systemd.services.arxiv-fetch = {$/;"	m
+attic	flake.nix	/^    attic = {$/;"	m
+attrsOf	contracts/_2Swamp/_4Tuned/home.nix	/^    attrsOf$/;"	m
+atuin	home/shell.nix	/^    atuin = {$/;"	m
+auto-allocate-uids	nixos/nix.nix	/^      auto-allocate-uids = true;$/;"	m
+auto-optimise-store	machines/_5Ragnarok/minimal.nix	/^      auto-optimise-store = true;$/;"	m
+autoIndex	nixos/services/mail.nix	/^      autoIndex = true;$/;"	m
+auto_update_enable	nixos/services/headscale.nix	/^          auto_update_enable = true;$/;"	m
+automount	home/default.nix	/^              automount = true;$/;"	m
+availableKernelModules	machines/_3Genghis/default.nix	/^      availableKernelModules = [$/;"	m
+avg-size	nixos/services/attic.nix	/^        avg-size = 64 * 1024;$/;"	m
+bD	home/git.nix	/^      bD = "branch -D";$/;"	m
+ba	home/git.nix	/^      ba = "branch -a";$/;"	m
+backend	home/picom.nix	/^    backend = "glx";$/;"	m
+backupDir	nixos/services/vaultwarden.nix	/^      backupDir = "\/srv\/storage\/vaultwarden\/backup";$/;"	m
+badPlatforms	packages/floorp.nix	/^          badPlatforms = lib.platforms.darwin;$/;"	m
+base16	users/themes.nix	/^    theme.base16 = { };$/;"	m
+base_domain	nixos/services/headscale.nix	/^          base_domain = "compacthermit.dev";$/;"	m
+bazarr	contracts/_2Swamp/multimedia.nix	/^    bazarr = {$/;"	m
+bd	home/git.nix	/^      bd = "branch -d";$/;"	m
+bdm	home/git.nix	/^      bdm = "!git branch --merged | grep -v '*' | xargs -n 1 git branch -d";$/;"	m
+before	nixos/persist.nix	/^    before = [ "sysroot.mount" ];$/;"	m
+betterlockscreen	home/gui.nix	/^  services.betterlockscreen = {$/;"	m
+binaryName	packages/floorp.nix	/^        binaryName = "floorp";$/;"	m
+binfmt	nixos/virtualization.nix	/^  boot.binfmt = {$/;"	m
+blur	home/picom.nix	/^      blur = {$/;"	m
+blur-background-exclude	home/picom.nix	/^      blur-background-exclude = [$/;"	m
+bookmarks	nixos/services/nextcloud.nix	/^        bookmarks$/;"	m
+branding	packages/floorp.nix	/^        branding = "browser\/branding\/official";$/;"	m
+broken	packages/floorp.nix	/^          broken = stdenv.buildPlatform.is32bit; # since Firefox 60, build on 32-bit platforms fails with "out of memory".$/;"	m
+btop	home/shell.nix	/^    btop = {$/;"	m
+buildInputs	packages/zotero7.nix	/^        buildInputs = with pkgs; [$/;"	m
+buildMachinesFiles	nixos/services/hydra.nix	/^    buildMachinesFiles = [ ];$/;"	m
+button	nixos/services/spicetify.nix	/^      button = "74b2ff";$/;"	m
+button-active	nixos/services/spicetify.nix	/^      button-active = "74b2ff";$/;"	m
+button-disabled	nixos/services/spicetify.nix	/^      button-disabled = "555169";$/;"	m
+c	home/git.nix	/^      c = "commit";$/;"	m
+cacheDir	nixos/services/ccache.nix	/^    cacheDir = "\/var\/cache\/sccache";$/;"	m
+card	nixos/services/spicetify.nix	/^      card = "000000";$/;"	m
+cargoHash	packages/coogler/coogler.nix	/^  cargoHash = "sha256-LjjJAE304cG7l2nii47APRL8LqUKOZY3oTv\/XdeYD6s=";$/;"	m
+cargoLock	packages/coogler/coogler.nix	/^  cargoLock = .\/Cargo.lock;$/;"	m
+cascadia-code	nixos/desktop/fonts.nix	/^        cascadia-code$/;"	m
+ccache	nixos/services/ccache.nix	/^  programs.ccache = {$/;"	m
+ccacheWrapper	nixos/services/ccache.nix	/^          ccacheWrapper = super.ccacheWrapper.override {$/;"	m
+certificateFile	nixos/services/mail.nix	/^    certificateFile = cfgp.ch_ssl_cert.path;$/;"	m
+certificateScheme	nixos/services/mail.nix	/^    certificateScheme = "manual"; # Manual:: We to add a custom pem file$/;"	m
+checkReversePath	nixos/services/tailscale.nix	/^    checkReversePath = "loose";$/;"	m
+chmod-socket	nixos/services/searx.nix	/^      chmod-socket = "660";$/;"	m
+chunking	nixos/services/attic.nix	/^      chunking = {$/;"	m
+ciSystems	flake.nix	/^      herculesCI.ciSystems = [$/;"	m
+class	home/dunst.nix	/^        class = "Dunst";$/;"	m
+cleanInterval	nixos/services/syncthing.nix	/^      cleanInterval = "3600"; # 1 hour in seconds$/;"	m
+cleanOnBoot	machines/_3Genghis/default.nix	/^    tmp.cleanOnBoot = true;$/;"	m
+clf_API	contracts/_2Swamp/_2Fused/ddns.nix	/^  sops.secrets.clf_API = { };$/;"	m
+clip-shadow-above	home/picom.nix	/^          clip-shadow-above = true;$/;"	m
+close	home/dunst.nix	/^        close = "ctrl+space";$/;"	m
+close_all	home/dunst.nix	/^        close_all = "ctrl+shift+space";$/;"	m
+co	home/git.nix	/^      co = "checkout";$/;"	m
+cob	home/git.nix	/^      cob = "checkout -b";$/;"	m
+colorScheme	nixos/services/spicetify.nix	/^    colorScheme = "custom";$/;"	m
+color_theme	home/shell.nix	/^        color_theme = "nord"; # # TODO:: Make Oxocarbon btop Theme$/;"	m
+comfortaa	nixos/desktop/fonts.nix	/^        comfortaa$/;"	m
+commit-mono	nixos/desktop/fonts.nix	/^        commit-mono$/;"	m
+common	home/default.nix	/^      common = {$/;"	m
+concatMapAttrs	contracts/_1Gate/modules.nix	/^  inherit (lib) concatMapAttrs;$/;"	m
+configDir	nixos/services/syncthing.nix	/^    configDir = "\/home\/CompactHermit\/.config\/syncthing";$/;"	m
+configureFlags	packages/floorp.nix	/^        configureFlags = (oa.configureFlags or [ ]) ++ [ "--enable-private-components" ];$/;"	m
+consoleLogLevel	nixos/secure-boot.nix	/^  boot.consoleLogLevel = 0;$/;"	m
+content_xpath	nixos/services/searx.nix	/^          content_xpath = ''.\/div[contains(@class, "doc")]'';$/;"	m
+context	home/dunst.nix	/^        context = "ctrl+shift+period";$/;"	m
+contracts	flake.nix	/^        contracts = import .\/contracts {$/;"	m
+coogler	packages/overlay.nix	/^  coogler = self.callPackage .\/coogler\/coogler.nix { inherit (flake) inputs; };$/;"	m
+copyOwnershipFromParent	nixos/services/syncthing.nix	/^          copyOwnershipFromParent = true;$/;"	m
+corefonts	nixos/desktop/fonts.nix	/^        corefonts$/;"	m
+corner-radius	home/picom.nix	/^      corner-radius = 20;$/;"	m
+createDatabase	nixos/services/gitea.nix	/^      createDatabase = true;$/;"	m
+createLocally	nixos/services/nextcloud.nix	/^    database.createLocally = true;$/;"	m
+createdb	nixos/services/postgres.nix	/^          createdb = true;$/;"	m
+createrole	nixos/services/postgres.nix	/^          createrole = true;$/;"	m
+credentialsFile	nixos/services/attic.nix	/^    credentialsFile = config.sops.secrets.attic_key.path;$/;"	m
+ctl	nixos/desktop/terminal.nix	/^        ctl = "systemctl";$/;"	m
+customColorScheme	nixos/services/spicetify.nix	/^    customColorScheme = {$/;"	m
+cycle	home/gui.nix	/^    cycle = true;$/;"	m
+d	home/git.nix	/^      d = "diff";$/;"	m
+dag	contracts/_1Gate/default.nix	/^  dag = import .\/dag.nix { inherit lib; };$/;"	m
+darwin	home/default.nix	/^      darwin = {$/;"	m
+darwinConfigurations	flake.nix	/^        darwinConfigurations = {$/;"	m
+database	nixos/services/gitea.nix	/^    database = {$/;"	m
+dbtype	nixos/services/nextcloud.nix	/^      dbtype = "pgsql";$/;"	m
+dc	home/git.nix	/^      dc = "diff --cached";$/;"	m
+ddns	contracts/_2Swamp/_2Fused/ddns.nix	/^  systemd.services.ddns = {$/;"	m
+debug	flake.nix	/^      debug = true;$/;"	m
+deck	nixos/services/nextcloud.nix	/^        deck$/;"	m
+default-retention-period	nixos/services/attic.nix	/^        default-retention-period = "6 weeks";$/;"	m
+defaultBranch	home/git.nix	/^      init.defaultBranch = "master";$/;"	m
+defaultFonts	nixos/desktop/fonts.nix	/^      defaultFonts = {$/;"	m
+defaultLocale	nixos/location.nix	/^  i18n.defaultLocale = "en_US.utf8";$/;"	m
+defaultPhoneRegion	nixos/services/nextcloud.nix	/^      defaultPhoneRegion = "US";$/;"	m
+defaultSession	nixos/desktop/xmonad/default.nix	/^    displayManager.defaultSession = "none+xmonad";$/;"	m
+defaultSopsFile	nixos/default.nix	/^              defaultSopsFile = ..\/machines\/_3Genghis\/secrets.yaml;$/;"	m
+defaultSopsFormat	nixos/default.nix	/^              defaultSopsFormat = "yaml";$/;"	m
+defaultUser	nixos/wsl/default.nix	/^    defaultUser = config.nzbr.user;$/;"	m
+dejavu_fonts	nixos/desktop/fonts.nix	/^        dejavu_fonts$/;"	m
+detect-client-opacity	home/picom.nix	/^      detect-client-opacity = true;$/;"	m
+detect-rounded-corners	home/picom.nix	/^      detect-rounded-corners = true;$/;"	m
+detect-transient	home/picom.nix	/^      detect-transient = true;$/;"	m
+devShells	flake.nix	/^          devShells = {$/;"	m
+dicts	nixos/services/mail.nix	/^      dicts = with pkgs.aspellDicts; [$/;"	m
+dir	machines/_2Caesar/ppkb.nix	/^      dir = "\${xkb-faker}\/etc\/X11\/xkb";$/;"	m
+directories	nixos/persist.nix	/^    directories = [$/;"	m
+direnv	home/shell.nix	/^    direnv = {$/;"	m
+disable-logging	nixos/services/searx.nix	/^      disable-logging = true;$/;"	m
+disko	flake.nix	/^    disko = {$/;"	m
+dmenu	home/dunst.nix	/^        dmenu = "\${pkgs.dmenu}\/bin\/dmenu -p dunst";$/;"	m
+dn	nixos/desktop/terminal.nix	/^        dn = ifSudo "s systemctl stop";$/;"	m
+dnd	home/picom.nix	/^        dnd = {$/;"	m
+dnsBlacklistOverrides	nixos/services/mail.nix	/^      dnsBlacklistOverrides = ''$/;"	m
+dnsBlacklists	nixos/services/mail.nix	/^      dnsBlacklists = [$/;"	m
+dns_config	nixos/services/headscale.nix	/^        dns_config = {$/;"	m
+doCheck	packages/floorp.nix	/^        doCheck = false;$/;"	m
+dock	home/picom.nix	/^        dock = {$/;"	m
+documentation	machines/_5Ragnarok/minimal.nix	/^  documentation = {$/;"	m
+domain	machines/_3Genghis/default.nix	/^  networking.domain = "compacthermit.dev";$/;"	m
+dontBuild	packages/zotero7.nix	/^        dontBuild = true;$/;"	m
+dontConfigure	packages/zotero7.nix	/^        dontConfigure = true;$/;"	m
+dontPatchELF	packages/zotero7.nix	/^        dontPatchELF = true;$/;"	m
+dontStrip	packages/zotero7.nix	/^        dontStrip = true;$/;"	m
+doom-emacs	home/emacs/default.nix	/^  programs.doom-emacs = {$/;"	m
+doomPrivateDir	home/emacs/default.nix	/^    doomPrivateDir = .\/doom.d;$/;"	m
+dpi	nixos/desktop/hidpi.nix	/^  services.xserver.dpi = 170;$/;"	m
+drivers	nixos/services/default.nix	/^    printing.drivers = [ pkgs.hplip ];$/;"	m
+dropdown_menu	home/picom.nix	/^        dropdown_menu = {$/;"	m
+ds	home/git.nix	/^      ds = "diff --staged";$/;"	m
+dunst	home/dunst.nix	/^  services.dunst = {$/;"	m
+editor	home/git.nix	/^      core.editor = "nvim";$/;"	m
+effective_cache_size	nixos/services/postgres.nix	/^      effective_cache_size = "2 GB";$/;"	m
+efi	nixos/secure-boot.nix	/^    efi = {$/;"	m
+efiSupport	machines/_3Genghis/default.nix	/^      efiSupport = true;$/;"	m
+efiSysMountPoint	nixos/secure-boot.nix	/^      efiSysMountPoint = "\/boot";$/;"	m
+emoji	nixos/desktop/fonts.nix	/^        emoji = [ "Noto Color Emoji" ];$/;"	m
+emulatedSystems	nixos/virtualization.nix	/^    emulatedSystems = [$/;"	m
+enableAllFirmware	nixos/secure-boot.nix	/^  hardware.enableAllFirmware = true;$/;"	m
+enableConfig	machines/_5Ragnarok/default.nix	/^                disko.enableConfig = lib.mkDefault false;$/;"	m
+enableContribAndExtras	nixos/desktop/xmonad/default.nix	/^      enableContribAndExtras = true;$/;"	m
+enableDefaultPackages	nixos/desktop/fonts.nix	/^    enableDefaultPackages = true;$/;"	m
+enableFishIntegration	home/shell.nix	/^      enableFishIntegration = true;$/;"	m
+enableImagemagick	nixos/services/nextcloud.nix	/^    enableImagemagick = true;$/;"	m
+enableOfficialBranding	packages/floorp.nix	/^        enableOfficialBranding = false;$/;"	m
+enableRedistributableFirmware	machines/_3Genghis/default.nix	/^    enableRedistributableFirmware = true;$/;"	m
+enabledExtensions	nixos/services/spicetify.nix	/^    enabledExtensions = builtins.attrValues {$/;"	m
+end	machines/_3Genghis/disks.nix	/^            end = "512MiB";$/;"	m
+enforced	nixos/services/mail.nix	/^      enforced = "body";$/;"	m
+engines	nixos/services/searx.nix	/^      engines = [$/;"	m
+ensureClauses	nixos/services/postgres.nix	/^        ensureClauses = {$/;"	m
+ensureDatabases	nixos/services/postgres.nix	/^    ensureDatabases = [$/;"	m
+ensureUsers	nixos/services/postgres.nix	/^    ensureUsers = [$/;"	m
+eww	flake.nix	/^    eww = {$/;"	m
+experimental	home/dunst.nix	/^      experimental = {$/;"	m
+experimental-features	nixos/nix.nix	/^      experimental-features = [$/;"	m
+extendedLogging	nixos/services/vaultwarden.nix	/^        extendedLogging = true;$/;"	m
+extensions	home/firefox/default.nix	/^        extensions = with extensions; [$/;"	m
+extraApps	nixos/services/nextcloud.nix	/^    extraApps = with config.services.nextcloud.package.packages.apps; {$/;"	m
+extraConfigureFlags	packages/floorp.nix	/^        extraConfigureFlags = [$/;"	m
+extraLayouts	machines/_2Caesar/ppkb.nix	/^      extraLayouts = {$/;"	m
+extraPackages	nixos/desktop/xmonad/default.nix	/^      extraPackages = hp: [$/;"	f
+extraPolicies	home/firefox/default.nix	/^      extraPolicies = {$/;"	m
+extraPostPatch	packages/floorp.nix	/^        extraPostPatch = # bash$/;"	m
+f	home/git.nix	/^      f = "fetch -p";$/;"	m
+fadeDelta	home/picom.nix	/^    fadeDelta = 3;$/;"	m
+fail_fast	checks/pch.nix	/^      fail_fast = true;$/;"	m
+fetchSubmodules	packages/floorp.nix	/^          fetchSubmodules = true;$/;"	m
+file	contracts/_2Swamp/_4Tuned/home.nix	/^    home.file = mkOption {$/;"	m
+files	nixos/persist.nix	/^    files = [$/;"	m
+fira-code	nixos/desktop/fonts.nix	/^        fira-code$/;"	m
+firefox	home/firefox/default.nix	/^  programs.firefox = {$/;"	m
+firefoxAddons	flake.nix	/^    firefoxAddons = {$/;"	m
+flatten	contracts/_2Swamp/_4Tuned/home.nix	/^  inherit (lib.lists) flatten;$/;"	m
+floorp	packages/overlay.nix	/^  floorp = self.callPackage .\/floorp.nix { inherit (flake) inputs; };$/;"	m
+focus	home/picom.nix	/^          focus = true;$/;"	m
+focus-exclude	home/picom.nix	/^      focus-exclude = [$/;"	m
+foldAttrs	contracts/default.nix	/^  inherit (lib.attrsets) foldAttrs;$/;"	m
+folders	nixos/services/syncthing.nix	/^      folders = {$/;"	m
+follow	home/dunst.nix	/^        follow = "mouse";$/;"	m
+font	home/dunst.nix	/^        font = "Helvetica Neue LT Std,HelveticaNeueLT Std Lt Cn:style=47 Light Condensed,Regular";$/;"	m
+fontconfig	nixos/desktop/fonts.nix	/^    fontconfig = {$/;"	m
+fonts	nixos/desktop/fonts.nix	/^  fonts = {$/;"	m
+force_xinerama	home/dunst.nix	/^        force_xinerama = false;$/;"	m
+formats	nixos/services/searx.nix	/^      search.formats = [$/;"	m
+forms	nixos/services/nextcloud.nix	/^        forms$/;"	m
+fqdn	nixos/services/mail.nix	/^    fqdn = "mail.compacthermit.dev";$/;"	m
+frame_width	home/dunst.nix	/^        frame_width = 3;$/;"	m
+full-shadow	home/picom.nix	/^          full-shadow = false;$/;"	m
+fullTextSearch	nixos/services/mail.nix	/^    fullTextSearch = {$/;"	m
+g	nixos/desktop/terminal.nix	/^        g = "git";$/;"	m
+garbage-collection	nixos/services/attic.nix	/^      garbage-collection = {$/;"	m
+generateKey	nixos/default.nix	/^              age.generateKey = true;$/;"	m
+geometry	home/dunst.nix	/^        geometry = "300x5-30+20";$/;"	m
+gi	nixos/desktop/terminal.nix	/^        gi = "grep -i";$/;"	m
+git	home/git.nix	/^  programs.git = {$/;"	m
+gitea	nixos/services/gitea.nix	/^  services.gitea = {$/;"	m
+global	home/dunst.nix	/^      global = {$/;"	m
+glx-no-rebind-pixmap	home/picom.nix	/^      glx-no-rebind-pixmap = true;$/;"	m
+glx-no-stencil	home/picom.nix	/^      glx-no-stencil = true;$/;"	m
+googleAPISupport	packages/floorp.nix	/^        googleAPISupport = true;$/;"	m
+grep	nixos/desktop/terminal.nix	/^        grep = "rg";$/;"	m
+grub	machines/_3Genghis/default.nix	/^    loader.grub = {$/;"	m
+gtk	home/gtk.nix	/^  gtk = {$/;"	m
+gui	nixos/services/syncthing.nix	/^      gui = {$/;"	m
+guiAddress	nixos/services/syncthing.nix	/^    guiAddress = "0.0.0.0:8384";$/;"	m
+h1rd	home/git.nix	/^      h1rd = "hard HEAD~1";$/;"	m
+hard	home/git.nix	/^      hard = "reset --hard";$/;"	m
+hasSuffix	contracts/_1Gate/modules.nix	/^  inherit (lib.strings) hasSuffix removeSuffix;$/;"	m
+hci	flake.nix	/^    hci = {$/;"	m
+headerChecks	nixos/services/mail.nix	/^      headerChecks = [$/;"	m
+headscale	nixos/services/headscale.nix	/^    headscale = {$/;"	m
+helper	home/git.nix	/^      credential.helper = "store --file ~\/.git-credentials";$/;"	m
+hermit-bar	packages/overlay.nix	/^  hermit-bar = self.callPackage .\/taffybar\/default.nix { };$/;"	m
+hidePodcasts	nixos/services/spicetify.nix	/^        hidePodcasts$/;"	m
+hide_duplicate_count	home/dunst.nix	/^        hide_duplicate_count = false;$/;"	m
+history	home/dunst.nix	/^        history = "ctrl+grave";$/;"	m
+history_length	home/dunst.nix	/^        history_length = 20;$/;"	m
+home-manager	flake.nix	/^    home-manager = {$/;"	m
+homeModules	home/default.nix	/^    homeModules = {$/;"	m
+homepage	packages/floorp.nix	/^          homepage = "https:\/\/floorp.app\/";$/;"	m
+hooks	checks/pch.nix	/^          hooks = {$/;"	m
+horizontal_padding	home/dunst.nix	/^        horizontal_padding = 8;$/;"	m
+https	nixos/services/nextcloud.nix	/^    https = true;$/;"	m
+huge_pages	nixos/services/postgres.nix	/^      huge_pages = "off";$/;"	m
+hydra	nixos/services/hydra.nix	/^  services.hydra = {$/;"	m
+hydraURL	nixos/services/hydra.nix	/^    hydraURL = "http:\/\/localhost:3000"; # externally visible URL$/;"	m
+i686-linux	nixos/virtualization.nix	/^      i686-linux = {$/;"	m
+icon_position	home/dunst.nix	/^        icon_position = "left";$/;"	m
+idle_threshold	home/dunst.nix	/^        idle_threshold = 120;$/;"	m
+ignore_newline	home/dunst.nix	/^        ignore_newline = false;$/;"	m
+ignores	home/git.nix	/^    ignores = [$/;"	m
+inactive-dim	home/picom.nix	/^      inactive-dim = 0.2;$/;"	m
+inactiveBorderColor	home/git.nix	/^        inactiveBorderColor = [ "white" ];$/;"	m
+inactiveInterval	home/gui.nix	/^    inactiveInterval = 30;$/;"	m
+inactiveOpacity	home/picom.nix	/^    inactiveOpacity = 0.95;$/;"	m
+indexAttachments	nixos/services/mail.nix	/^      indexAttachments = true;$/;"	m
+indicate_hidden	home/dunst.nix	/^        indicate_hidden = true;$/;"	m
+initrd	machines/_3Genghis/default.nix	/^    initrd = {$/;"	m
+inputsFrom	flake.nix	/^              inputsFrom = with config; [$/;"	m
+instance_name	nixos/services/searx.nix	/^      general.instance_name = "Hermit search";$/;"	m
+inter	nixos/desktop/fonts.nix	/^        inter$/;"	m
+interval	nixos/services/attic.nix	/^        interval = "24 hours";$/;"	m
+invitationsAllowed	nixos/services/vaultwarden.nix	/^        invitationsAllowed = false;$/;"	m
+iosevka-bin	nixos/desktop/fonts.nix	/^        iosevka-bin$/;"	m
+jellyfin	nixos/services/jellyfin.nix	/^  services.jellyfin = {$/;"	m
+jost	nixos/desktop/fonts.nix	/^        jost$/;"	m
+jtl	nixos/desktop/terminal.nix	/^        jtl = "journalctl";$/;"	m
+julia-mono	nixos/desktop/fonts.nix	/^        julia-mono$/;"	m
+keep	nixos/services/syncthing.nix	/^      keep = "10";$/;"	m
+kernelPackages	machines/_3Genghis/default.nix	/^    kernelPackages = pkgs.linuxPackages_latest;$/;"	m
+kernelParams	machines/_3Genghis/default.nix	/^    kernelParams = [$/;"	m
+keyboards	nixos/services/kmonad.nix	/^    keyboards = {$/;"	m
+kitty	home/kitty.nix	/^  programs.kitty = {$/;"	m
+kmonad	nixos/services/kmonad.nix	/^  services.kmonad = {$/;"	m
+languages	machines/_2Caesar/ppkb.nix	/^          languages = [ "eng" ];$/;"	m
+latitude	nixos/location.nix	/^    latitude = 36.3333333;$/;"	m
+lato	nixos/desktop/fonts.nix	/^        lato$/;"	m
+lazygit	home/git.nix	/^  programs.lazygit = {$/;"	m
+ldflags	packages/carapace.nix	/^  ldflags = [$/;"	m
+lexend	nixos/desktop/fonts.nix	/^        lexend$/;"	m
+lg	home/git.nix	/^      lg = "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit";$/;"	m
+libPath	packages/zotero7.nix	/^        libPath =$/;"	m
+libvirtd	nixos/virtualization.nix	/^    libvirtd = {$/;"	m
+license	packages/floorp.nix	/^          license = lib.licenses.mpl20;$/;"	m
+lightTheme	home/git.nix	/^        lightTheme = false;$/;"	m
+line_height	home/dunst.nix	/^        line_height = 0;$/;"	m
+lines	contracts/_2Swamp/_4Tuned/home.nix	/^    lines$/;"	m
+listEntries	contracts/_1Gate/modules.nix	/^  listEntries = path: map (name: path + "\/\${name}") (builtins.attrNames (builtins.readDir path));$/;"	f
+listen	nixos/services/attic.nix	/^      listen = "127.0.0.1:8081";$/;"	m
+lmtpSaveToDetailMailbox	nixos/services/mail.nix	/^    lmtpSaveToDetailMailbox = "no";$/;"	m
+loader	nixos/secure-boot.nix	/^  boot.loader = {$/;"	m
+locations	nixos/services/nginx.nix	/^        locations = {$/;"	m
+logLevel	nixos/services/vaultwarden.nix	/^        logLevel = "warn";$/;"	m
+login	nixos/services/postgres.nix	/^          login = true; # not implied by superuser$/;"	m
+loginAccounts	nixos/services/mail.nix	/^    loginAccounts = {$/;"	m
+longitude	nixos/location.nix	/^    longitude = -86.366667;$/;"	m
+lvm_vg	machines/_3Genghis/disks.nix	/^    lvm_vg = {$/;"	m
+lvs	machines/_3Genghis/disks.nix	/^        lvs = {$/;"	m
+magic_dns	nixos/services/headscale.nix	/^          magic_dns = true;$/;"	m
+mailboxes	nixos/services/mail.nix	/^    mailboxes = {$/;"	m
+main	nixos/services/spicetify.nix	/^      main = "000000";$/;"	m
+maintainers	packages/floorp.nix	/^          maintainers = with lib.maintainers; [ christoph-heiss ];$/;"	m
+maintenance_work_mem	nixos/services/postgres.nix	/^      maintenance_work_mem = "320 MB";$/;"	m
+mapAttrs	contracts/_1Gate/system.nix	/^  inherit (lib) nixosSystem mapAttrs;$/;"	m
+mapAttrsToList	contracts/_2Swamp/_4Tuned/home.nix	/^  inherit (lib.attrsets) mapAttrsToList;$/;"	m
+mark-ovredir-focused	home/picom.nix	/^      mark-ovredir-focused = true;$/;"	m
+mark-wmwin-focused	home/picom.nix	/^      mark-wmwin-focused = true;$/;"	m
+markup	home/dunst.nix	/^        markup = "full";$/;"	m
+material-design-icons	nixos/desktop/fonts.nix	/^        material-design-icons$/;"	m
+material-icons	nixos/desktop/fonts.nix	/^        material-icons$/;"	m
+max-size	nixos/services/attic.nix	/^        max-size = 256 * 1024;$/;"	m
+maxAge	nixos/services/syncthing.nix	/^      maxAge = "15552000"; # 180 days in seconds$/;"	m
+maxAttachmentSize	nixos/services/mail.nix	/^      maxAttachmentSize = 50;$/;"	m
+maxSilent	packages/floorp.nix	/^          maxSilent = 14400; # 4h, double the default of 7200s (c.f. #129212, #129115)$/;"	m
+maxUploadSize	nixos/services/nextcloud.nix	/^    maxUploadSize = "4G";$/;"	m
+max_connections	nixos/services/postgres.nix	/^      max_connections = "300";$/;"	m
+max_icon_size	home/dunst.nix	/^        max_icon_size = 75;$/;"	m
+memoryPercent	machines/_2Caesar/default.nix	/^  zramSwap.memoryPercent = 150;$/;"	m
+menuOpacity	home/picom.nix	/^    menuOpacity = 0.95;$/;"	m
+mesonCheckFlags	machines/_3Genghis/default.nix	/^        mesonCheckFlags = [$/;"	m
+method	home/picom.nix	/^        method = "dual_kawase";$/;"	m
+metrics_listen_addr	nixos/services/headscale.nix	/^        metrics_listen_addr = "127.0.0.1:8087";$/;"	m
+min-size	nixos/services/attic.nix	/^        min-size = 16 * 1024;$/;"	m
+misc	nixos/services/spicetify.nix	/^      misc = "282a36";$/;"	m
+mlsAPISupport	packages/floorp.nix	/^        mlsAPISupport = true;$/;"	m
+mn	nixos/desktop/terminal.nix	/^        mn = ''$/;"	m
+mobile-nixos	flake.nix	/^    mobile-nixos = {$/;"	m
+monitor	home/dunst.nix	/^        monitor = 0;$/;"	m
+monospace	nixos/desktop/fonts.nix	/^        monospace = [$/;"	m
+my-user	nixos/default.nix	/^      my-user = {$/;"	m
+myip	nixos/desktop/terminal.nix	/^        myip = "dig +short myip.opendns.com @208.67.222.222 2>&1";$/;"	m
+nar-size-threshold	nixos/services/attic.nix	/^        nar-size-threshold = 64 * 1024;$/;"	m
+nerdfonts	nixos/desktop/fonts.nix	/^        nerdfonts$/;"	m
+networkmanager	machines/_3Genghis/default.nix	/^    networkmanager = {$/;"	m
+nginx	nixos/services/nginx.nix	/^  services.nginx = {$/;"	m
+nix-index-database	flake.nix	/^    nix-index-database = {$/;"	m
+nixfmt	checks/treefmt.nix	/^          nixfmt = {$/;"	m
+nixosModules	nixos/default.nix	/^    nixosModules = {$/;"	m
+nixosSystem	contracts/_1Gate/system.nix	/^  inherit (lib) nixosSystem mapAttrs;$/;"	m
+notification	nixos/services/spicetify.nix	/^      notification = "80a0ff";$/;"	m
+notification-error	nixos/services/spicetify.nix	/^      notification-error = "e2637f";$/;"	m
+notificationSender	nixos/services/hydra.nix	/^    notificationSender = "hydra@localhost";$/;"	m
+notification_height	home/dunst.nix	/^        notification_height = 0;$/;"	m
+notify	home/default.nix	/^              notify = true;$/;"	m
+noto-fonts	nixos/desktop/fonts.nix	/^        noto-fonts$/;"	m
+noto-fonts-cjk	nixos/desktop/fonts.nix	/^        noto-fonts-cjk$/;"	m
+noto-fonts-color-emoji	nixos/desktop/fonts.nix	/^        noto-fonts-color-emoji$/;"	m
+noto-fonts-emoji	nixos/desktop/fonts.nix	/^        noto-fonts-emoji$/;"	m
+nullOr	contracts/_2Swamp/_4Tuned/home.nix	/^    nullOr$/;"	m
+nushell	home/shell.nix	/^    nushell = {$/;"	m
+nv	nixos/desktop/terminal.nix	/^        nv = "nv";$/;"	m
+opacityRules	home/picom.nix	/^    opacityRules =$/;"	m
+openDefaultPorts	nixos/services/syncthing.nix	/^    openDefaultPorts = true;$/;"	m
+openFirewall	nixos/services/jellyfin.nix	/^    openFirewall = true;$/;"	m
+outputs	flake.nix	/^  outputs =$/;"	f
+overrideDevices	nixos/services/syncthing.nix	/^    overrideDevices = true;$/;"	m
+overrideFolders	nixos/services/syncthing.nix	/^    overrideFolders = true;$/;"	m
+override_local_dns	nixos/services/headscale.nix	/^          override_local_dns = true;$/;"	m
+overwriteProtocol	nixos/services/nextcloud.nix	/^      overwriteProtocol = "https";$/;"	m
+p	home/git.nix	/^      p = "push";$/;"	m
+packageVersion	packages/floorp.nix	/^        packageVersion = "11.15.0";$/;"	m
+padding	home/dunst.nix	/^        padding = 8;$/;"	m
+partitions	machines/_3Genghis/disks.nix	/^        partitions = {$/;"	m
+password	nixos/services/syncthing.nix	/^        password = config.sops.secrets."syncthing-gui-password".path;$/;"	m
+pathExists	contracts/_1Gate/modules.nix	/^  inherit (builtins) pathExists readDir readFileType;$/;"	m
+paths	home/picom.nix	/^        paths = [$/;"	m
+pattern	nixos/services/mail.nix	/^          pattern = "\/\^User-Agent.*Roundcube Webmail\/";$/;"	m
+pch	flake.nix	/^    pch = {$/;"	m
+per_monitor_dpi	home/dunst.nix	/^        per_monitor_dpi = false;$/;"	m
+period	nixos/services/angrr.nix	/^    period = "2weeks";$/;"	m
+permittedInsecurePackages	nixos/nix.nix	/^      permittedInsecurePackages = [ "freeimage-unstable-2021-11-01" ];$/;"	m
+persisted-files	nixos/persist.nix	/^  boot.initrd.systemd.services.persisted-files = {$/;"	m
+picom	home/picom.nix	/^  services.picom = {$/;"	m
+pipewire	nixos/audio.nix	/^  services.pipewire = {$/;"	m
+pkgs	machines/_5Ragnarok/default.nix	/^          inherit pkgs;$/;"	m
+pkiBundle	nixos/secure-boot.nix	/^    pkiBundle = "\/etc\/secureboot";$/;"	m
+platforms	packages/floorp.nix	/^          platforms = lib.platforms.unix;$/;"	m
+player	nixos/services/spicetify.nix	/^      player = "000000";$/;"	m
+plog	home/git.nix	/^      plog = "log --graph --pretty='format:%C(red)%d%C(reset) %C(yellow)%h%C(reset) %ar %C(green)%aN%C(reset) %s'";$/;"	m
+popup_menu	home/picom.nix	/^        popup_menu = {$/;"	m
+postInstall	machines/_2Caesar/ppkb.nix	/^    postInstall =$/;"	m
+postfix	nixos/services/mail.nix	/^    postfix = {$/;"	m
+postgresql	nixos/services/postgres.nix	/^  services.postgresql = {$/;"	m
+pp	machines/_2Caesar/ppkb.nix	/^        pp = {$/;"	m
+ppkb-fix	flake.nix	/^    ppkb-fix = {$/;"	m
+pre-commit	checks/pch.nix	/^      pre-commit = {$/;"	m
+preBuild	packages/carapace.nix	/^  preBuild = ''$/;"	m
+preFixup	packages/zotero7.nix	/^        preFixup = ''$/;"	m
+preferStatusNotifierItems	home/default.nix	/^            preferStatusNotifierItems = true;$/;"	m
+privacySupport	packages/floorp.nix	/^        privacySupport = true;$/;"	m
+profiles	home/firefox/default.nix	/^    profiles = {$/;"	m
+projectRootFile	checks/treefmt.nix	/^        projectRootFile = "flake.nix";$/;"	m
+prowlarr	contracts/_2Swamp/multimedia.nix	/^    prowlarr = {$/;"	m
+python3	packages/floorp.nix	/^        python3 = python311;$/;"	m
+qemu	nixos/virtualization.nix	/^      qemu = {$/;"	m
+r	home/git.nix	/^      r = "restore";$/;"	m
+radarr	contracts/_2Swamp/multimedia.nix	/^    radarr = {$/;"	m
+rank	home/git.nix	/^      rank = "shortlog -sn --no-merges";$/;"	m
+readFileType	contracts/_1Gate/modules.nix	/^  inherit (builtins) pathExists readDir readFileType;$/;"	m
+readModules	contracts/_1Gate/modules.nix	/^  readModules =$/;"	f
+readarr	contracts/_2Swamp/multimedia.nix	/^    readarr = {$/;"	m
+rebase	home/git.nix	/^      pull.rebase = "false";$/;"	m
+recipientDelimiter	nixos/services/mail.nix	/^    recipientDelimiter = "+-";$/;"	m
+recommendedGzipSettings	nixos/services/nginx.nix	/^    recommendedGzipSettings = true;$/;"	m
+recommendedHttpHeaders	nixos/services/nextcloud.nix	/^    nginx.recommendedHttpHeaders = true;$/;"	m
+recommendedOptimisation	nixos/services/nginx.nix	/^    recommendedOptimisation = true;$/;"	m
+recommendedTlsSettings	nixos/services/nginx.nix	/^    recommendedTlsSettings = true;$/;"	m
+region_id	nixos/services/headscale.nix	/^          region_id = 999;$/;"	m
+registrations	nixos/virtualization.nix	/^    registrations = {$/;"	m
+removeSuffix	contracts/_1Gate/modules.nix	/^  inherit (lib.strings) hasSuffix removeSuffix;$/;"	m
+replaceStrings	contracts/_2Swamp/_4Tuned/home.nix	/^  inherit (builtins) replaceStrings;$/;"	m
+replication	nixos/services/postgres.nix	/^          replication = true;$/;"	m
+requireSigning	packages/floorp.nix	/^        requireSigning = false;$/;"	m
+resolved	machines/_3Genghis/default.nix	/^  services.resolved = {$/;"	m
+results_xpath	nixos/services/searx.nix	/^          results_xpath = ''\/\/div[@class="result"]'';$/;"	m
+roboto	nixos/desktop/fonts.nix	/^        roboto$/;"	m
+rofi	home/gui.nix	/^  programs.rofi = {$/;"	m
+rollback	nixos/persist.nix	/^  boot.initrd.systemd.services.rollback = {$/;"	m
+roundcube	nixos/services/mail.nix	/^    roundcube = {$/;"	m
+rs	home/git.nix	/^      rs = "restore --staged";$/;"	m
+runAsRoot	nixos/virtualization.nix	/^        runAsRoot = true;$/;"	m
+runInUwsgi	nixos/services/searx.nix	/^    runInUwsgi = true;$/;"	m
+s1ft	home/git.nix	/^      s1ft = "soft HEAD~1";$/;"	m
+sandbox	nixos/nix.nix	/^      sandbox = true;$/;"	m
+sansSerif	nixos/desktop/fonts.nix	/^        sansSerif = [$/;"	m
+sarasa-gothic	nixos/desktop/fonts.nix	/^        sarasa-gothic$/;"	m
+scanRandMacAddress	machines/_3Genghis/default.nix	/^      wifi.scanRandMacAddress = false;$/;"	m
+scripts	scripts/flash.nix	/^      mission-control.scripts = {$/;"	m
+search_url	nixos/services/searx.nix	/^          search_url = "https:\/\/hoogle.haskell.org\/?hoogle={query}&start={pageno}";$/;"	m
+searx	nixos/services/searx.nix	/^  services.searx = {$/;"	m
+searx_keys	nixos/services/searx.nix	/^  sops.secrets.searx_keys = { };$/;"	m
+secret_key	nixos/services/searx.nix	/^        secret_key = "@SEARXNG_SECRET@";$/;"	m
+selected-row	nixos/services/spicetify.nix	/^      selected-row = "7c8f8f";$/;"	m
+selectedLineBgColor	home/git.nix	/^        selectedLineBgColor = [$/;"	m
+separator_color	home/dunst.nix	/^        separator_color = "frame";$/;"	m
+separator_height	home/dunst.nix	/^        separator_height = 2;$/;"	m
+serif	nixos/desktop/fonts.nix	/^        serif = [$/;"	m
+serverUrl	nixos/services/headscale.nix	/^        serverUrl = "https:\/\/\${domain}";$/;"	m
+setupCommands	nixos/services/monitors.nix	/^  services.xserver.displayManager.setupCommands = ''$/;"	m
+shadow-radius	home/picom.nix	/^      shadow-radius = 7;$/;"	m
+shadowExclude	home/picom.nix	/^    shadowExclude = [$/;"	m
+shadowOffsets	home/picom.nix	/^    shadowOffsets = [$/;"	m
+shared_buffers	nixos/services/postgres.nix	/^      shared_buffers = "1024 MB";$/;"	m
+shellAliases	nixos/desktop/terminal.nix	/^    shellAliases =$/;"	m
+shortcuts	home/dunst.nix	/^      shortcuts = {$/;"	m
+showPasswordHint	nixos/services/vaultwarden.nix	/^        showPasswordHint = false;$/;"	m
+show_age_threshold	home/dunst.nix	/^        show_age_threshold = 60;$/;"	m
+show_indicators	home/dunst.nix	/^        show_indicators = true;$/;"	m
+shrink	home/dunst.nix	/^        shrink = false;$/;"	m
+shuffle	nixos/services/spicetify.nix	/^        shuffle$/;"	m
+sidebar	nixos/services/spicetify.nix	/^      sidebar = "323437";$/;"	m
+sidebar-text	nixos/services/spicetify.nix	/^      sidebar-text = "79dac8";$/;"	m
+signupsAllowed	nixos/services/vaultwarden.nix	/^        signupsAllowed = false;$/;"	m
+signupsVerify	nixos/services/vaultwarden.nix	/^        signupsVerify = true;$/;"	m
+simple_style	nixos/services/searx.nix	/^      ui.theme_args.simple_style = "dark";$/;"	m
+smtpSecurity	nixos/services/vaultwarden.nix	/^        smtpSecurity = "force_tls";$/;"	m
+smtp_helo_name	nixos/services/mail.nix	/^        smtp_helo_name = config.mailserver.fqdn;$/;"	m
+soft	home/git.nix	/^      soft = "reset --soft";$/;"	m
+sonarr	contracts/_2Swamp/multimedia.nix	/^    sonarr = {$/;"	m
+sops	nixos/default.nix	/^            sops = {$/;"	m
+sort	home/dunst.nix	/^        sort = true;$/;"	m
+source-sans	nixos/desktop/fonts.nix	/^        source-sans$/;"	m
+specialArgs	contracts/_1Gate/system.nix	/^      specialArgs = config.lib.summon name lib.id;$/;"	m
+spicetify	nixos/services/spicetify.nix	/^  programs.spicetify = {$/;"	m
+spicetify-nix	flake.nix	/^    spicetify-nix = {$/;"	m
+sshKeyPaths	nixos/default.nix	/^              age.sshKeyPaths = [ "\/etc\/ssh\/ssh_host_ed25519_key" ];$/;"	m
+st	home/git.nix	/^      st = "status -sb";$/;"	m
+stack_duplicates	home/dunst.nix	/^        stack_duplicates = true;$/;"	m
+starship	home/shell.nix	/^    starship = {$/;"	m
+start	machines/_3Genghis/disks.nix	/^            start = "1MiB";$/;"	m
+startMenuLaunchers	nixos/wsl/default.nix	/^    startMenuLaunchers = true;$/;"	m
+startup_notification	home/dunst.nix	/^        startup_notification = false;$/;"	m
+stateDir	nixos/services/gitea.nix	/^    stateDir = "\/persist\/services\/gitea";$/;"	m
+sticky_history	home/dunst.nix	/^        sticky_history = true;$/;"	m
+stl	nixos/desktop/terminal.nix	/^        stl = ifSudo "s systemctl";$/;"	m
+storage	nixos/services/attic.nix	/^      storage = {$/;"	m
+str	contracts/_2Swamp/_4Tuned/home.nix	/^    str$/;"	m
+strength	home/picom.nix	/^        strength = 5;$/;"	m
+stun_listen_addr	nixos/services/headscale.nix	/^          stun_listen_addr = "0.0.0.0:8100";$/;"	m
+subPackages	packages/carapace.nix	/^  subPackages = [ ".\/cmd\/carapace" ];$/;"	m
+submodule	contracts/_2Swamp/_4Tuned/home.nix	/^    submodule$/;"	m
+subtext	nixos/services/spicetify.nix	/^      subtext = "f8f8f8";$/;"	m
+subvolumes	machines/_3Genghis/disks.nix	/^              subvolumes = {$/;"	m
+superuser	nixos/services/postgres.nix	/^          superuser = true;$/;"	m
+superuser_reserved_connections	nixos/services/postgres.nix	/^      superuser_reserved_connections = 3;$/;"	m
+support32Bit	nixos/audio.nix	/^    alsa.support32Bit = true;$/;"	m
+supportedFilesystems	nixos/secure-boot.nix	/^  boot.supportedFilesystems = [$/;"	m
+supportsStage-0	machines/_2Caesar/default.nix	/^  mobile.quirks.supportsStage-0 = mkForce false;$/;"	m
+swap	machines/_3Genghis/disks.nix	/^          swap = {$/;"	m
+symbolsFile	machines/_2Caesar/ppkb.nix	/^          symbolsFile = "\${xkb-faker}\/share\/X11\/xkb\/symbols\/pp";$/;"	m
+symlinks	home/git.nix	/^      core.symlinks = true;$/;"	m
+syncthing	nixos/services/syncthing.nix	/^  services.syncthing = {$/;"	m
+system-features	nixos/nix.nix	/^      system-features = [$/;"	m
+tab-active	nixos/services/spicetify.nix	/^      tab-active = "80a0ff";$/;"	m
+taffybar	home/default.nix	/^            taffybar = {$/;"	m
+tags	packages/carapace.nix	/^  tags = [ "release" ];$/;"	m
+theme_background	home/shell.nix	/^        theme_background = true;$/;"	m
+timeZone	nixos/location.nix	/^  time.timeZone = "America\/New_York";$/;"	m
+title	home/dunst.nix	/^        title = "Dunst";$/;"	m
+title_xpath	nixos/services/searx.nix	/^          title_xpath = ''.\/div[@class="ans"]'';$/;"	m
+tlog	home/git.nix	/^      tlog = "log --stat --since='1 Day Ago' --graph --pretty=oneline --abbrev-commit --date=relative";$/;"	m
+tls_cert_path	nixos/services/headscale.nix	/^        tls_cert_path = null;$/;"	m
+tls_key_path	nixos/services/headscale.nix	/^        tls_key_path = null;$/;"	m
+tooltip	home/picom.nix	/^        tooltip = {$/;"	m
+top	nixos/desktop/terminal.nix	/^        top = "btm";$/;"	m
+transparency	home/dunst.nix	/^        transparency = 20;$/;"	m
+tray	home/default.nix	/^              tray = "auto";$/;"	m
+truecolor	home/shell.nix	/^        truecolor = true;$/;"	m
+trustedInterfaces	nixos/services/tailscale.nix	/^    trustedInterfaces = [ "tailscale0" ];$/;"	m
+twemoji-color-font	nixos/desktop/fonts.nix	/^        twemoji-color-font$/;"	m
+types	contracts/_2Swamp/_1Circuits/services.nix	/^  inherit (lib) mkEnableOption mkOption types;$/;"	m
+ubuntu_font_family	nixos/desktop/fonts.nix	/^        ubuntu_font_family$/;"	m
+udiskie	home/default.nix	/^            udiskie = {$/;"	m
+uid	nixos/virtualization.nix	/^          uid = 1000;$/;"	m
+un	nixos/desktop/terminal.nix	/^        un = "systemctl --user stop";$/;"	m
+up	nixos/desktop/terminal.nix	/^        up = ifSudo "s systemctl start";$/;"	m
+updateMicrocode	machines/_3Genghis/default.nix	/^    cpu.amd.updateMicrocode = true;$/;"	m
+update_frequency	nixos/services/headscale.nix	/^          update_frequency = "24h";$/;"	m
+urgency_critical	home/dunst.nix	/^      urgency_critical = {$/;"	m
+urgency_low	home/dunst.nix	/^      urgency_low = {$/;"	m
+urgency_normal	home/dunst.nix	/^      urgency_normal = {$/;"	m
+url_xpath	nixos/services/searx.nix	/^          url_xpath = ''.\/div[@class="ans"]\/\/a\/@href'';$/;"	m
+use-damage	home/picom.nix	/^      use-damage = true;$/;"	m
+useSubstitutes	nixos/services/hydra.nix	/^    useSubstitutes = true;$/;"	m
+useSyslog	nixos/services/vaultwarden.nix	/^        useSyslog = true;$/;"	m
+userEmail	home/git.nix	/^    userEmail = flake.config.people.users.\${config.home.username}.email;$/;"	m
+userName	home/git.nix	/^    userName = flake.config.people.users.\${config.home.username}.name;$/;"	m
+username	nixos/services/mail.nix	/^      database.username = "roundcube";$/;"	m
+ut	nixos/desktop/terminal.nix	/^        ut = "systemctl --user start";$/;"	m
+utl	nixos/desktop/terminal.nix	/^        utl = "systemctl --user";$/;"	m
+uwsgiConfig	nixos/services/searx.nix	/^    uwsgiConfig = {$/;"	m
+vSync	home/picom.nix	/^    vSync = true;$/;"	m
+vaultwarden	nixos/services/vaultwarden.nix	/^    vaultwarden = {$/;"	m
+vendorHash	packages/carapace.nix	/^  vendorHash = "sha256-HWczvkItE9SVGGQkddnb7\/PBkTWrDAdKHjMOztlYV9M=";$/;"	m
+vg	machines/_3Genghis/disks.nix	/^                vg = "Maxwell_pool";$/;"	m
+victor-mono	nixos/desktop/fonts.nix	/^        victor-mono$/;"	m
+videoDrivers	nixos/desktop/xmonad/default.nix	/^    videoDrivers = [ "amdgpu" ];$/;"	m
+vim_keys	home/shell.nix	/^        vim_keys = true;$/;"	m
+virtualHosts	nixos/services/nginx.nix	/^    virtualHosts = {$/;"	m
+virtualisation	nixos/virtualization.nix	/^  virtualisation = {$/;"	m
+vpn	nixos/virtualization.nix	/^  containers.vpn = {$/;"	m
+warningsAreErrors	machines/_5Ragnarok/minimal.nix	/^    nixos.options.warningsAreErrors = false;$/;"	m
+webrtcSupport	packages/floorp.nix	/^        webrtcSupport = true;$/;"	m
+wheelNeedsPassword	machines/_3Genghis/default.nix	/^  security.sudo.wheelNeedsPassword = false;$/;"	m
+win-types	home/picom.nix	/^      win-types = {$/;"	m
+word_wrap	home/dunst.nix	/^        word_wrap = true;$/;"	m
+work-sans	nixos/desktop/fonts.nix	/^        work-sans$/;"	m
+work_mem	nixos/services/postgres.nix	/^      work_mem = "32 MB";$/;"	m
+xdg	nixos/desktop/default.nix	/^  xdg = {$/;"	m
+xinerama-shadow-crop	home/picom.nix	/^      xinerama-shadow-crop = true;$/;"	m
+xkb	machines/_2Caesar/ppkb.nix	/^    xkb = {$/;"	m
+xmonad-contrib	nixos/desktop/xmonad/Machinex/overlay.nix	/^    xmonad-contrib = justFuckingBuild (self.callHackage "xmonad-contrib" "0.17.0" { });$/;"	m
+xmonad-extras	nixos/desktop/xmonad/Machinex/overlay.nix	/^    xmonad-extras = justFuckingBuild (self.callHackage "xmonad-extras" "0.17.0" { });$/;"	m
+xrender-sync-fence	home/picom.nix	/^      xrender-sync-fence = true;$/;"	m
+xsession	home/default.nix	/^          xsession = {$/;"	m
+zotero7	packages/zotero7.nix	/^      packages.zotero7 = pkgs.stdenv.mkDerivation rec {$/;"	m
+zoxide	home/shell.nix	/^    zoxide = {$/;"	m

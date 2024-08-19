@@ -1,4 +1,10 @@
-{ flake, lib, pkgs, config, ... }:
+{
+  flake,
+  lib,
+  pkgs,
+  config,
+  ...
+}:
 let
   # Root diff for btrfs
   root-diff = pkgs.writeShellScriptBin "root-diff" ''
@@ -39,7 +45,8 @@ let
 
     umount /mnt/tmp-root
   '';
-in {
+in
+{
   imports = [ flake.inputs.impermanence.nixosModules.impermanence ];
   # Rollbacks::
   boot.initrd.systemd.enable = lib.mkDefault true;

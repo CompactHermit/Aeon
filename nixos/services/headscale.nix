@@ -2,7 +2,8 @@
 let
   domain = "hs.compacthermit.dev";
   port = 8095;
-in {
+in
+{
   environment.systemPackages = [ config.services.headscale.package ];
   services = {
     headscale = {

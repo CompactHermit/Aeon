@@ -1,50 +1,61 @@
-{ flake, pkgs, ... }: {
+{ flake, pkgs, ... }:
+{
   services.picom = {
     enable = true;
-    package = let picom' = flake.inputs.picom.defaultPackage."x86_64-linux";
-    in pkgs.symlinkJoin {
-      name = "picom";
-      paths = [
-        (pkgs.writeShellScriptBin "picom" (let
-          grayscale-glsl = pkgs.writeText "grayscale.glsl" ''
-            #version 330
+    package =
+      let
+        picom' = flake.inputs.picom.defaultPackage."x86_64-linux";
+      in
+      pkgs.symlinkJoin {
+        name = "picom";
+        paths = [
+          (pkgs.writeShellScriptBin "picom" (
+            let
+              grayscale-glsl = pkgs.writeText "grayscale.glsl" ''
+                #version 330
 
-            in vec2 texcoord;
-            uniform sampler2D tex;
-            uniform float opacity;
+                in vec2 texcoord;
+                uniform sampler2D tex;
+                uniform float opacity;
 
-            vec4 default_post_processing(vec4 c);
+                vec4 default_post_processing(vec4 c);
 
-            vec4 window_shader() {
-              vec2 texsize = textureSize(tex, 0);
-              vec4 color = texture2D(tex, texcoord / texsize, 0);
+                vec4 window_shader() {
+                  vec2 texsize = textureSize(tex, 0);
+                  vec4 color = texture2D(tex, texcoord / texsize, 0);
 
-              color = vec4(vec3(0.2126 * color.r + 0.7152 * color.g + 0.0722 * color.b) * opacity, color.a * opacity);
+                  color = vec4(vec3(0.2126 * color.r + 0.7152 * color.g + 0.0722 * color.b) * opacity, color.a * opacity);
 
-              return default_post_processing(color);
-            }
-          '';
-        in ''
-          if [ "$PICOM_SHADER" = "grayscale" ]; then
-            "${picom'}/bin/picom" \
-              --window-shader-fg="${grayscale-glsl}" \
-              "$@"
-          else
-            "${picom'}/bin/picom" "$@"
-          fi
-        ''))
-        picom'
-      ];
-    } // {
-      inherit (picom') meta;
-    };
+                  return default_post_processing(color);
+                }
+              '';
+            in
+            ''
+              if [ "$PICOM_SHADER" = "grayscale" ]; then
+                "${picom'}/bin/picom" \
+                  --window-shader-fg="${grayscale-glsl}" \
+                  "$@"
+              else
+                "${picom'}/bin/picom" "$@"
+              fi
+            ''
+          ))
+          picom'
+        ];
+      }
+      // {
+        inherit (picom') meta;
+      };
     backend = "glx";
     fade = true;
     fadeDelta = 3;
     inactiveOpacity = 0.95;
     menuOpacity = 0.95;
     shadow = true;
-    shadowOffsets = [ (-7) (-7) ];
+    shadowOffsets = [
+      (-7)
+      (-7)
+    ];
     shadowExclude = [
       # unknown windows
       "! name~=''"
@@ -77,7 +88,26 @@
         "100:role = 'browser' && name ^= 'Meet -'"
         "100:role = 'browser' && name ^= 'Netflix'"
         "95:class_g = 'Emacs'"
-      ] ++ [ "0:_NET_WM_STATE@[*]:a *= '_NET_WM_STATE_HIDDEN'" ];
+      ]
+      ++ [
+        "0:_NET_WM_STATE@[*]:a *= '_NET_WM_STATE_HIDDEN'"
+        "100:name     = 'Dunst'"
+        "80:class_g    = 'eww-blur_full'"
+        "60:class_g    = 'eww-player'"
+        "60:class_g    = 'eww-bar'"
+        "90:class_g    = 'Zotero'"
+        "100:class_g    = 'Tint2'"
+        "10:class_g = 'Conky' "
+        "50:class_g     = 'Polybar'"
+        "85:class_g    = 'Alacritty'"
+        "100:class_g    = 'Inkscape'"
+        "100:class_g    = 'kitty'"
+        "85:class_g    = 'org.wezfurlong.wezterm'"
+        "90:class_g    = 'zen-twilight'"
+        "90:class_g    = 'zen'"
+        "95:class_g    = 'firefox-nightly'"
+
+      ];
     vSync = true;
     settings = {
       animations = true;
@@ -108,8 +138,10 @@
         strength = 5;
       };
       corner-radius = 20;
-      #rounded-corners-exclude =
-      #[ "window_type = 'dock'" "window_type = 'desktop'" ];
+      rounded-corners-exclude = [
+        "window_type = 'dock'"
+        "window_type = 'desktop'"
+      ];
       blur-background-exclude = [
         # shaped windows
         "bounding_shaped && !rounded_corners"
@@ -126,7 +158,7 @@
         "class_g ~= 'xdg-desktop-portal' && window_type = 'menu'"
         "_NET_FRAME_EXTENTS@:c && WM_WINDOW_ROLE@:s = 'Popup'"
         # Mozilla fixes
-        "(class_g *?= 'firefox' || class_g = 'thunderbird') && (window_type = 'utility' || window_type = 'popup_menu') && argb"
+        "(class_g *?= 'firefox'||class_g *?= 'zen' || class_g = 'thunderbird') && (window_type = 'utility' || window_type = 'popup_menu') && argb"
         # Zoom
         "name = 'cpt_frame_xcb_window'"
         "class_g *?= 'zoom' && name *?= 'meeting'"
@@ -160,9 +192,15 @@
           shadow = false;
           clip-shadow-above = true;
         };
-        dnd = { shadow = false; };
-        popup_menu = { opacity = 0.9; };
-        dropdown_menu = { opacity = 0.9; };
+        dnd = {
+          shadow = false;
+        };
+        popup_menu = {
+          opacity = 0.9;
+        };
+        dropdown_menu = {
+          opacity = 0.9;
+        };
       };
     };
   };

@@ -33,13 +33,13 @@
       #   sslCertificateKey = config.sops.secrets.ch_ssl_key.path;
       #   forceSSL = true;
       # };
-      "search.compacthermit.dev" = {
-        forceSSL = true;
-        sslCertificate = config.sops.secrets.ch_ssl_cert.path;
-        sslCertificateKey = config.sops.secrets.ch_ssl_key.path;
-        locations."/".extraConfig = "uwsgi_pass unix:${config.services.searx.uwsgiConfig.socket};";
-        extraConfig = "access_log off;";
-      };
+      # "search.compacthermit.dev" = {
+      #   forceSSL = true;
+      #   sslCertificate = config.sops.secrets.ch_ssl_cert.path;
+      #   sslCertificateKey = config.sops.secrets.ch_ssl_key.path;
+      #   locations."/".extraConfig = "uwsgi_pass unix:${config.services.searx.uwsgiConfig.socket};";
+      #   extraConfig = "access_log off;";
+      # };
       "sync.compacthermit.dev" = {
         forceSSL = true;
         sslCertificate = config.sops.secrets.ch_ssl_cert.path;
@@ -62,25 +62,15 @@
         sslCertificateKey = config.sops.secrets.ch_ssl_key.path;
         locations."/".proxyPass = "http://unix:${config.services.gitea.settings.server.HTTP_ADDR}";
       };
-      "jelly.compacthermit.dev" = {
-        forceSSL = true;
-        sslCertificate = config.sops.secrets.ch_ssl_cert.path;
-        sslCertificateKey = config.sops.secrets.ch_ssl_key.path;
-        locations."/" = {
-          proxyPass = "http://127.0.0.1:8096/";
-          proxyWebsockets = true;
-          extraConfig = "proxy_pass_header Authorization;";
-        };
-      };
-      "vault.compacthermit.dev" = {
-        forceSSL = true;
-        sslCertificate = config.sops.secrets.ch_ssl_cert.path;
-        sslCertificateKey = config.sops.secrets.ch_ssl_key.path;
-        locations."/" = {
-          proxyPass = "http://127.0.0.1:${toString config.services.vaultwarden.config.ROCKET_PORT}";
-          extraConfig = "proxy_pass_header Authorization;";
-        };
-      };
+      # "vault.compacthermit.dev" = {
+      #   forceSSL = true;
+      #   sslCertificate = config.sops.secrets.ch_ssl_cert.path;
+      #   sslCertificateKey = config.sops.secrets.ch_ssl_key.path;
+      #   locations."/" = {
+      #     proxyPass = "http://127.0.0.1:${toString config.services.vaultwarden.config.ROCKET_PORT}";
+      #     extraConfig = "proxy_pass_header Authorization;";
+      #   };
+      # };
       "next.compacthermit.dev" = {
         forceSSL = true;
         sslCertificate = config.sops.secrets.ch_ssl_cert.path;
@@ -92,17 +82,17 @@
         sslCertificateKey = config.sops.secrets.ch_ssl_key.path;
         locations."/".proxyPass = "http://localhost:4378";
       };
-      "cache.compacthermit.dev" = {
-        extraConfig = ''
-          client_max_body_size 0;
-          proxy_read_timeout 300s;
-          proxy_send_timeout 300s;
-        '';
-        locations."/" = {
-          recommendedProxySettings = true;
-          proxyPass = "http://127.0.0.1:8081";
-        };
-      };
+      # "cache.compacthermit.dev" = {
+      #   extraConfig = ''
+      #     client_max_body_size 0;
+      #     proxy_read_timeout 300s;
+      #     proxy_send_timeout 300s;
+      #   '';
+      #   locations."/" = {
+      #     recommendedProxySettings = true;
+      #     proxyPass = "http://127.0.0.1:8081";
+      #   };
+      # };
       "hs.compacthermit.dev" = {
         forceSSL = true;
         sslCertificate = config.sops.secrets.ch_ssl_cert.path;

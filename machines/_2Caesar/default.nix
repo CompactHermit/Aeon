@@ -1,14 +1,29 @@
-{ lib, pkgs, config, ... }:
+{
+  lib,
+  flake,
+  pkgs,
+  config,
+  ...
+}:
 let
   inherit (builtins) attrValues;
   inherit (lib) mkIf mkForce;
-in {
+  inherit (flake.inputs) self;
+in
+{
 
-  /* *
-     TODO: Hermit::
-     1.Properly package userSpace Kernel-drivers ->> Add on extra Layouts
+  /*
+    *
+    TODO: Hermit::
+    1.Properly package userSpace Kernel-drivers ->> Add on extra Layouts
   */
-  imports = [ ./configuration.nix ./ppkb.nix ./hardware-configuration.nix ];
+  imports = [
+    self.nixosModules.mobile
+
+    ./configuration.nix
+    ./ppkb.nix
+    ./hardware-configuration.nix
+  ];
 
   mobile.quirks.supportsStage-0 = mkForce false;
   services.openssh.enable = true;

@@ -1,4 +1,10 @@
-{ pkgs, config, flake, ... }: {
+{
+  pkgs,
+  config,
+  flake,
+  ...
+}:
+{
   wsl = {
     enable = true;
     defaultUser = config.nzbr.user;

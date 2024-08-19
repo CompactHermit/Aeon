@@ -1,11 +1,11 @@
-{ self, inputs, ... }: {
+{ self, inputs, ... }:
+{
   flake = {
     homeModules = {
       common = {
         home.stateVersion = "22.11";
         # TODO:: (Hermit) Add custom mkModule Lib for path recursion
         imports = [
-          ./zellij
           ./yazi
           ./dunst.nix
           ./picom.nix
@@ -15,42 +15,60 @@
           ./gtk.nix
           #./persist.nix
           ./gui.nix
-          ./firefox
+          #./firefox
         ];
       };
 
-      default = { pkgs, ... }: {
+      default =
+        { pkgs, ... }:
+        {
+          imports = [
+            inputs.nix-index-database.hmModules.nix-index
+            inputs.tmux-which-key.homeManagerModules.default
+            self.homeModules.common
+            #inputs.nur.hmModules.nur
+            #./emacs # My Beloved
+          ];
+
+          xsession = {
+            enable = true;
+            preferStatusNotifierItems = true;
+          };
+          programs = {
+            nix-index-database.comma.enable = true;
+            home-manager.enable = true;
+          };
+          services = {
+            udiskie = {
+              enable = true;
+              notify = true;
+              automount = true;
+              tray = "auto";
+            };
+            # Tests are failing, will check later
+            # taffybar = {
+            #   enable = true;
+            #   package = pkgs.hermit-bar;
+            # };
+          };
+        };
+
+      darwin = {
+        imports = [ self.homeModules.common ];
+      };
+
+      wayland = {
         imports = [
-          inputs.nix-index-database.hmModules.nix-index
-          #inputs.nur.hmModules.nur
-          self.homeModules.common
-          #./emacs # My Beloved
+          self.homeModules.default
+          ./yazi
+          ./shell.nix
+          ./git.nix
+          ./kitty.nix
+          ./gtk.nix
+          ./niri.nix
+          ./gui.nix
         ];
-
-        xsession = {
-          enable = true;
-          preferStatusNotifierItems = true;
-        };
-        programs = {
-          nix-index-database.comma.enable = true;
-          home-manager.enable = true;
-        };
-        services = {
-          udiskie = {
-            enable = true;
-            notify = true;
-            automount = true;
-            tray = "auto";
-          };
-          taffybar = {
-            enable = true;
-            package = pkgs.hermit-bar; # FUCK OVERLAYS, SCOPE ERASING SHITS
-          };
-        };
       };
-
-      darwin = { imports = [ self.homeModules.common ]; };
-
       wsl = {
         imports = [
           self.homeModules.common

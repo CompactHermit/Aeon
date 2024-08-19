@@ -1,17 +1,22 @@
 @document.meta
 title: README
-description: Contract With the Swamp
+description: 
 authors: CompactHermit
-categories:
-created: 2023-12-29T01:48:53-0500
-updated: 2024-01-28T09:46:38-0500
+categories: [
+    Nixos 
+    Modules
+]
+created: 2025-05-12T12:21:59-0500
+updated: 2025-05-12T12:21:59-0500
 version: 1.1.1
 @end
 
 * Swamp:: Fusing and fuddling modules::
   > Custom Options and module-types. Made for when I get drunk and think I'm coding in haskell.
-** Circuits:: Services Modules
-   Basically All Services, e.g:: Attic/Reposolite/Etc
-** Fusions:: Custom Modules
-** Tuned:: WM/DE options
-   Essentially a drop in replacement for home-Manager. Included all home.file
+* Circuits:: Services Modules
+  Basically All Services, e.g:: Attic/Reposolite/Etc. Just Wrappers Around them
+* Fusions:: Custom Modules
+* Overlaying:: Mock HM-Modules without HM
+* Tuned:: WM/DE options
+** Essentially a drop in replacement for home-Manager. Included all home.file
+

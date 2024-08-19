@@ -1,6 +1,13 @@
-{ inputs, lib, pkgs, ... }:
-let inherit (lib) mkForce;
-in {
+{
+  inputs,
+  lib,
+  pkgs,
+  ...
+}:
+let
+  inherit (lib) mkForce;
+in
+{
   environment.systemPackages = with pkgs; [
     neovim
     vim
@@ -22,8 +29,12 @@ in {
     useDHCP = lib.mkForce false; # (Hermit) I, what, why, for what reason????
     wireless.enable = false;
     firewall.enable = false;
-    nameservers =
-      [ "1.1.1.1" "1.0.0.1" "2606:4700:4700::1111" "2606:4700:4700::1001" ];
+    nameservers = [
+      "1.1.1.1"
+      "1.0.0.1"
+      "2606:4700:4700::1111"
+      "2606:4700:4700::1001"
+    ];
     usePredictableInterfaceNames = false;
   };
 
@@ -50,8 +61,10 @@ in {
 
     settings = {
       auto-optimise-store = true;
-      substituters =
-        [ "https://cache.nixos.org" "https://nix-community.cachix.org" ];
+      substituters = [
+        "https://cache.nixos.org"
+        "https://nix-community.cachix.org"
+      ];
       trusted-public-keys = [
         "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="

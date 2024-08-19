@@ -1,7 +1,14 @@
-{ lib, pkgs, config, ... }: {
-  /* *
-     Module:: DDNS
-       DuckDNS to handle all dynamic IP's
+{
+  lib,
+  pkgs,
+  config,
+  ...
+}:
+{
+  /*
+    *
+    Module:: DDNS
+      DuckDNS to handle all dynamic IP's
   */
   sops.secrets.clf_API = { };
 
@@ -23,7 +30,11 @@
       DynamicUser = true;
     };
 
-    path = [ pkgs.netcat pkgs.jq pkgs.curl ];
+    path = [
+      pkgs.netcat
+      pkgs.jq
+      pkgs.curl
+    ];
 
     script =
       # bash

@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   disko.devices = {
     disk.Genghis = {
       device = "/dev/nvme0n1";
@@ -42,17 +43,27 @@
           swap = {
             name = "swap";
             size = "32G";
-            content = { type = "swap"; };
+            content = {
+              type = "swap";
+            };
           };
           root = {
             size = "100%FREE";
             content = {
               type = "btrfs";
               subvolumes = {
-                "root" = { mountpoint = "/"; };
-                "nix" = { mountpoint = "/nix"; };
-                "state" = { mountpoint = "/state"; };
-                "persist" = { mountpoint = "/persist"; };
+                "root" = {
+                  mountpoint = "/";
+                };
+                "nix" = {
+                  mountpoint = "/nix";
+                };
+                "state" = {
+                  mountpoint = "/state";
+                };
+                "persist" = {
+                  mountpoint = "/persist";
+                };
               };
             };
           };

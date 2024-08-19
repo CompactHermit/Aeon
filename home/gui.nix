@@ -1,24 +1,34 @@
-{ flake, pkgs, ... }: {
+{ pkgs, ... }:
+{
   home.packages = with pkgs; [
-    zeal
     #  [Workspaces Are now private componenets, fml](https://github.com/NixOS/nixpkgs/pull/311924)
-    (pkgs.wrapFirefox (pkgs.floorp-unwrapped.overrideAttrs (old: {
-      configureFlags = (old.configureFlags or [ ])
-        ++ [ "--enable-private-components" ];
-    })) { })
+    # (pkgs.wrapFirefox (pkgs.floorp-unwrapped.overrideAttrs (old: {
+    #   configureFlags = (old.configureFlags or [ ])
+    #     ++ [ "--enable-private-components" ];
+    # })) { })
+    #floorp
+    lmstudio
     zathura
-    discord
-    webcord-vencord
+    #spotube
+    #webcord-vencord
     rofi
     dconf
-    zotero_7
     betterlockscreen
+    skippy-xd
+    simplescreenrecorder
   ];
   programs.rofi = {
     enable = true;
     cycle = true;
   };
-  services.betterlockscreen = { enable = true; };
+  services.betterlockscreen = {
+    enable = false;
+    arguments = [
+      #"-u ~/wallpapers/HyDEWalls/Rosé-Pine"
+      #"--span dim"
+    ];
+    inactiveInterval = 30;
+  };
   xdg.configFile."rofi/config.rasi".text =
     # rasi
     ''

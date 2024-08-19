@@ -16,10 +16,15 @@ let
   };
   __book-V = {
     type = "simple";
-    params = { keep = "10"; };
+    params = {
+      keep = "10";
+    };
   };
-in {
-  sops.secrets."syncthing-gui-password" = { group = "users"; };
+in
+{
+  sops.secrets."syncthing-gui-password" = {
+    group = "users";
+  };
 
   services.syncthing = {
     enable = true;
@@ -33,43 +38,50 @@ in {
     settings = {
       devices = {
         "Genghis" = {
-          id =
-            "MR7FCXB-L5M4EWR-NTAOOJZ-JPGN3QW-4PTX3DG-M5B4K42-SS7IZ3C-Z7ISRAR";
+          id = "MR7FCXB-L5M4EWR-NTAOOJZ-JPGN3QW-4PTX3DG-M5B4K42-SS7IZ3C-Z7ISRAR";
         }; # TODO: SOPS!
       };
       folders = {
-        "Neorg_Notes" = {
-          path = "/home/CompactHermit/neorg";
-          devices = [ "Genghis" ];
-        } // {
-          versioning = __code-V;
-        };
-        "Docs" = {
-          path = "/home/CompactHermit/Programming/Notes/Math/";
-          devices = [ "Genghis" ];
-          ignorePerms = false;
-        } // {
-          versioning = __code-V;
-        };
+        "Neorg_Notes" =
+          {
+            path = "/home/CompactHermit/neorg";
+            devices = [ "Genghis" ];
+          }
+          // {
+            versioning = __code-V;
+          };
+        "Docs" =
+          {
+            path = "/home/CompactHermit/Programming/Notes/Math/";
+            devices = [ "Genghis" ];
+            ignorePerms = false;
+          }
+          // {
+            versioning = __code-V;
+          };
         "sync" = {
           path = "~/sync";
           devices = [ "Genghis" ];
           copyOwnershipFromParent = true;
         };
-        "Library" = {
-          path = "~/Library";
-          devices = [ "Genghis" ];
-          ignorePerms = false;
-        } // {
-          versioning = __book-V;
-        };
-        "ArxivDB" = {
-          path = "~/arxiv_papers";
-          devices = [ "Genghis" ];
-          ignorePerms = false;
-        } // {
-          versioning = __book-V;
-        };
+        "Library" =
+          {
+            path = "~/Library";
+            devices = [ "Genghis" ];
+            ignorePerms = false;
+          }
+          // {
+            versioning = __book-V;
+          };
+        "ArxivDB" =
+          {
+            path = "~/arxiv_papers";
+            devices = [ "Genghis" ];
+            ignorePerms = false;
+          }
+          // {
+            versioning = __book-V;
+          };
       };
       gui = {
         # NOTE:: (Hermit) Sops doesn't allow the file to be read, why

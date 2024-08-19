@@ -1,8 +1,19 @@
-{ pkgs, config, lib, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 let
   cfg = config.services.arxiv;
-  inherit (lib) mkOption mkIf makeBinPath mkEnableOption;
-in {
+  inherit (lib)
+    mkOption
+    mkIf
+    makeBinPath
+    mkEnableOption
+    ;
+in
+{
   options.services.arxivterminal = {
     enable = mkEnableOption (lib.mkdoc "Enable Arxiv Terminal Database");
     location = mkOption { };
@@ -17,9 +28,15 @@ in {
       wants = [ "network-online.target" ];
       after = [ "network-online.target" ];
       startAt = "*:0/30";
-      serviceConfig = { DynamicUser = true; };
+      serviceConfig = {
+        DynamicUser = true;
+      };
 
-      path = with pkgs; [ pkgs.arxivterminal pkgs.jq pkgs.curl ];
+      path = with pkgs; [
+        pkgs.arxivterminal
+        pkgs.jq
+        pkgs.curl
+      ];
       script = "";
     };
   };

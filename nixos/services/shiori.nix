@@ -1,12 +1,13 @@
-{ lib, pkgs, ... }: {
+{ lib, pkgs, ... }:
+{
   services.shiori = {
     enable = true;
-    package = pkgs.shiori.overrideAttrs (_: {
-      patches = [
-        # Thanks mic92. very cool
-        ../../contracts/_3Entities/0001-set-saner-postgresql-connection-default-and-make-use.patch
-      ];
-    });
+    # package = pkgs.shiori.overrideAttrs (_: {
+    #   # patches = [
+    #   #   # Thanks mic92. very cool
+    #   #   ../../contracts/_3Entities/0001-set-saner-postgresql-connection-default-and-make-use.patch
+    #   # ];
+    # });
     port = 4378;
   };
   systemd.services.shiori.environment = {

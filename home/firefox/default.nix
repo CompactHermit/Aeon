@@ -1,4 +1,10 @@
-{ pkgs, lib, flake, config, ... }:
+{
+  pkgs,
+  lib,
+  flake,
+  config,
+  ...
+}:
 let
   l = lib // builtins;
   settings = {
@@ -21,8 +27,13 @@ let
   };
 
   extensions = flake.inputs.firefoxAddons.packages."x86_64-linux";
-  prof = [ "Maxwell" "Laplace" "Leonidas" ];
-in {
+  prof = [
+    "Maxwell"
+    "Laplace"
+    "Leonidas"
+  ];
+in
+{
   imports = [ ];
 
   programs.firefox = {
@@ -46,12 +57,18 @@ in {
         #Extensions.Install = map (x: x.src.outPath) config.home-manager.users.tzlil.programs.firefox.profiles."Maxwell".extensions;
         SearchEngines.Default = "DuckDuckGo";
         ExtensionSettings = {
-          "google@search.mozilla.org" = { installation_mode = "blocked"; };
+          "google@search.mozilla.org" = {
+            installation_mode = "blocked";
+          };
           "amazondotcom@search.mozilla.org" = {
             installation_mode = "blocked";
           };
-          "wikipedia@search.mozilla.org" = { installation_mode = "blocked"; };
-          "bing@search.mozilla.org" = { installation_mode = "blocked"; };
+          "wikipedia@search.mozilla.org" = {
+            installation_mode = "blocked";
+          };
+          "bing@search.mozilla.org" = {
+            installation_mode = "blocked";
+          };
         };
       };
     };
@@ -63,12 +80,9 @@ in {
           sidebery
           tridactyl
           ublock-origin
-          privacy-possum
           bitwarden
-          sourcegraph
           canvasblocker
           firenvim
-          gitako-github-file-tree
         ];
       };
     };

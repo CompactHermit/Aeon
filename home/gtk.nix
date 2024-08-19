@@ -1,11 +1,30 @@
-{ flake, ... }: {
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
+{
+
+  stylix.targets = {
+    feh.enable = true;
+    #qt.enable = true;
+    gtk = {
+      enable = true;
+      extraCss = with config.lib.stylix.colors.withHashtag; ''
+        @define-color accent_color ${base0A};
+        @define-color accent_bg_color ${base0A};
+      '';
+    };
+  };
+
   gtk = {
     enable = true;
-    font.name = "VictorMono Nerd Font";
-    theme = {
-      name = "oomox-base16-oxocarbon-dark";
-      package = flake.inputs.oxocarbon-gtk.packages."x86_64-linux".default;
-    };
+    font.name = lib.mkDefault "VictorMono Nerd Font";
+    # iconTheme = {
+    #   name = "Zafiro-icons-Dark";
+    #   package = pkgs.zafiro-icons;
+    # };
   };
 
   # gtk 4 themes suck

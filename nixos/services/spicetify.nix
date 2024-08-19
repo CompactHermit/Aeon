@@ -2,13 +2,20 @@
 let
   spicetify-nix = flake.inputs.spicetify-nix;
   spicePkgs = spicetify-nix.legacyPackages;
-in {
+in
+{
   imports = [ spicetify-nix.nixosModules.default ];
+  stylix.targets.spicetify.enable = false;
   programs.spicetify = {
     enable = true;
     enabledExtensions = builtins.attrValues {
       inherit (spicePkgs."x86_64-linux".extensions)
-        adblock hidePodcasts shuffle;
+        adblock
+        adblockify
+        keyboardShortcut
+        hidePodcasts
+        shuffle
+        ;
     };
     theme = spicePkgs."x86_64-linux".themes.dribbblish;
     colorScheme = "custom";

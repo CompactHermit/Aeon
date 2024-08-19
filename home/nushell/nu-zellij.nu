@@ -7,7 +7,7 @@ def zellij-layouts-path [] {
 }
 
 def list-layouts [path: path] {
-    ls ($path | path join "**" "*.kdl")
+    ls ($path | path join "*.kdl")
     | get name
     | str replace --regex $"($path)(char path_sep)" ""
     | str replace --regex '.kdl$' ""
@@ -133,9 +133,8 @@ export def "layout list" [] {
 }
 
 export def "resurrection" [] {
-    let zellij_version = (zellij --version)|  parse -r '\s(\d+.\d+.\d+)'
-    #zellij_version.0.capture0
-    let zellij_session_path = '~/.cache/zellij/0.39.0/session_info'
+    let zellij_version = ((zellij --version)|  parse -r '\s(\d+.\d+.\d+)').capture0.0
+    let zellij_session_path = '/home/CompactHermit/.cache/zellij'| path join $zellij_version "session_info"
     if not ($zellij_session_path | path exists) {
             error make --unspanned {
                 msg: $"no sessions found in ($zellij_session_path), please ensure you have a session saved"

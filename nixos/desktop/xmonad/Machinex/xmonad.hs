@@ -166,12 +166,12 @@ myBorderWidth   = 2
 myClickJustFocuses :: Bool
 myClickJustFocuses = False
 
-myTerminal = "alacritty"
+myTerminal = "kitty"
 
-myShell = "nu"
+myShell = "fish"
 emacsn = "emacsn"
 
--------------------------------------------------------------
+-----------------------------------------------------------
 -------------------THEMES----------------------------------
 -----------------------------------------------------------
 base03  = "#002b36"
@@ -404,16 +404,27 @@ coloredGSConfig colorizer = (buildDefaultGSConfig colorizer)
 -------------------------------------------------------------------------
 
 
+
+-- 一
+-- 二
+-- 三
+-- 四
+-- 五
+-- 六
+-- 七
+-- 八
+-- 九
 myTopics :: [TopicItem]
-myTopics = [ TI "\63083" "" (spawnInTopicDir "wezterm") --1
-            , TI "\63288" "" (spawnInTopicDir "firefox-nightly") --2
-            , TI "\63306" "" (return ()) --3
-            , TI "\61723" "" (spawnInTopicDir "zotero") --4
-            , TI "\63107" "" (spawnInTopicDir "zeal" >> spawnInTopicDir "anki") --5
-            , TI "\63601" "" (spawnInTopicDir "webcord") --6
+myTopics = [ TI "一" "" (spawnInTopicDir "ghostty") --1
+            , TI "二" "" (spawnInTopicDir "zen") --2 , Best Browser
+            , TI "三" "" (spawnInTopicDir "spotify") --3
+            , TI "四" "" (spawnInTopicDir "zotero") --4
+            , TI "五" "" (return ()) --5
+            , TI "六" "" (spawnInTopicDir "webcord") --6
+            --TODO:: Add Hook to trigger <Game-Launcher>[Choice]
             , TI "\63391" "" (return ()) --7
             , TI "\61713" "" (spawnInTopicDir "scid") --8
-            , TI "\61884" "" (spawnInTopicDir "emacs") --9
+            , TI "\61884" "" (return ()) --9
             ]
 
 myTopicNames :: [Topic]
@@ -475,14 +486,6 @@ myLogHook dbus = def
     , ppOrder = \(_:l:_:_) -> [l]
     }
 
-myPolybar :: StatusBarConfig
-myPolybar =
-  def
-    {
-      sbStartupHook = spawn "~/.config/polybar/launch.sh --cuts",
-      sbCleanupHook = spawn "killall polybar"
-    }
-
 -----------------------------------------------------------
 ------------------- Scratch Pads--------------------------
 -----------------------------------------------------------
@@ -511,9 +514,9 @@ flexFloatBSP dx dy = customFloating (flexScratchpadSize dx dy)
 scratchpads =
   [ NS "pavuControl"   spawnPavu findPavu managePavu
   , NS "term0"  (myTerminal ++ " --title term") (title =? "term") (flexFloatBSP (1/20) (1/20))
-  , NS "term1" (myTerminal ++ " --title term1  -e nu") (title =? "term1") (flexFloatBSP (2/20) (2/20))
-  , NS "term2" (myTerminal ++ " --title term2 -e nu") (title =? "term2") (flexFloatBSP (3/20) (3/20))
-  , NS "term3" ("kitty --title term3 nu") (title =? "term3") (flexFloatBSP (4/20) (4/20))
+  , NS "term1" (myTerminal ++ " --title term1  -e fish") (title =? "term1") (flexFloatBSP (2/20) (2/20))
+  , NS "term2" (myTerminal ++ " --title term2 -e fish") (title =? "term2") (flexFloatBSP (3/20) (3/20))
+  , NS "term3" ("kitty --title term3 fish") (title =? "term3") (flexFloatBSP (4/20) (4/20))
   , NS "term4" (myTerminal ++ " --title term4") (title =? "term4") (flexFloatBSP (6/20) (4/20))
   , NS "ghci"  (myTerminal ++ " --title ghci -e ghci") (title =? "ghci") (flexFloatBSP (6/20) (1/10))
   , NS "evcxr"  (myTerminal ++ " --title evcxr -e evcxr") (title =? "evcxr") (flexFloatBSP (6/20) (1/10))
@@ -1626,12 +1629,11 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList
 -- ###################################
 -- ########  Startup hook   ##########
 -- ###################################
--- By default, do nothing.
+-- Let Nix handle this
 myStartupHook = do
   spawn "xsetroot -cursor_name left_ptr"
   -- spawn "exec ~/bin/lock.sh"
-  -- spawnOnce "kmonad ~/.config/kmonad/config.kbd"
-  spawnOnce "feh --bg-scale ~/wallpapers/Exec_3.jpg"
+  -- spawnOnce "feh --bg-scale `~/wallpapers/HyDEWalls/Material Sakura/b-345.jpg`"
   -- spawnOnce "picom"
   -- spawnOnce "greenclip daemon"
   -- spawnOnce "dunst"
@@ -1663,7 +1665,7 @@ main = do
         mouseBindings      = myMouseBindings,
         manageHook = myManageHook,
         layoutHook = spacingWithEdge 10 $ myLayout,
-        handleEventHook    =  swallowEventHook (className =? "alacritty" <||> className =? "kitty") (return True)<+>fullscreenEventHook,
+        handleEventHook    =  swallowEventHook (className =? "alacritty" <||> className =? "kitty" <||> className =? "wezterm") (return True)<+>fullscreenEventHook,
         logHook            =  dynamicLogWithPP (myLogHook dbus) <+> myEventHook,
         startupHook        = myStartupHook >> addEWMHFullscreen
     }

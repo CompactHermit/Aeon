@@ -20,29 +20,31 @@ layout {
                     pane name="Svelte Project" cwd="~/Downloads/github_dumps/svelte-axum-project/"
         }
     }
-    tab name=" :: Docs (typst)" cwd="~/Programming/Book_Excercises/classes/"{
+    tab name=" :: Docs (typst)" cwd="~/Programming/Notes/Math/"{
         pane stacked=true {
             pane name="Typst Notes:: Books"
             pane name="LaTex Notes:: Books"
         }
     }
-    tab name=" :: Dev (Rust)" {
+    tab name=" :: Dev (Rust)" cwd="~/Programming/Testing/Rust/Rust-Book-Testing" {
         pane name=" :: Rust" stacked=true {
             pane name="Rust"
         }
 
     }
-    tab name=" :: Dev (GoMod2nix)" cwd="~/Programming/Book_Excercises/Lexer/go_lexer" {
+    tab name=" :: Dev" cwd="~/Programming/Testing/" {
         pane name=" :: Go Dev" {}
     }
-    tab name=" :: Dev (Poetry2nix)" cwd="~/Programming/Work/Poetry_Projects/" {
+    tab name=" :: Dev (Poetry2nix)" cwd="~/Programming/Work/Python" {
         pane stacked=true {
             pane name=" :: Poetry Project"
             pane name=" :: py_repl"
         }
     }
-    tab name=" :: Dev (Haskell-flake)" cwd="~/Programming" {
-        pane name=" :: Haskell Dev" cwd="~/Programming/OSS" {}
+    tab name=" :: Dev (Haskell-flake)" cwd="~/Programming/Testing/Haskell" {
+        pane stacked=true {
+            pane name=" :: Haskell Dev" {}
+        }
     }
 }
 

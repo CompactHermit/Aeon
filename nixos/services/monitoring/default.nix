@@ -1,1 +1,7 @@
-_: { imports = [ ./prometheus.nix ./grafana.nix ./loki.nix ]; }
+_: {
+  imports = [
+    ./prometheus.nix
+    ./grafana.nix
+    ./loki.nix
+  ];
+}
